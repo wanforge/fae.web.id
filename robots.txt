@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fae.web.id/sitemap.xml
