@@ -1,709 +1,966 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAE — Ekosistem Digital & Infrastruktur Terintegrasi</title>
-  <meta name="description" content="Portal resmi FAE — Infrastruktur digital, aplikasi enterprise koperasi modern, dan layanan komputasi terintegrasi.">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://fae.web.id/">
-  <meta property="og:title" content="FAE — Ekosistem Digital & Infrastruktur Terintegrasi">
-  <meta property="og:description" content="Infrastruktur digital, aplikasi enterprise, dan platform manajemen terpadu.">
-  <meta property="og:url" content="https://fae.web.id/">
-  <meta property="og:type" content="website">
-  <style>
-    :root {
-      --bg: #090d16;
-      --bg-card: rgba(17, 24, 39, 0.7);
-      --bg-card-hover: rgba(30, 41, 59, 0.8);
-      --border: rgba(255, 255, 255, 0.08);
-      --border-accent: rgba(56, 189, 248, 0.3);
-      --text: #f1f5f9;
-      --text-muted: #94a3b8;
-      --primary: #38bdf8;
-      --primary-hover: #0ea5e9;
-      --accent: #10b981;
-      --glow: rgba(56, 189, 248, 0.15);
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Fae — Ras Gaib dari Dunia Kuno | fae.web.id</title>
+<meta name="description" content="Eksplorasi mendalam mitologi dan cerita rakyat Fae Eropa — Tuatha Dé Danann, Aos Sí, Seelie & Unseelie Courts, perlindungan kuno, dan jejak sejarah.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://fae.web.id/">
+<meta property="og:title" content="The Fae — Ras Gaib dari Dunia Kuno">
+<meta property="og:description" content="Eksplorasi mendalam mitologi Fae Eropa: Tuatha Dé Danann, Aos Sí, Seelie & Unseelie Courts.">
+<meta property="og:url" content="https://fae.web.id/">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=MedievalSharp&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --parchment:#f4ead5;
+  --parchment-dark:#e8dbc4;
+  --ink:#2c1810;
+  --ink-light:#5a3e2b;
+  --gold:#c4a24e;
+  --gold-light:#d4b86a;
+  --gold-dim:rgba(196,162,78,.15);
+  --forest:#1a3a2a;
+  --forest-deep:#0e2118;
+  --forest-light:#2a5a3a;
+  --moss:#3a5a3a;
+  --blood:#8b2020;
+  --mist:rgba(244,234,213,.08);
+  --shadow:rgba(14,33,24,.6);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  font-family:'Crimson Text',Georgia,'Times New Roman',serif;
+  background:var(--forest-deep);
+  color:var(--parchment);
+  line-height:1.75;
+  font-size:18px;
+  overflow-x:hidden;
+}
+::selection{background:var(--gold);color:var(--forest-deep)}
 
-    [data-theme="light"] {
-      --bg: #f8fafc;
-      --bg-card: rgba(255, 255, 255, 0.85);
-      --bg-card-hover: rgba(255, 255, 255, 0.95);
-      --border: rgba(15, 23, 42, 0.08);
-      --border-accent: rgba(2, 132, 199, 0.3);
-      --text: #0f172a;
-      --text-muted: #64748b;
-      --primary: #0284c7;
-      --primary-hover: #0369a1;
-      --accent: #059669;
-      --glow: rgba(2, 132, 199, 0.12);
-    }
+/* ═══ Celtic Border SVG Pattern ═══ */
+.celtic-border{
+  width:100%;height:40px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='40' viewBox='0 0 200 40'%3E%3Cpath d='M0 20 Q25 5 50 20 Q75 35 100 20 Q125 5 150 20 Q175 35 200 20' fill='none' stroke='%23c4a24e' stroke-width='1.5'/%3E%3Cpath d='M0 20 Q25 35 50 20 Q75 5 100 20 Q125 35 150 20 Q175 5 200 20' fill='none' stroke='%23c4a24e' stroke-width='1.5'/%3E%3Ccircle cx='50' cy='20' r='3' fill='%23c4a24e'/%3E%3Ccircle cx='100' cy='20' r='3' fill='%23c4a24e'/%3E%3Ccircle cx='150' cy='20' r='3' fill='%23c4a24e'/%3E%3C/svg%3E") repeat-x center;
+  opacity:.7;
+}
+.celtic-border.flip{transform:scaleY(-1)}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* ═══ Navigation ═══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:linear-gradient(180deg,rgba(14,33,24,.95) 0%,rgba(14,33,24,.7) 80%,transparent);
+  padding:1rem 2rem;
+  transition:all .4s;
+}
+nav.scrolled{background:rgba(14,33,24,.97);backdrop-filter:blur(10px);box-shadow:0 2px 20px var(--shadow)}
+nav .nav-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+}
+nav .logo{
+  font-family:'Cinzel',serif;font-weight:700;font-size:1.4rem;
+  color:var(--gold);letter-spacing:.15em;text-transform:uppercase;
+  text-decoration:none;
+}
+nav .logo span{color:var(--parchment);font-weight:400}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul li a{
+  font-family:'Cinzel',serif;font-size:.75rem;
+  color:var(--parchment);text-decoration:none;
+  letter-spacing:.12em;text-transform:uppercase;
+  opacity:.7;transition:all .3s;
+  position:relative;
+}
+nav ul li a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:1px;background:var(--gold);
+  transition:width .3s;
+}
+nav ul li a:hover{opacity:1;color:var(--gold)}
+nav ul li a:hover::after{width:100%}
+.menu-toggle{display:none;background:none;border:none;color:var(--gold);font-size:1.5rem;cursor:pointer}
 
-    body {
-      font-family: var(--font-sans);
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background-color 0.25s ease, color 0.25s ease;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+/* ═══ Hero ═══ */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+  position:relative;
+  background:
+    radial-gradient(ellipse at 30% 20%,rgba(42,90,58,.3) 0%,transparent 50%),
+    radial-gradient(ellipse at 70% 80%,rgba(42,90,58,.2) 0%,transparent 50%),
+    var(--forest-deep);
+  overflow:hidden;
+  padding:2rem;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='600' height='600' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+/* Floating particles */
+.hero .particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{
+  position:absolute;
+  width:3px;height:3px;
+  background:var(--gold);
+  border-radius:50%;
+  opacity:0;
+  animation:float-up linear infinite;
+}
+@keyframes float-up{
+  0%{opacity:0;transform:translateY(100vh) scale(0)}
+  10%{opacity:.6}
+  90%{opacity:.3}
+  100%{opacity:0;transform:translateY(-10vh) scale(1)}
+}
 
-    /* Ambient Background Pattern */
-    .bg-pattern {
-      position: fixed;
-      inset: 0;
-      background-image: 
-        radial-gradient(circle at 20% 20%, var(--glow) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 35%);
-      pointer-events: none;
-      z-index: -1;
-    }
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero .rune{
+  font-family:'MedievalSharp',cursive;
+  font-size:1rem;letter-spacing:.5em;
+  color:var(--gold);opacity:.6;
+  margin-bottom:2rem;
+}
+.hero h1{
+  font-family:'Cinzel',serif;
+  font-weight:900;
+  font-size:clamp(3rem,8vw,6rem);
+  color:var(--parchment);
+  line-height:1.1;
+  margin-bottom:.5rem;
+  text-shadow:0 0 60px rgba(196,162,78,.15);
+}
+.hero h1 .accent{
+  display:block;
+  font-size:.35em;font-weight:400;
+  letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);
+  margin-top:.5rem;
+}
+.hero .subtitle{
+  font-family:'Crimson Text',serif;
+  font-style:italic;
+  font-size:clamp(1.1rem,2.5vw,1.4rem);
+  color:var(--parchment);
+  opacity:.7;
+  margin:1.5rem 0 2.5rem;
+  max-width:600px;
+  margin-left:auto;margin-right:auto;
+}
+.hero .scroll-cue{
+  display:inline-flex;flex-direction:column;align-items:center;
+  color:var(--gold);opacity:.5;
+  font-family:'Cinzel',serif;font-size:.7rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  text-decoration:none;
+  animation:pulse-down 2s ease-in-out infinite;
+}
+.hero .scroll-cue .arrow{font-size:1.5rem;margin-top:.5rem}
+@keyframes pulse-down{
+  0%,100%{transform:translateY(0);opacity:.5}
+  50%{transform:translateY(8px);opacity:.8}
+}
 
-    /* Container */
-    .container {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+/* ═══ Section Base ═══ */
+section{padding:6rem 2rem;position:relative}
+.section-inner{max-width:960px;margin:0 auto}
+.section-label{
+  font-family:'Cinzel',serif;font-size:.7rem;
+  letter-spacing:.4em;text-transform:uppercase;
+  color:var(--gold);opacity:.6;
+  margin-bottom:1rem;
+}
+section h2{
+  font-family:'Cinzel',serif;
+  font-weight:700;
+  font-size:clamp(1.8rem,4vw,2.8rem);
+  color:var(--parchment);
+  margin-bottom:1rem;
+  line-height:1.2;
+}
+section h2 .thin{font-weight:400;color:var(--gold)}
+section h3{
+  font-family:'Cinzel',serif;
+  font-weight:600;
+  font-size:1.2rem;
+  color:var(--gold);
+  margin:2rem 0 .75rem;
+  letter-spacing:.05em;
+}
+section p{
+  color:var(--parchment);
+  opacity:.85;
+  margin-bottom:1.25rem;
+}
+section p strong{color:var(--gold);font-weight:600}
 
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      background: rgba(9, 13, 22, 0.8);
-      border-bottom: 1px solid var(--border);
-      z-index: 50;
-      transition: background 0.25s ease;
-    }
+/* ═══ Alternating BGs ═══ */
+.bg-dark{background:var(--forest-deep)}
+.bg-mid{
+  background:
+    linear-gradient(135deg,var(--forest) 0%,var(--forest-deep) 100%);
+}
+.bg-parchment{
+  background:var(--parchment);
+  color:var(--ink);
+}
+.bg-parchment h2,.bg-parchment h3{color:var(--forest-deep)}
+.bg-parchment h2 .thin{color:var(--forest-light)}
+.bg-parchment .section-label{color:var(--forest-light)}
+.bg-parchment p{color:var(--ink-light);opacity:1}
+.bg-parchment p strong{color:var(--blood)}
 
-    [data-theme="light"] header {
-      background: rgba(248, 250, 252, 0.8);
-    }
+/* ═══ Illuminated Initial ═══ */
+.dropcap::first-letter{
+  font-family:'Cinzel',serif;
+  font-weight:900;
+  font-size:3.5em;
+  float:left;
+  line-height:.85;
+  margin:0 .15em 0 0;
+  color:var(--gold);
+}
 
-    .nav-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-    }
+/* ═══ Creatures Grid ═══ */
+.creatures-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;
+  margin-top:2rem;
+}
+.creature-card{
+  background:rgba(196,162,78,.06);
+  border:1px solid rgba(196,162,78,.15);
+  border-radius:4px;
+  padding:1.75rem;
+  transition:all .3s;
+  position:relative;
+  overflow:hidden;
+}
+.creature-card::before{
+  content:'';position:absolute;top:0;left:0;
+  width:3px;height:100%;
+  background:var(--gold);
+  opacity:0;transition:opacity .3s;
+}
+.creature-card:hover{
+  border-color:rgba(196,162,78,.35);
+  transform:translateY(-2px);
+  box-shadow:0 8px 30px rgba(0,0,0,.3);
+}
+.creature-card:hover::before{opacity:1}
+.creature-card .icon{
+  font-size:2rem;margin-bottom:.75rem;
+  filter:grayscale(.3);
+}
+.creature-card h4{
+  font-family:'Cinzel',serif;
+  font-weight:600;font-size:1rem;
+  color:var(--gold);
+  margin-bottom:.5rem;
+  letter-spacing:.05em;
+}
+.creature-card p{
+  font-size:.92rem;line-height:1.6;
+  opacity:.75;margin:0;
+}
+.creature-card .origin{
+  display:inline-block;
+  font-family:'Cinzel',serif;
+  font-size:.65rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--gold);
+  opacity:.5;
+  margin-top:.75rem;
+  border-top:1px solid rgba(196,162,78,.15);
+  padding-top:.5rem;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 700;
-      font-size: 20px;
-      letter-spacing: -0.02em;
-    }
+/* ═══ Courts Split ═══ */
+.courts{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;margin-top:2rem;
+  border:1px solid rgba(196,162,78,.2);
+  border-radius:4px;
+  overflow:hidden;
+}
+.court{padding:2.5rem;position:relative}
+.court-seelie{
+  background:linear-gradient(160deg,rgba(42,90,58,.2) 0%,rgba(14,33,24,.4) 100%);
+  border-right:1px solid rgba(196,162,78,.15);
+}
+.court-unseelie{
+  background:linear-gradient(160deg,rgba(20,15,30,.4) 0%,rgba(14,33,24,.4) 100%);
+}
+.court h4{
+  font-family:'Cinzel',serif;font-weight:700;
+  font-size:1.1rem;color:var(--gold);
+  margin-bottom:.25rem;letter-spacing:.1em;
+}
+.court .court-meaning{
+  font-family:'Crimson Text',serif;
+  font-style:italic;font-size:.85rem;
+  opacity:.5;margin-bottom:1rem;
+}
+.court ul{list-style:none;padding:0}
+.court ul li{
+  font-size:.92rem;opacity:.8;
+  padding:.35rem 0;
+  padding-left:1.25rem;
+  position:relative;
+}
+.court ul li::before{
+  content:'◆';position:absolute;left:0;
+  color:var(--gold);font-size:.5rem;
+  top:.55rem;
+}
+.court-unseelie ul li::before{content:'◇'}
 
-    .brand-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(16, 185, 129, 0.12);
-      color: var(--accent);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-    }
+/* ═══ Classifications ═══ */
+.class-list{margin-top:2rem}
+.class-item{
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:1.5rem;
+  padding:1.25rem 0;
+  border-bottom:1px solid rgba(44,24,16,.1);
+  align-items:start;
+}
+.class-item:last-child{border-bottom:none}
+.class-item .class-name{
+  font-family:'Cinzel',serif;
+  font-weight:600;font-size:.85rem;
+  color:var(--forest-deep);
+  letter-spacing:.05em;
+}
+.class-item .class-desc{
+  font-size:.95rem;
+  color:var(--ink-light);
+  line-height:1.65;
+}
 
-    .brand-badge .pulse {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
-    }
+/* ═══ Protections List ═══ */
+.protections{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1rem;margin-top:2rem;
+}
+.protection{
+  display:flex;align-items:start;gap:.75rem;
+  padding:1rem;
+  background:rgba(196,162,78,.05);
+  border:1px solid rgba(196,162,78,.1);
+  border-radius:3px;
+}
+.protection .p-icon{
+  font-size:1.2rem;flex-shrink:0;
+  margin-top:.1rem;
+  filter:grayscale(.4);
+}
+.protection .p-text{
+  font-size:.9rem;line-height:1.5;
+  opacity:.8;
+}
+.protection .p-text strong{
+  display:block;
+  font-family:'Cinzel',serif;
+  font-size:.8rem;
+  color:var(--gold);
+  letter-spacing:.05em;
+  margin-bottom:.15rem;
+}
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      list-style: none;
-    }
+/* ═══ Timeline ═══ */
+.timeline{margin-top:2.5rem;position:relative;padding-left:2rem}
+.timeline::before{
+  content:'';position:absolute;left:6px;top:0;bottom:0;
+  width:1px;background:rgba(196,162,78,.25);
+}
+.timeline-item{
+  position:relative;margin-bottom:2rem;
+  padding-left:1.5rem;
+}
+.timeline-item::before{
+  content:'';position:absolute;
+  left:-2rem;top:.5rem;
+  width:13px;height:13px;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  background:var(--forest-deep);
+}
+.timeline-item .era{
+  font-family:'Cinzel',serif;
+  font-size:.75rem;letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--gold);opacity:.7;
+  margin-bottom:.25rem;
+}
+.timeline-item h4{
+  font-family:'Cinzel',serif;
+  font-weight:600;font-size:1rem;
+  color:var(--parchment);
+  margin-bottom:.35rem;
+}
+.timeline-item p{font-size:.92rem;opacity:.75;margin:0}
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.15s ease;
-    }
+/* ═══ Quote ═══ */
+blockquote{
+  border-left:2px solid var(--gold);
+  padding:1rem 1.5rem;
+  margin:2rem 0;
+  font-style:italic;
+  opacity:.8;
+  background:rgba(196,162,78,.04);
+}
+blockquote cite{
+  display:block;margin-top:.75rem;
+  font-style:normal;
+  font-family:'Cinzel',serif;
+  font-size:.75rem;
+  letter-spacing:.1em;
+  color:var(--gold);
+  opacity:.6;
+}
 
-    .nav-links a:hover {
-      color: var(--primary);
-    }
+/* ═══ Figures Grid ═══ */
+.figures{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1.5rem;margin-top:2rem;
+}
+.figure{text-align:center;padding:1.5rem 1rem}
+.figure .sigil{
+  font-size:2.5rem;
+  margin-bottom:.75rem;
+  filter:drop-shadow(0 0 20px rgba(196,162,78,.2));
+}
+.figure h4{
+  font-family:'Cinzel',serif;
+  font-weight:700;font-size:.9rem;
+  color:var(--gold);
+  letter-spacing:.08em;
+  margin-bottom:.35rem;
+}
+.figure .title{
+  font-family:'Crimson Text',serif;
+  font-style:italic;font-size:.85rem;
+  opacity:.5;margin-bottom:.5rem;
+}
+.figure p{font-size:.85rem;line-height:1.5;opacity:.7;margin:0}
 
-    .theme-btn {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      border-radius: 8px;
-      padding: 8px 14px;
-      font-size: 13px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s ease;
-    }
+/* ═══ Footer ═══ */
+footer{
+  text-align:center;
+  padding:4rem 2rem;
+  background:var(--forest-deep);
+  border-top:1px solid rgba(196,162,78,.1);
+}
+footer .colophon{
+  font-family:'Cinzel',serif;
+  font-size:.7rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  opacity:.4;
+}
+footer p{
+  font-size:.85rem;
+  opacity:.4;
+  margin-top:.75rem;
+}
 
-    .theme-btn:hover {
-      border-color: var(--border-accent);
-      color: var(--primary);
-    }
+/* ═══ Fade-in on scroll ═══ */
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
-    /* Hero Section */
-    .hero {
-      padding: 84px 0 64px;
-      text-align: center;
-    }
-
-    .pill-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      border-radius: 999px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 20px;
-      max-width: 860px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--primary) 0%, #34d399 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: var(--text-muted);
-      max-width: 680px;
-      margin: 0 auto 36px;
-      line-height: 1.6;
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      min-height: 44px;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #04121d;
-      box-shadow: 0 4px 16px var(--glow);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-hover);
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      background: var(--bg-card);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--border-accent);
-      background: var(--bg-card-hover);
-      color: var(--primary);
-    }
-
-    /* Section Styling */
-    section {
-      padding: 60px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .section-title h2 {
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-    }
-
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 16px;
-      max-width: 580px;
-      margin: 0 auto;
-    }
-
-    /* Pillars Grid */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 24px;
-    }
-
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      backdrop-filter: blur(10px);
-      transition: all 0.25s ease;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .card:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--border-accent);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    }
-
-    .card-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: rgba(56, 189, 248, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      margin-bottom: 20px;
-    }
-
-    .card h3 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    .card p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      flex-grow: 1;
-    }
-
-    /* Nodes Directory */
-    .node-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 24px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      margin-bottom: 16px;
-      text-decoration: none;
-      color: var(--text);
-      transition: all 0.2s ease;
-    }
-
-    .node-card:hover {
-      border-color: var(--border-accent);
-      background: var(--bg-card-hover);
-      transform: translateX(4px);
-    }
-
-    .node-info {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .node-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      background: rgba(16, 185, 129, 0.1);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .node-domain {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .node-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .node-status {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--accent);
-      background: rgba(16, 185, 129, 0.08);
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(16, 185, 129, 0.2);
-    }
-
-    /* Live Status Panel */
-    .status-panel {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px;
-      margin-top: 24px;
-    }
-
-    .metric-item {
-      text-align: center;
-    }
-
-    .metric-value {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 4px;
-    }
-
-    .metric-label {
-      font-size: 13px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 600;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 48px 0 36px;
-      margin-top: 40px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.15s ease;
-    }
-
-    .footer-links a:hover {
-      color: var(--primary);
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 34px;
-      }
-      .nav-links {
-        display: none;
-      }
-      .footer-content {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-  </style>
+/* ═══ Responsive ═══ */
+@media(max-width:768px){
+  nav ul{
+    display:none;
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;gap:0;
+    background:rgba(14,33,24,.97);
+    padding:1rem 2rem 2rem;
+  }
+  nav ul.open{display:flex}
+  nav ul li a{padding:.5rem 0;display:block}
+  .menu-toggle{display:block}
+  .courts{grid-template-columns:1fr}
+  .court-seelie{border-right:none;border-bottom:1px solid rgba(196,162,78,.15)}
+  .class-item{grid-template-columns:1fr;gap:.5rem}
+  section{padding:4rem 1.5rem}
+}
+</style>
 </head>
 <body>
-  <div class="bg-pattern"></div>
 
-  <!-- Header -->
-  <header>
-    <div class="container nav-wrapper">
-      <a href="/" class="brand">
-        <svg width="28" height="28" viewBox="0 0 64 64" fill="none">
-          <rect width="64" height="64" rx="14" fill="#0f172a"/>
-          <path d="M18 16h28v7H26v9h16v7H26v17H18V16z" fill="#38bdf8"/>
-          <circle cx="48" cy="48" r="4" fill="#10b981"/>
-        </svg>
-        <span>FAE</span>
-        <span class="brand-badge"><span class="pulse"></span>Online</span>
-      </a>
+<!-- ═══ Navigation ═══ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">The <span>Fae</span></a>
+    <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')" aria-label="Menu">☰</button>
+    <ul>
+      <li><a href="#origins">Asal-Usul</a></li>
+      <li><a href="#courts">Istana</a></li>
+      <li><a href="#creatures">Makhluk</a></li>
+      <li><a href="#protection">Penangkal</a></li>
+      <li><a href="#legacy">Warisan</a></li>
+    </ul>
+  </div>
+</nav>
 
-      <ul class="nav-links">
-        <li><a href="#layanan">Layanan</a></li>
-        <li><a href="#ekosistem">Ekosistem</a></li>
-        <li><a href="#status">Status Jaringan</a></li>
-      </ul>
+<!-- ═══ Hero ═══ -->
+<section class="hero">
+  <div class="particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="rune">✦ ᚠ ᚨ ᚢ ᚱ ᛁ ᛖ ✦</div>
+    <h1>
+      The Fae
+      <span class="accent">Ras Gaib dari Dunia Kuno</span>
+    </h1>
+    <p class="subtitle">
+      Mereka bukan peri kecil bersayap dalam dongeng anak-anak. 
+      Mereka adalah ras kuno berkekuatan besar — dihormati sekaligus ditakuti 
+      selama ribuan tahun oleh bangsa-bangsa Eropa.
+    </p>
+    <a href="#origins" class="scroll-cue">
+      Jelajahi
+      <span class="arrow">⌄</span>
+    </a>
+  </div>
+</section>
 
-      <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">
-        <span id="themeIcon">☀️</span>
-        <span id="themeText">Tema</span>
-      </button>
+<div class="celtic-border"></div>
+
+<!-- ═══ Section: Asal-Usul ═══ -->
+<section id="origins" class="bg-dark">
+  <div class="section-inner reveal">
+    <span class="section-label">Bab I</span>
+    <h2>Asal-Usul <span class="thin">& Etimologi</span></h2>
+    
+    <p class="dropcap">Kata <strong>Fae</strong> berasal dari bahasa Old French <em>faerie</em>, yang berakar dari Latin <strong>fata</strong> — "takdir". Awalnya merujuk pada makhluk cantik berkekuatan sihir yang mampu memengaruhi nasib manusia. Istilah ini baru menjadi bentuk tunggal sejak abad ke-14, dan sejak saat itu mencakup seluruh spektrum makhluk gaib dalam tradisi Celtic, Germanic, dan Slavic.</p>
+
+    <p>Tidak ada satu asal-usul tunggal. Fae adalah pertemuan berbagai tradisi kepercayaan yang saling menumpuk selama ribuan tahun — dari dewa-dewa pagan pra-Kristen yang terdegradasi, hingga roh alam, hingga ingatan kolektif tentang ras prasejarah yang terdesak.</p>
+
+    <h3>Tuatha Dé Danann — Akar Mitologis</h3>
+    <p>Di jantung mitologi Irlandia, ras ilahi bernama <strong>Tuatha Dé Danann</strong> ("Rakyat Dewi Danu") pernah menguasai Irlandia. Mereka datang dari empat kota di utara — <em>Falias, Finias, Gorias, dan Murias</em> — membawa keahlian dalam seni, arsitektur, puisi, dan sihir.</p>
+    <p>Setelah kalah perang dari bangsa Milesian (leluhur bangsa Irlandia modern), mereka mundur ke bawah tanah — ke dalam <strong>sídhe</strong>, gundukan pemakaman kuno yang menjadi pintu gerbang ke alam lain. Seiring berjalannya waktu, mereka dikenal sebagai <strong>Aos Sí</strong> ("Rakyat Gundukan"), dan dalam imajinasi rakyat menjadi apa yang kita sebut Fae.</p>
+
+    <blockquote>
+      "These Siths or Fairies they call Sleagh Maith or the Good People... are said to be of middle nature between Man and Angel, of intelligent fluidous Spirits, and light changeable bodies, somewhat of the nature of a condensed cloud, and best seen in twilight."
+      <cite>— Rev. Robert Kirk, The Secret Commonwealth, 1691</cite>
+    </blockquote>
+
+    <h3>Lima Teori Asal-Usul</h3>
+    <p><strong>1. Dewa yang mengecil</strong> — Dewa pagan pra-Kristen yang terdegradasi statusnya setelah Kekristenan datang ke Eropa.</p>
+    <p><strong>2. Malaikat jatuh</strong> — Terlalu baik untuk neraka, terlalu cacat untuk surga — dibuang ke bumi hingga Hari Penghakiman.</p>
+    <p><strong>3. Roh alam</strong> — Penjaga sungai, hutan, dan gunung tertentu yang terikat pada lokasi spesifik.</p>
+    <p><strong>4. Roh leluhur</strong> — Arwah orang mati yang menjadi penghuni dunia paralel.</p>
+    <p><strong>5. Ras prasejarah</strong> — Ingatan kolektif tentang penduduk asli yang terdesak oleh penakluk bersenjata besi. Ketakutan Fae terhadap besi dianggap sebagai jejak budaya dari konflik ini.</p>
+  </div>
+</section>
+
+<div class="celtic-border flip"></div>
+
+<!-- ═══ Section: Otherworld ═══ -->
+<section class="bg-parchment">
+  <div class="section-inner reveal">
+    <span class="section-label">Bab II</span>
+    <h2>Otherworld <span class="thin">— Dunia Paralel</span></h2>
+
+    <p class="dropcap">Fae tidak tinggal di dunia kita. Mereka menghuni realm paralel yang disebut <strong>Tír na nÓg</strong> ("Tanah Awet Muda") dalam tradisi Irlandia, atau <strong>Faerie</strong> dalam tradisi Inggris. Alam ini bukan di planet lain — ia <em>tumpang tindih</em> dengan dunia manusia, dapat diakses melalui tempat-tempat liminal: gundukan pemakaman kuno, lingkaran batu, gua, danau, akar pohon tua, dan <em>fairy rings</em> (lingkaran jamur).</p>
+
+    <p>Waktu berjalan berbeda di sana. Seorang musafir mungkin menghabiskan satu malam di pesta Fae, hanya untuk menemukan bahwa puluhan — bahkan ratusan — tahun telah berlalu saat ia kembali ke dunia manusia. Tema ini berulang dalam seluruh tradisi Celtic dan telah menginspirasi tak terhitung karya sastra fantasi.</p>
+
+    <p><strong>Pintu gerbang</strong> ke Otherworld paling sering muncul pada waktu liminal: senja, fajar, dan hari-hari suci seperti <strong>Samhain</strong> (31 Oktober) dan <strong>Beltane</strong> (1 Mei), ketika sekat antara dua dunia menipis.</p>
+  </div>
+</section>
+
+<div class="celtic-border"></div>
+
+<!-- ═══ Section: Courts ═══ -->
+<section id="courts" class="bg-mid">
+  <div class="section-inner reveal">
+    <span class="section-label">Bab III</span>
+    <h2>Dua Istana <span class="thin">Seelie & Unseelie</span></h2>
+
+    <p>Dalam tradisi Skotlandia, Fae terbagi ke dalam dua istana besar yang memerintah berdasarkan musim dan temperamen. Pembagian ini dipopulerkan oleh <strong>Robert Kirk</strong> dalam karyanya <em>The Secret Commonwealth</em> (1691), namun akarnya jauh lebih tua.</p>
+
+    <div class="courts">
+      <div class="court court-seelie">
+        <h4>☀ Seelie Court</h4>
+        <div class="court-meaning">"Yang Diberkati" — dari Scots seely (blessed)</div>
+        <ul>
+          <li>Umumnya baik kepada manusia yang menunjukkan hormat</li>
+          <li>Membalas kebaikan dengan kebaikan</li>
+          <li>Berkuasa atas musim semi dan panas</li>
+          <li>Cantik, agung, aristokratis</li>
+          <li>Tetap membalas penghinaan dengan keras</li>
+          <li>Sihir terikat elemen tanah dan air</li>
+        </ul>
+      </div>
+      <div class="court court-unseelie">
+        <h4>☾ Unseelie Court</h4>
+        <div class="court-meaning">"Yang Tidak Suci" — gelap, tanpa provokasi</div>
+        <ul>
+          <li>Menyerang tanpa perlu alasan</li>
+          <li>Berkuasa atas musim gugur dan dingin</li>
+          <li>Termasuk Sluagh, Redcap, Baobhan Sith</li>
+          <li>Tidak peduli etika manusia</li>
+          <li>Erat dengan sihir hitam dan nekromansi</li>
+          <li>Sihir terikat elemen api dan udara</li>
+        </ul>
+      </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- Hero Section -->
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="pill-status">
-          <span>🛡️</span>
-          <span>Infrastruktur Cloud & Solusi Enterprise</span>
-        </div>
-        <h1>Platform Terintegrasi untuk <span>Transformasi Digital</span></h1>
-        <p>Ekosistem aplikasi mandiri, manajemen koperasi modern, dan layanan infrastruktur jaringan yang dirancang untuk keandalan, skalabilitas, dan efisiensi operasional.</p>
-        <div class="hero-actions">
-          <a href="#ekosistem" class="btn btn-primary">Jelajahi Ekosistem</a>
-          <a href="#status" class="btn btn-secondary">Status Sistem</a>
-        </div>
+<div class="celtic-border flip"></div>
+
+<!-- ═══ Section: Classifications ═══ -->
+<section class="bg-parchment">
+  <div class="section-inner reveal">
+    <span class="section-label">Bab IV</span>
+    <h2>Klasifikasi <span class="thin">Ras Fae</span></h2>
+
+    <p>Folklorist W.B. Yeats membagi Fae menjadi <strong>Trooping</strong> (bergerombol, punya istana) dan <strong>Solitary</strong> (sendirian). Tradisi lain mengelompokkan berdasarkan domain dan temperamen:</p>
+
+    <div class="class-list">
+      <div class="class-item">
+        <div class="class-name">High Fae / Sidhe</div>
+        <div class="class-desc">Aristokrat Fae — cantik, immortal, sangat kuat. Penguasa istana Seelie dan Unseelie. Punya masyarakat, hukum, dan hierarki sendiri. Dalam mitologi Irlandia, mereka adalah keturunan langsung Tuatha Dé Danann.</div>
       </div>
-    </section>
-
-    <!-- Core Pillars -->
-    <section id="layanan">
-      <div class="container">
-        <div class="section-title">
-          <h2>Fondasi Layanan Digital</h2>
-          <p>Dirancang dengan pendekatan modular, efisien, dan mengutamakan integritas data jangka panjang.</p>
-        </div>
-
-        <div class="grid-3">
-          <div class="card">
-            <div class="card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
-            </div>
-            <h3>Manajemen Koperasi Modern</h3>
-            <p>Sistem ERP menyeluruh untuk koperasi simpan pinjam: pembukuan master 20 kolom, validasi angsuran, manajemen pinjaman, cadangan risiko kredit, dan perhitungan SHU otomatis.</p>
-          </div>
-
-          <div class="card">
-            <div class="card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/>
-              </svg>
-            </div>
-            <h3>Infrastruktur & Edge Gateway</h3>
-            <p>Arsitektur jaringan tangguh berbasis edge routing, TLS terenkripsi, load balancer terdistribusi, dan tunnel terisolasi untuk transmisi data antar-cabang yang aman.</p>
-          </div>
-
-          <div class="card">
-            <div class="card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <h3>Keamanan & Kepatuhan Data</h3>
-            <p>Pemberian hak akses berbasis peran (RBAC), pencegahan kebocoran PII, audit log mutasi, dan backup data terisolasi untuk perlindungan aset digital entitas.</p>
-          </div>
-        </div>
+      <div class="class-item">
+        <div class="class-name">Nature Fae</div>
+        <div class="class-desc">Penjaga lokasi alam spesifik — hutan, sungai, gunung, batu. Termasuk Dryad (pohon), Undine (air), dan roh elemen lainnya. Sangat teritorial; perubahan pada habitat mereka mengundang pembalasan.</div>
       </div>
-    </section>
-
-    <!-- Ecosystem Directory -->
-    <section id="ekosistem">
-      <div class="container">
-        <div class="section-title">
-          <h2>Direktori Ekosistem FAE</h2>
-          <p>Layanan aktif dan simpul aplikasi yang beroperasi di bawah jaringan domain fae.web.id.</p>
-        </div>
-
-        <div style="max-width: 800px; margin: 0 auto;">
-          <a href="https://ksulidia.fae.web.id" target="_blank" rel="noopener" class="node-card">
-            <div class="node-info">
-              <div class="node-icon">KSU</div>
-              <div>
-                <div class="node-domain">ksulidia.fae.web.id</div>
-                <div class="node-desc">Sistem Informasi Koperasi Simpan Pinjam Lidia (ERP & Rekapitulasi)</div>
-              </div>
-            </div>
-            <div class="node-status">
-              <span class="pulse" style="width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
-              <span>Terhubung</span>
-            </div>
-          </a>
-
-          <div class="node-card" style="opacity: 0.9;">
-            <div class="node-info">
-              <div class="node-icon" style="background: rgba(56, 189, 248, 0.1); color: var(--primary);">API</div>
-              <div>
-                <div class="node-domain">api.fae.web.id</div>
-                <div class="node-desc">Gateway Layanan & Integrasi Data Terenkripsi</div>
-              </div>
-            </div>
-            <div class="node-status" style="color: var(--primary); background: rgba(56, 189, 248, 0.08); border-color: rgba(56, 189, 248, 0.2);">
-              <span>Internal Only</span>
-            </div>
-          </div>
-
-          <div class="node-card" style="opacity: 0.9;">
-            <div class="node-info">
-              <div class="node-icon" style="background: rgba(168, 85, 247, 0.1); color: #a855f7;">OPS</div>
-              <div>
-                <div class="node-domain">status.fae.web.id</div>
-                <div class="node-desc">Telemetri & Pemantauan Ketersediaan Node</div>
-              </div>
-            </div>
-            <div class="node-status" style="color: #a855f7; background: rgba(168, 85, 247, 0.08); border-color: rgba(168, 85, 247, 0.2);">
-              <span>Monitoring</span>
-            </div>
-          </div>
-        </div>
+      <div class="class-item">
+        <div class="class-name">Household Fae</div>
+        <div class="class-desc">Roh rumah tangga yang membantu pekerjaan domestik. Brownie (Skotlandia), Kobold (Jerman), Domovoi (Rusia). Cukup diberi semangkuk bubur atau krim. Jika tersinggung, berubah menjadi Boggart yang menghancurkan.</div>
       </div>
-    </section>
-
-    <!-- Real-time Status Panel -->
-    <section id="status">
-      <div class="container">
-        <div class="section-title">
-          <h2>Status Operasional</h2>
-          <p>Pemantauan kondisi simpul web dan latensi jaringan secara langsung.</p>
-        </div>
-
-        <div class="status-panel">
-          <div class="metric-item">
-            <div class="metric-value" id="clockWib">--:--:--</div>
-            <div class="metric-label">Waktu Sistem (WIB)</div>
-          </div>
-          <div class="metric-item">
-            <div class="metric-value" style="color: var(--accent);">99.98%</div>
-            <div class="metric-label">Uptime Baseline</div>
-          </div>
-          <div class="metric-item">
-            <div class="metric-value" id="pingValue">&lt; 15 ms</div>
-            <div class="metric-label">Edge Response</div>
-          </div>
-          <div class="metric-item">
-            <div class="metric-value" style="color: var(--accent);">TLS 1.3</div>
-            <div class="metric-label">Enkripsi Jaringan</div>
-          </div>
-        </div>
+      <div class="class-item">
+        <div class="class-name">Trickster Fae</div>
+        <div class="class-desc">Iseng, menyesatkan, kacau. Púca (shapeshifter), Pixie (menyesatkan musafir), Boggart (menghancurkan rumah tangga). Senang menjahili manusia tapi jarang benar-benar berniat membunuh.</div>
       </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-content">
-      <div>
-        <p><strong>FAE Ecosystem</strong> • Infrastruktur Digital Terpadu.</p>
-        <p style="margin-top: 4px; font-size: 12px;">Bagian dari jaringan WanForge & Docobyte. Trenggalek, Jawa Timur, Indonesia.</p>
+      <div class="class-item">
+        <div class="class-name">Elemental Fae</div>
+        <div class="class-desc">Wujud dari empat elemen dasar — tanah, api, air, udara. Makhluk paling kuno, sering tertukar dengan Nature Fae tapi bersifat lebih primordial dan tidak terikat lokasi spesifik.</div>
       </div>
-
-      <ul class="footer-links">
-        <li><a href="https://github.com/wanforge/fae.web.id" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://wanforge.asia" target="_blank" rel="noopener">WanForge</a></li>
-        <li><a href="https://docobyte.com" target="_blank" rel="noopener">Docobyte</a></li>
-      </ul>
+      <div class="class-item">
+        <div class="class-name">Wild Fae</div>
+        <div class="class-desc">Liar, kuno, tidak terikat istana manapun. Beroperasi murni berdasarkan insting. Sangat berbahaya karena tidak mengikuti aturan atau etika Fae court manapun.</div>
+      </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    // Theme Switcher Logic
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    const currentTheme = localStorage.getItem('fae_theme') || 'dark';
+<div class="celtic-border"></div>
 
-    function applyTheme(theme) {
-      if (theme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        themeIcon.textContent = '🌙';
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-        themeIcon.textContent = '☀️';
-      }
-      localStorage.setItem('fae_theme', theme);
-    }
+<!-- ═══ Section: Creatures ═══ -->
+<section id="creatures" class="bg-dark">
+  <div class="section-inner reveal">
+    <span class="section-label">Bab V</span>
+    <h2>Makhluk <span class="thin">Fae Terkenal</span></h2>
 
-    applyTheme(currentTheme);
+    <div class="creatures-grid">
+      <div class="creature-card">
+        <div class="icon">👻</div>
+        <h4>Banshee</h4>
+        <p>Wanita Fae yang meraung sebelum kematian terjadi dalam keluarga tertentu. Bukan penyebab kematian — hanya penanda. Muncul dalam pakaian berlumuran darah korban yang akan wafat.</p>
+        <span class="origin">Bean Sídhe — Irlandia</span>
+      </div>
 
-    themeToggle.addEventListener('click', () => {
-      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-      applyTheme(isLight ? 'dark' : 'light');
-    });
+      <div class="creature-card">
+        <div class="icon">🍀</div>
+        <h4>Leprechaun</h4>
+        <p>Tukang sepatu kecil penjaga pot emas di ujung pelangi. Licik luar biasa — setiap manusia yang mencoba mencuri hartanya selalu kalah akal. Pertama muncul dalam sastra Irlandia abad ke-8.</p>
+        <span class="origin">Leipreachán — Irlandia</span>
+      </div>
 
-    // Real-time Clock (WIB UTC+7)
-    function updateClock() {
-      const now = new Date();
-      const options = { timeZone: 'Asia/Jakarta', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
-      document.getElementById('clockWib').textContent = new Intl.DateTimeFormat('id-ID', options).format(now);
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
+      <div class="creature-card">
+        <div class="icon">🐴</div>
+        <h4>Kelpie</h4>
+        <p>Kuda air Skotlandia yang memikat penunggang naik ke punggungnya, lalu menenggelamkan korban ke dasar danau atau sungai. Tidak bisa dilepas begitu menyentuh kulitnya.</p>
+        <span class="origin">Each-Uisge — Skotlandia</span>
+      </div>
 
-    // Responsive latency check
-    const startPing = performance.now();
-    fetch('/favicon.svg', { cache: 'no-store' })
-      .then(() => {
-        const diff = Math.round(performance.now() - startPing);
-        document.getElementById('pingValue').textContent = `${diff} ms`;
-      })
-      .catch(() => {
-        document.getElementById('pingValue').textContent = '< 20 ms';
-      });
-  </script>
+      <div class="creature-card">
+        <div class="icon">🌑</div>
+        <h4>Púca</h4>
+        <p>Shapeshifter yang sering muncul sebagai kuda hitam, kelinci, atau kambing. Membawa nasib baik atau buruk. Aktif setelah matahari terbenam, menunggang manusia dalam perjalanan liar.</p>
+        <span class="origin">Phouka — Irlandia/Wales</span>
+      </div>
+
+      <div class="creature-card">
+        <div class="icon">💀</div>
+        <h4>Dullahan</h4>
+        <p>Penunggang kuda hitam tanpa kepala — kepalanya dijinjing di tangan. Di manapun ia menghentikan kudanya, seseorang pasti mati. Ia menyebut nama korban dan menarik jiwanya pergi.</p>
+        <span class="origin">Gan Ceann — Irlandia</span>
+      </div>
+
+      <div class="creature-card">
+        <div class="icon">👶</div>
+        <h4>Changeling</h4>
+        <p>Bayi Fae yang ditukar dengan bayi manusia yang dicuri. Keluarga mencoba menipu Fae agar mengembalikan anak asli — dengan merebus kulit telur atau meletakkan besi di atas ayunan.</p>
+        <span class="origin">Tradisi Pan-Celtic</span>
+      </div>
+
+      <div class="creature-card">
+        <div class="icon">🩸</div>
+        <h4>Redcap</h4>
+        <p>Fae jahat yang mencelupkan topinya ke dalam darah para pelancong yang dibunuhnya. Tinggal di reruntuhan kastil perbatasan Skotlandia. Hanya bisa dikalahkan dengan mengutip ayat suci.</p>
+        <span class="origin">Unseelie — Skotlandia</span>
+      </div>
+
+      <div class="creature-card">
+        <div class="icon">🏠</div>
+        <h4>Brownie</h4>
+        <p>Roh rumah tangga yang membersihkan, memperbaiki, dan melindungi. Hanya butuh semangkuk bubur di malam hari. Jangan beri pakaian — ia akan pergi selamanya dan mungkin menghancurkan rumah.</p>
+        <span class="origin">Highlands — Skotlandia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="celtic-border flip"></div>
+
+<!-- ═══ Section: Traits ═══ -->
+<section class="bg-parchment">
+  <div class="section-inner reveal">
+    <span class="section-label">Bab VI</span>
+    <h2>Sifat <span class="thin">& Kekuatan</span></h2>
+
+    <p class="dropcap">Fae bukan baik, bukan jahat — mereka <strong>amoral</strong>. Mereka beroperasi dengan kode etik sendiri yang asing bagi logika manusia. Kebaikan dibalas kebaikan, tapi penghinaan sekecil apapun memicu pembalasan tanpa batas. Mereka tidak mengenal konsep "maaf".</p>
+
+    <h3>Kemampuan Utama</h3>
+    <p><strong>Shapeshifting</strong> — Berubah wujud sesuka hati: manusia cantik, hewan, cahaya, bayangan, ksatria bersenjata, monster.</p>
+    <p><strong>Glamour</strong> — Ilusi sihir yang menipu penglihatan. Emas Fae terkenal berubah menjadi daun kering keesokan harinya. Hanya salep khusus (*fairy ointment*) yang bisa menerobos glamour — dan memakainya tanpa izin berarti dibutakan.</p>
+    <p><strong>Manipulasi Waktu</strong> — Waktu berjalan berbeda di realm mereka. Satu malam di Otherworld bisa berarti puluhan tahun di dunia manusia.</p>
+    <p><strong>Kontrak Sakral</strong> — Janji dan tawaran Fae mengikat secara absolut. Menerima hadiah berarti berhutang. Mengucapkan "terima kasih" menyiratkan utang. Makan makanan mereka berarti terjebak selamanya.</p>
+    <p><strong>Penguasaan Elemen</strong> — Kekuatan terhubung langsung ke alam: cuaca, tanaman, hewan, batu, air. Mereka bisa menentukan panen melimpah atau kelaparan.</p>
+    <p><strong>Penerbangan</strong> — Sayap jarang muncul dalam folklor asli. Fae terbang dengan sihir murni, kadang bertengger di batang ragwort atau punggung burung.</p>
+  </div>
+</section>
+
+<div class="celtic-border"></div>
+
+<!-- ═══ Section: Protection ═══ -->
+<section id="protection" class="bg-dark">
+  <div class="section-inner reveal">
+    <span class="section-label">Bab VII</span>
+    <h2>Penangkal <span class="thin">& Perlindungan</span></h2>
+
+    <p>Sebagian besar folklor Fae sebenarnya adalah <em>panduan bertahan hidup</em> — cara melindungi diri dari makhluk yang tidak bermoral tapi sangat berkuasa:</p>
+
+    <div class="protections">
+      <div class="protection">
+        <div class="p-icon">⚔️</div>
+        <div class="p-text">
+          <strong>Besi Dingin</strong>
+          Penangkal paling ampuh. Taruh di ayunan bayi, pintu, atau bawa saat bepergian. Fae tidak bisa menyentuh besi — jejak budaya dari penakluk bersenjata besi.
+        </div>
+      </div>
+      <div class="protection">
+        <div class="p-icon">🌿</div>
+        <div class="p-text">
+          <strong>Rowan, Ash & Hawthorn</strong>
+          Kayu sakral penangkal Fae. Cabang rowan diikat di pintu. Hawthorn (whitethorn) dijaga ketat — menebangnya mengundang murka Aos Sí.
+        </div>
+      </div>
+      <div class="protection">
+        <div class="p-icon">🧂</div>
+        <div class="p-text">
+          <strong>Garam & Roti</strong>
+          Simbol rumah tangga dan peradaban. Roti adalah "prototipe makanan" — jimat paling umum sebelum bepergian ke tempat yang dihuni Fae.
+        </div>
+      </div>
+      <div class="protection">
+        <div class="p-icon">👕</div>
+        <div class="p-text">
+          <strong>Baju Dibalik</strong>
+          Membalik pakaian membingungkan sihir Fae. Khusus efektif terhadap Tylwyth Teg (Welsh) yang menyesatkan dengan musik harpa.
+        </div>
+      </div>
+      <div class="protection">
+        <div class="p-icon">🍀</div>
+        <div class="p-text">
+          <strong>Semanggi Empat Daun</strong>
+          Memungkinkan melihat Fae yang sedang menggunakan glamour. Jimat langka yang memberi "penglihatan kedua".
+        </div>
+      </div>
+      <div class="protection">
+        <div class="p-icon">🔔</div>
+        <div class="p-text">
+          <strong>Lonceng Gereja</strong>
+          Bunyi lonceng mengusir Fae. St. John's wort dan marigold di ambang pintu juga efektif.
+        </div>
+      </div>
+      <div class="protection">
+        <div class="p-icon">🤫</div>
+        <div class="p-text">
+          <strong>Jangan Ucapkan Terima Kasih</strong>
+          "Terima kasih" menyiratkan utang dalam hukum Fae. Tinggalkan persembahan dalam diam. Jangan sebut nama mereka — gunakan eufemisme: "Good Folk", "Fair Folk".
+        </div>
+      </div>
+      <div class="protection">
+        <div class="p-icon">🍎</div>
+        <div class="p-text">
+          <strong>Jangan Makan Makanan Mereka</strong>
+          Menerima makanan atau minuman Fae berarti terjebak di Otherworld selamanya. Aturan ini juga berlaku untuk menari di fairy ring.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="celtic-border flip"></div>
+
+<!-- ═══ Section: Figures ═══ -->
+<section class="bg-mid">
+  <div class="section-inner reveal">
+    <span class="section-label">Bab VIII</span>
+    <h2>Tokoh Agung <span class="thin">Fae</span></h2>
+
+    <div class="figures">
+      <div class="figure">
+        <div class="sigil">⚔</div>
+        <h4>The Morrígan</h4>
+        <div class="title">Dewi Triple — Perang, Takdir, Kematian</div>
+        <p>Shapeshifter agung yang sering muncul sebagai gagak di atas medan perang. Beberapa menyebutnya Fae paling berkuasa dalam seluruh mitologi.</p>
+      </div>
+      <div class="figure">
+        <div class="sigil">☀</div>
+        <h4>Lugh</h4>
+        <div class="title">Dewa Matahari Multi-Talenta</div>
+        <p>Festival Lughnasa dinamai darinya. Ahli dalam setiap keahlian — seni, perang, sihir, kerajinan — gelarnya Samildánach, "Yang Mahir Dalam Segalanya".</p>
+      </div>
+      <div class="figure">
+        <div class="sigil">🔥</div>
+        <h4>Brigid</h4>
+        <div class="title">Dewi Api, Musim Panas, Penyembuhan</div>
+        <p>Dikaitkan dengan Imbolc (1 Februari) dan Beltane. Pelindung penyair, pandai besi, dan tabib. Kemudian diinkorporasi sebagai Santo Brigid dalam Kekristenan.</p>
+      </div>
+      <div class="figure">
+        <div class="sigil">👑</div>
+        <h4>Oberon & Titania</h4>
+        <div class="title">Raja & Ratu Fae dalam Sastra</div>
+        <p>Dipopulerkan Shakespeare dalam A Midsummer Night's Dream (1595). Titania sang Ratu, Oberon sang Raja, dan Puck si trickster yang setia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="celtic-border"></div>
+
+<!-- ═══ Section: Timeline / Legacy ═══ -->
+<section id="legacy" class="bg-dark">
+  <div class="section-inner reveal">
+    <span class="section-label">Bab IX</span>
+    <h2>Warisan <span class="thin">& Jejak Sejarah</span></h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="era">400 SM — 1000 M</div>
+        <h4>Akar Kuno</h4>
+        <p>Pliny, Homer, dan Hesiod menyebut makhluk serupa Fae. Manuskrip Irlandia abad ke-8 (Cath Maige Tuired) mendeskripsikan Tuatha Dé Danann. Norse Edda menyebut álfar (elf) sebagai ras antara dewa dan manusia.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="era">Abad 12 — 14</div>
+        <h4>Era Ketakutan</h4>
+        <p>Fae ditakuti secara universal. Sir Gawain and the Green Knight menampilkan figur Fae sebagai ancaman. Changeling, penyakit, kematian mendadak — semua disalahkan pada Fae.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="era">1595</div>
+        <h4>Shakespeare Memisahkan Dua Dunia</h4>
+        <p>A Midsummer Night's Dream memberi Fae raja-ratu, istana, dan temperamen amoral yang jenaka. Fae sastra berpisah dari Fae folklor — menjadi lebih kecil, lebih jinak, lebih teatrikal.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="era">1691</div>
+        <h4>Robert Kirk & The Secret Commonwealth</h4>
+        <p>Pendeta Skotlandia ini menulis catatan etnografi paling detail tentang Fae — berdasarkan wawancara puluhan orang yang mengaku pernah melihat mereka. Karya ini hampir hilang hingga Sir Walter Scott menerbitkannya ulang pada 1815.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="era">Era Victoria</div>
+        <h4>Peri Sayap Kupu-Kupu</h4>
+        <p>Fae menyusut jadi peri kecil bersayap dalam seni dan dongeng anak. Sayap — yang hampir tidak pernah muncul dalam folklor asli — menjadi ciri khas. Fae yang tadinya ditakuti menjadi lucu dan jinak.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="era">Abad 19 — 20</div>
+        <h4>Celtic Revival</h4>
+        <p>W.B. Yeats, Lady Gregory, Thomas Crofton Croker mengarsipkan tradisi lisan menjadi teks tertulis. Fae dikembalikan sebagai bagian kanon warisan budaya Celtic.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="era">Modern</div>
+        <h4>Warisan yang Masih Hidup</h4>
+        <p>Fairy fort di Irlandia masih dilindungi hukum. Proyek konstruksi kadang dialihkan untuk menghindari situs Fae. Leprechaun secara resmi dilindungi undang-undang di Carlingford, County Louth. Tolkien, C.S. Lewis, dan seluruh genre fantasi modern tidak bisa dipisahkan dari tradisi Fae.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="celtic-border flip"></div>
+
+<!-- ═══ Footer ═══ -->
+<footer>
+  <div class="celtic-border" style="margin-bottom:2rem"></div>
+  <p class="colophon">✦ Disusun dari tradisi Celtic, Germanic & Slavic ✦</p>
+  <p>Sumber: Lebor Gabála Érenn · Poetic Edda · Mabinogion · The Secret Commonwealth (1691) · W.B. Yeats · Lady Gregory · Wikipedia · Sacred Texts Archive</p>
+  <div style="margin-top:2rem;font-size:0.8rem;opacity:0.6;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+    <a href="/portal.html" style="color:var(--gold);text-decoration:none;">Portal Layanan FAE</a>
+    <span>·</span>
+    <a href="https://ksulidia.fae.web.id" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">KSU Lidia ERP</a>
+    <span>·</span>
+    <a href="https://wanforge.asia" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">WanForge</a>
+    <span>·</span>
+    <a href="https://docobyte.com" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">Docobyte</a>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll effect
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>60);
+});
+
+// Reveal on scroll
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}
+  });
+},{threshold:.15});
+reveals.forEach(el=>observer.observe(el));
+
+// Particles
+const container=document.getElementById('particles');
+for(let i=0;i<30;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*100+'%';
+  p.style.animationDuration=(8+Math.random()*12)+'s';
+  p.style.animationDelay=Math.random()*10+'s';
+  p.style.width=p.style.height=(1+Math.random()*3)+'px';
+  container.appendChild(p);
+}
+
+// Smooth scroll for nav links
+document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+    document.querySelector('nav ul').classList.remove('open');
+  });
+});
+</script>
 </body>
 </html>
