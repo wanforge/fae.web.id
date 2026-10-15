@@ -3,76 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Fae — Ras Gaib dari Dunia Kuno | fae.web.id</title>
-<meta name="description" content="Eksplorasi mendalam mitologi dan cerita rakyat Fae Eropa — Tuatha Dé Danann, Aos Sí, Seelie & Unseelie Courts, perlindungan kuno, dan jejak sejarah.">
+<title>The Fae — Ras Gaib dari Dunia Kuno | Mitologi Celtic & Yunani</title>
+<meta name="description" content="Eksplorasi mendalam mitologi Fae Eropa dan akar klasiknya di Yunani Kuno — Moirai, Nymphai, Pan, Tuatha Dé Danann, Aos Sí, Seelie & Unseelie Courts.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="canonical" href="https://fae.web.id/">
 <meta property="og:title" content="The Fae — Ras Gaib dari Dunia Kuno">
-<meta property="og:description" content="Eksplorasi mendalam mitologi Fae Eropa: Tuatha Dé Danann, Aos Sí, Seelie & Unseelie Courts.">
+<meta property="og:description" content="Eksplorasi interaktif mitologi Fae Eropa dan akar klasiknya di Yunani Kuno: Moirai, Nymphai, Tuatha Dé Danann, Aos Sí.">
 <meta property="og:url" content="https://fae.web.id/">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=MedievalSharp&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --parchment:#f4ead5;
-  --parchment-dark:#e8dbc4;
-  --ink:#2c1810;
-  --ink-light:#5a3e2b;
-  --gold:#c4a24e;
-  --gold-light:#d4b86a;
-  --gold-dim:rgba(196,162,78,.15);
-  --forest:#1a3a2a;
-  --forest-deep:#0e2118;
-  --forest-light:#2a5a3a;
-  --moss:#3a5a3a;
+  --parchment:#f7f0e3;
+  --parchment-dark:#ebdcc8;
+  --ink:#1e140d;
+  --ink-light:#4a3424;
+  --gold:#d4af37;
+  --gold-bright:#f3d26b;
+  --gold-glow:rgba(212,175,55,0.3);
+  --gold-dim:rgba(212,175,55,0.12);
+  --aegean:#060d18;
+  --aegean-deep:#03060c;
+  --aegean-blue:#0c1a2e;
+  --forest:#12281d;
+  --forest-deep:#08140e;
+  --forest-light:#1f4230;
+  --moss:#2e5038;
   --blood:#8b2020;
-  --mist:rgba(244,234,213,.08);
-  --shadow:rgba(14,33,24,.6);
+  --marble:rgba(247,240,227,0.06);
+  --shadow:rgba(3,6,12,0.7);
 }
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{
   font-family:'Crimson Text',Georgia,'Times New Roman',serif;
-  background:var(--forest-deep);
+  background:var(--aegean-deep);
   color:var(--parchment);
   line-height:1.75;
   font-size:18px;
   overflow-x:hidden;
+  position:relative;
 }
-::selection{background:var(--gold);color:var(--forest-deep)}
+::selection{background:var(--gold);color:var(--aegean-deep)}
 
-/* ═══ Celtic Border SVG Pattern ═══ */
+/* ═══ Background Canvas (Celestial & Constellation) ═══ */
+#constellation-canvas{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;
+  opacity:0.65;
+}
+
+/* ═══ Ethereal Mist Ambient ═══ */
+.ambient-fog{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(18,40,29,0.3) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(12,26,46,0.35) 0%, transparent 60%);
+}
+
+/* ═══ Borders: Greek Meander & Celtic Knot ═══ */
+.greek-meander{
+  width:100%;height:28px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='24' viewBox='0 0 48 24'%3E%3Cpath d='M0 20 H12 V6 H28 V16 H20 V10 H24 M28 6 H40 V20 H48' fill='none' stroke='%23d4af37' stroke-width='1.5' stroke-linejoin='miter' stroke-linecap='square'/%3E%3C/svg%3E") repeat-x center;
+  opacity:.65;
+  position:relative;z-index:2;
+}
 .celtic-border{
-  width:100%;height:40px;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='40' viewBox='0 0 200 40'%3E%3Cpath d='M0 20 Q25 5 50 20 Q75 35 100 20 Q125 5 150 20 Q175 35 200 20' fill='none' stroke='%23c4a24e' stroke-width='1.5'/%3E%3Cpath d='M0 20 Q25 35 50 20 Q75 5 100 20 Q125 35 150 20 Q175 5 200 20' fill='none' stroke='%23c4a24e' stroke-width='1.5'/%3E%3Ccircle cx='50' cy='20' r='3' fill='%23c4a24e'/%3E%3Ccircle cx='100' cy='20' r='3' fill='%23c4a24e'/%3E%3Ccircle cx='150' cy='20' r='3' fill='%23c4a24e'/%3E%3C/svg%3E") repeat-x center;
-  opacity:.7;
+  width:100%;height:36px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='36' viewBox='0 0 200 36'%3E%3Cpath d='M0 18 Q25 4 50 18 Q75 32 100 18 Q125 4 150 18 Q175 32 200 18' fill='none' stroke='%23d4af37' stroke-width='1.5'/%3E%3Cpath d='M0 18 Q25 32 50 18 Q75 4 100 18 Q125 32 150 18 Q175 4 200 18' fill='none' stroke='%23d4af37' stroke-width='1.5'/%3E%3Ccircle cx='50' cy='18' r='2.5' fill='%23d4af37'/%3E%3Ccircle cx='100' cy='18' r='2.5' fill='%23d4af37'/%3E%3Ccircle cx='150' cy='18' r='2.5' fill='%23d4af37'/%3E%3C/svg%3E") repeat-x center;
+  opacity:.65;
+  position:relative;z-index:2;
 }
 .celtic-border.flip{transform:scaleY(-1)}
 
 /* ═══ Navigation ═══ */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  background:linear-gradient(180deg,rgba(14,33,24,.95) 0%,rgba(14,33,24,.7) 80%,transparent);
-  padding:1rem 2rem;
+  background:linear-gradient(180deg,rgba(3,6,12,0.96) 0%,rgba(3,6,12,0.7) 80%,transparent);
+  padding:0.9rem 2rem;
   transition:all .4s;
 }
-nav.scrolled{background:rgba(14,33,24,.97);backdrop-filter:blur(10px);box-shadow:0 2px 20px var(--shadow)}
+nav.scrolled{background:rgba(3,6,12,0.98);backdrop-filter:blur(12px);box-shadow:0 4px 25px var(--shadow)}
 nav .nav-inner{
-  max-width:1200px;margin:0 auto;
+  max-width:1240px;margin:0 auto;
   display:flex;justify-content:space-between;align-items:center;
 }
+nav .brand-group{display:flex;align-items:center;gap:1.5rem}
 nav .logo{
-  font-family:'Cinzel',serif;font-weight:700;font-size:1.4rem;
-  color:var(--gold);letter-spacing:.15em;text-transform:uppercase;
-  text-decoration:none;
+  font-family:'Cinzel',serif;font-weight:700;font-size:1.35rem;
+  color:var(--gold);letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;display:flex;align-items:center;gap:.5rem;
 }
 nav .logo span{color:var(--parchment);font-weight:400}
-nav ul{list-style:none;display:flex;gap:2rem}
+nav .greek-sigil{font-size:1.1rem;color:var(--gold);filter:drop-shadow(0 0 8px var(--gold-glow))}
+nav .nav-right{display:flex;align-items:center;gap:1.5rem}
+nav ul{list-style:none;display:flex;gap:1.8rem;align-items:center}
 nav ul li a{
-  font-family:'Cinzel',serif;font-size:.75rem;
+  font-family:'Cinzel',serif;font-size:.73rem;
   color:var(--parchment);text-decoration:none;
-  letter-spacing:.12em;text-transform:uppercase;
-  opacity:.7;transition:all .3s;
+  letter-spacing:.14em;text-transform:uppercase;
+  opacity:.75;transition:all .3s;
   position:relative;
 }
 nav ul li a::after{
@@ -82,6 +112,34 @@ nav ul li a::after{
 }
 nav ul li a:hover{opacity:1;color:var(--gold)}
 nav ul li a:hover::after{width:100%}
+
+/* Ancient Lyre Audio Button */
+.audio-btn{
+  background:rgba(212,175,55,0.08);
+  border:1px solid rgba(212,175,55,0.3);
+  color:var(--gold);
+  padding:0.4rem 0.85rem;
+  border-radius:20px;
+  font-family:'Cinzel',serif;
+  font-size:0.7rem;
+  letter-spacing:0.08em;
+  cursor:pointer;
+  display:inline-flex;align-items:center;gap:0.45rem;
+  transition:all 0.3s;
+}
+.audio-btn:hover{
+  background:rgba(212,175,55,0.18);
+  border-color:var(--gold);
+  box-shadow:0 0 15px var(--gold-glow);
+}
+.audio-btn .wave{display:inline-block;animation:none}
+.audio-btn.playing{background:rgba(212,175,55,0.22);border-color:var(--gold)}
+.audio-btn.playing .wave{animation:sound-pulse 1s ease-in-out infinite alternate}
+@keyframes sound-pulse{
+  0%{transform:scale(0.85);opacity:0.6}
+  100%{transform:scale(1.15);opacity:1}
+}
+
 .menu-toggle{display:none;background:none;border:none;color:var(--gold);font-size:1.5rem;cursor:pointer}
 
 /* ═══ Hero ═══ */
@@ -92,156 +150,253 @@ nav ul li a:hover::after{width:100%}
   text-align:center;
   position:relative;
   background:
-    radial-gradient(ellipse at 30% 20%,rgba(42,90,58,.3) 0%,transparent 50%),
-    radial-gradient(ellipse at 70% 80%,rgba(42,90,58,.2) 0%,transparent 50%),
-    var(--forest-deep);
+    radial-gradient(ellipse at 50% 30%, rgba(212,175,55,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 70%, rgba(18,40,29,0.35) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(12,26,46,0.4) 0%, transparent 50%),
+    var(--aegean-deep);
   overflow:hidden;
   padding:2rem;
+  z-index:1;
 }
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='600' height='600' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
-  pointer-events:none;
+.hero-content{position:relative;z-index:2;max-width:880px}
+.hero .laurel-wreath{
+  font-size:2rem;color:var(--gold);
+  margin-bottom:1rem;
+  filter:drop-shadow(0 0 12px var(--gold-glow));
+  letter-spacing:0.3em;
 }
-/* Floating particles */
-.hero .particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.particle{
-  position:absolute;
-  width:3px;height:3px;
-  background:var(--gold);
-  border-radius:50%;
-  opacity:0;
-  animation:float-up linear infinite;
-}
-@keyframes float-up{
-  0%{opacity:0;transform:translateY(100vh) scale(0)}
-  10%{opacity:.6}
-  90%{opacity:.3}
-  100%{opacity:0;transform:translateY(-10vh) scale(1)}
-}
-
-.hero-content{position:relative;z-index:1;max-width:800px}
-.hero .rune{
-  font-family:'MedievalSharp',cursive;
-  font-size:1rem;letter-spacing:.5em;
-  color:var(--gold);opacity:.6;
-  margin-bottom:2rem;
+.hero .greek-subtitle{
+  font-family:'Cinzel',serif;
+  font-size:0.82rem;
+  letter-spacing:0.45em;
+  color:var(--gold-bright);
+  opacity:0.85;
+  text-transform:uppercase;
+  margin-bottom:1.5rem;
 }
 .hero h1{
   font-family:'Cinzel',serif;
   font-weight:900;
-  font-size:clamp(3rem,8vw,6rem);
+  font-size:clamp(3.2rem,8.5vw,6.5rem);
   color:var(--parchment);
-  line-height:1.1;
+  line-height:1.08;
   margin-bottom:.5rem;
-  text-shadow:0 0 60px rgba(196,162,78,.15);
+  text-shadow:0 0 50px rgba(212,175,55,0.25);
+  letter-spacing:0.04em;
 }
 .hero h1 .accent{
   display:block;
-  font-size:.35em;font-weight:400;
-  letter-spacing:.3em;text-transform:uppercase;
+  font-size:.34em;font-weight:400;
+  letter-spacing:.32em;text-transform:uppercase;
   color:var(--gold);
-  margin-top:.5rem;
+  margin-top:.75rem;
 }
 .hero .subtitle{
   font-family:'Crimson Text',serif;
   font-style:italic;
-  font-size:clamp(1.1rem,2.5vw,1.4rem);
+  font-size:clamp(1.15rem,2.4vw,1.45rem);
   color:var(--parchment);
-  opacity:.7;
-  margin:1.5rem 0 2.5rem;
-  max-width:600px;
-  margin-left:auto;margin-right:auto;
+  opacity:.82;
+  margin:1.8rem auto 2.5rem;
+  max-width:660px;
 }
 .hero .scroll-cue{
   display:inline-flex;flex-direction:column;align-items:center;
-  color:var(--gold);opacity:.5;
+  color:var(--gold);opacity:.6;
   font-family:'Cinzel',serif;font-size:.7rem;
-  letter-spacing:.2em;text-transform:uppercase;
+  letter-spacing:.25em;text-transform:uppercase;
   text-decoration:none;
   animation:pulse-down 2s ease-in-out infinite;
 }
-.hero .scroll-cue .arrow{font-size:1.5rem;margin-top:.5rem}
+.hero .scroll-cue .arrow{font-size:1.4rem;margin-top:.4rem}
 @keyframes pulse-down{
   0%,100%{transform:translateY(0);opacity:.5}
-  50%{transform:translateY(8px);opacity:.8}
+  50%{transform:translateY(8px);opacity:.9}
 }
 
 /* ═══ Section Base ═══ */
-section{padding:6rem 2rem;position:relative}
-.section-inner{max-width:960px;margin:0 auto}
+section{padding:6.5rem 2rem;position:relative;z-index:1}
+.section-inner{max-width:980px;margin:0 auto}
 .section-label{
-  font-family:'Cinzel',serif;font-size:.7rem;
+  font-family:'Cinzel',serif;font-size:.72rem;
   letter-spacing:.4em;text-transform:uppercase;
-  color:var(--gold);opacity:.6;
-  margin-bottom:1rem;
+  color:var(--gold);opacity:.75;
+  display:inline-flex;align-items:center;gap:0.6rem;
+  margin-bottom:1.1rem;
+}
+.section-label::before, .section-label::after{
+  content:'';width:20px;height:1px;background:var(--gold);opacity:0.4;
 }
 section h2{
   font-family:'Cinzel',serif;
   font-weight:700;
-  font-size:clamp(1.8rem,4vw,2.8rem);
+  font-size:clamp(1.9rem,4vw,2.9rem);
   color:var(--parchment);
-  margin-bottom:1rem;
+  margin-bottom:1.25rem;
   line-height:1.2;
 }
 section h2 .thin{font-weight:400;color:var(--gold)}
 section h3{
   font-family:'Cinzel',serif;
   font-weight:600;
-  font-size:1.2rem;
+  font-size:1.25rem;
   color:var(--gold);
-  margin:2rem 0 .75rem;
-  letter-spacing:.05em;
+  margin:2.2rem 0 .75rem;
+  letter-spacing:.06em;
 }
 section p{
   color:var(--parchment);
-  opacity:.85;
-  margin-bottom:1.25rem;
+  opacity:.86;
+  margin-bottom:1.35rem;
+  font-size:1.05rem;
 }
-section p strong{color:var(--gold);font-weight:600}
+section p strong{color:var(--gold-bright);font-weight:600}
 
-/* ═══ Alternating BGs ═══ */
-.bg-dark{background:var(--forest-deep)}
+/* ═══ Background Themes ═══ */
+.bg-dark{
+  background:linear-gradient(180deg, var(--aegean-deep) 0%, var(--forest-deep) 100%);
+}
+.bg-aegean{
+  background:linear-gradient(135deg, rgba(12,26,46,0.85) 0%, rgba(3,6,12,0.95) 100%);
+  border-top:1px solid rgba(212,175,55,0.15);
+  border-bottom:1px solid rgba(212,175,55,0.15);
+}
 .bg-mid{
-  background:
-    linear-gradient(135deg,var(--forest) 0%,var(--forest-deep) 100%);
+  background:linear-gradient(150deg, rgba(18,40,29,0.7) 0%, rgba(6,13,24,0.9) 100%);
 }
 .bg-parchment{
-  background:var(--parchment);
+  background:linear-gradient(160deg, #f7f0e3 0%, #ebdcc8 100%);
   color:var(--ink);
+  box-shadow:inset 0 0 80px rgba(74,52,36,0.1);
 }
-.bg-parchment h2,.bg-parchment h3{color:var(--forest-deep)}
+.bg-parchment h2, .bg-parchment h3{color:var(--forest-deep)}
 .bg-parchment h2 .thin{color:var(--forest-light)}
 .bg-parchment .section-label{color:var(--forest-light)}
+.bg-parchment .section-label::before, .bg-parchment .section-label::after{background:var(--forest-light)}
 .bg-parchment p{color:var(--ink-light);opacity:1}
 .bg-parchment p strong{color:var(--blood)}
 
-/* ═══ Illuminated Initial ═══ */
+/* ═══ Drop Cap ═══ */
 .dropcap::first-letter{
   font-family:'Cinzel',serif;
   font-weight:900;
-  font-size:3.5em;
+  font-size:3.6em;
   float:left;
   line-height:.85;
-  margin:0 .15em 0 0;
+  margin:0 .18em 0 0;
   color:var(--gold);
+  text-shadow:0 0 15px var(--gold-glow);
+}
+.bg-parchment .dropcap::first-letter{
+  color:var(--forest-light);text-shadow:none;
+}
+
+/* ═══ Greek Pantheon & Nymphs Comparative Grid ═══ */
+.pantheon-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;margin-top:2rem;
+}
+.pantheon-card{
+  background:rgba(212,175,55,0.05);
+  border:1px solid rgba(212,175,55,0.2);
+  border-radius:4px;
+  padding:2rem 1.75rem;
+  transition:transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
+  position:relative;
+  overflow:hidden;
+  transform-style:preserve-3d;
+}
+.pantheon-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(212,175,55,0.12), transparent 70%);
+  opacity:0;transition:opacity .3s;pointer-events:none;
+}
+.pantheon-card:hover{
+  border-color:rgba(212,175,55,0.45);
+  box-shadow:0 12px 35px rgba(0,0,0,0.5), 0 0 20px rgba(212,175,55,0.15);
+}
+.pantheon-card:hover::before{opacity:1}
+.pantheon-card .greek-symbol{
+  font-size:2.2rem;color:var(--gold);margin-bottom:0.75rem;
+  filter:drop-shadow(0 0 10px var(--gold-glow));
+}
+.pantheon-card h4{
+  font-family:'Cinzel',serif;font-weight:700;font-size:1.15rem;
+  color:var(--gold-bright);letter-spacing:.05em;margin-bottom:.2rem;
+}
+.pantheon-card .alias{
+  font-family:'Crimson Text',serif;font-style:italic;font-size:.9rem;
+  color:var(--parchment);opacity:.6;margin-bottom:1rem;display:block;
+}
+.pantheon-card p{font-size:.95rem;line-height:1.65;opacity:.8;margin-bottom:0.75rem}
+.pantheon-card .celtic-parallel{
+  border-top:1px dashed rgba(212,175,55,0.25);
+  padding-top:0.75rem;margin-top:0.75rem;
+  font-size:0.85rem;color:var(--gold);
+}
+.pantheon-card .celtic-parallel strong{color:var(--parchment)}
+
+/* ═══ Delphi Oracle Interactive Widget ═══ */
+.oracle-box{
+  margin:3rem 0;
+  padding:2.5rem;
+  background:radial-gradient(ellipse at 50% 20%, rgba(212,175,55,0.15) 0%, rgba(6,13,24,0.9) 80%);
+  border:2px solid rgba(212,175,55,0.35);
+  border-radius:6px;
+  text-align:center;
+  position:relative;
+  box-shadow:0 10px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(212,175,55,0.05);
+}
+.oracle-box::before{
+  content:'🏛';font-size:2.5rem;display:block;margin-bottom:0.5rem;
+  filter:drop-shadow(0 0 15px var(--gold-glow));
+}
+.oracle-box h3{
+  margin:0.5rem 0 0.5rem;font-size:1.4rem;color:var(--gold-bright);
+}
+.oracle-box p.oracle-sub{
+  font-style:italic;font-size:0.95rem;opacity:0.7;max-width:550px;margin:0 auto 1.5rem;
+}
+.oracle-result{
+  min-height:75px;display:flex;align-items:center;justify-content:center;
+  padding:1rem 1.5rem;margin:1.5rem auto;
+  border-left:2px solid var(--gold);border-right:2px solid var(--gold);
+  background:rgba(212,175,55,0.06);
+  font-family:'Cinzel',serif;font-size:1.05rem;
+  color:var(--parchment);letter-spacing:0.04em;
+  transition:all 0.5s;
+}
+.oracle-action-btn{
+  background:linear-gradient(135deg, var(--gold) 0%, #a47b1e 100%);
+  color:var(--aegean-deep);
+  font-family:'Cinzel',serif;font-weight:700;font-size:0.82rem;
+  letter-spacing:0.18em;text-transform:uppercase;
+  padding:0.75rem 2rem;border:none;border-radius:30px;
+  cursor:pointer;transition:all 0.3s;
+  box-shadow:0 4px 20px rgba(212,175,55,0.3);
+}
+.oracle-action-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 30px rgba(212,175,55,0.5);
+  filter:brightness(1.15);
 }
 
 /* ═══ Creatures Grid ═══ */
 .creatures-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:1.5rem;
-  margin-top:2rem;
+  gap:1.5rem;margin-top:2rem;
 }
 .creature-card{
-  background:rgba(196,162,78,.06);
-  border:1px solid rgba(196,162,78,.15);
+  background:rgba(212,175,55,0.05);
+  border:1px solid rgba(212,175,55,0.18);
   border-radius:4px;
-  padding:1.75rem;
-  transition:all .3s;
+  padding:1.85rem;
+  transition:all .35s cubic-bezier(0.2, 0.8, 0.2, 1);
   position:relative;
   overflow:hidden;
+  transform-style:preserve-3d;
 }
 .creature-card::before{
   content:'';position:absolute;top:0;left:0;
@@ -250,36 +405,36 @@ section p strong{color:var(--gold);font-weight:600}
   opacity:0;transition:opacity .3s;
 }
 .creature-card:hover{
-  border-color:rgba(196,162,78,.35);
-  transform:translateY(-2px);
-  box-shadow:0 8px 30px rgba(0,0,0,.3);
+  border-color:rgba(212,175,55,0.4);
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(0,0,0,.4), 0 0 15px rgba(212,175,55,0.1);
 }
 .creature-card:hover::before{opacity:1}
 .creature-card .icon{
   font-size:2rem;margin-bottom:.75rem;
-  filter:grayscale(.3);
+  filter:drop-shadow(0 0 10px var(--gold-glow));
 }
 .creature-card h4{
   font-family:'Cinzel',serif;
-  font-weight:600;font-size:1rem;
-  color:var(--gold);
+  font-weight:600;font-size:1.05rem;
+  color:var(--gold-bright);
   margin-bottom:.5rem;
   letter-spacing:.05em;
 }
 .creature-card p{
-  font-size:.92rem;line-height:1.6;
-  opacity:.75;margin:0;
+  font-size:.95rem;line-height:1.6;
+  opacity:.8;margin:0;
 }
 .creature-card .origin{
   display:inline-block;
   font-family:'Cinzel',serif;
-  font-size:.65rem;
-  letter-spacing:.1em;
+  font-size:.68rem;
+  letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--gold);
-  opacity:.5;
-  margin-top:.75rem;
-  border-top:1px solid rgba(196,162,78,.15);
+  opacity:.65;
+  margin-top:.85rem;
+  border-top:1px solid rgba(212,175,55,.18);
   padding-top:.5rem;
 }
 
@@ -288,39 +443,39 @@ section p strong{color:var(--gold);font-weight:600}
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:0;margin-top:2rem;
-  border:1px solid rgba(196,162,78,.2);
+  border:1px solid rgba(212,175,55,.25);
   border-radius:4px;
   overflow:hidden;
 }
 .court{padding:2.5rem;position:relative}
 .court-seelie{
-  background:linear-gradient(160deg,rgba(42,90,58,.2) 0%,rgba(14,33,24,.4) 100%);
-  border-right:1px solid rgba(196,162,78,.15);
+  background:linear-gradient(160deg,rgba(31,66,48,0.3) 0%,rgba(6,13,24,0.6) 100%);
+  border-right:1px solid rgba(212,175,55,.2);
 }
 .court-unseelie{
-  background:linear-gradient(160deg,rgba(20,15,30,.4) 0%,rgba(14,33,24,.4) 100%);
+  background:linear-gradient(160deg,rgba(35,15,40,0.45) 0%,rgba(6,13,24,0.6) 100%);
 }
 .court h4{
   font-family:'Cinzel',serif;font-weight:700;
-  font-size:1.1rem;color:var(--gold);
+  font-size:1.15rem;color:var(--gold-bright);
   margin-bottom:.25rem;letter-spacing:.1em;
 }
 .court .court-meaning{
   font-family:'Crimson Text',serif;
-  font-style:italic;font-size:.85rem;
-  opacity:.5;margin-bottom:1rem;
+  font-style:italic;font-size:.9rem;
+  opacity:.6;margin-bottom:1rem;
 }
 .court ul{list-style:none;padding:0}
 .court ul li{
-  font-size:.92rem;opacity:.8;
+  font-size:.95rem;opacity:.85;
   padding:.35rem 0;
-  padding-left:1.25rem;
+  padding-left:1.35rem;
   position:relative;
 }
 .court ul li::before{
   content:'◆';position:absolute;left:0;
   color:var(--gold);font-size:.5rem;
-  top:.55rem;
+  top:.6rem;
 }
 .court-unseelie ul li::before{content:'◇'}
 
@@ -328,21 +483,25 @@ section p strong{color:var(--gold);font-weight:600}
 .class-list{margin-top:2rem}
 .class-item{
   display:grid;
-  grid-template-columns:120px 1fr;
+  grid-template-columns:140px 1fr;
   gap:1.5rem;
-  padding:1.25rem 0;
-  border-bottom:1px solid rgba(44,24,16,.1);
+  padding:1.35rem 0;
+  border-bottom:1px solid rgba(74,52,36,.15);
   align-items:start;
+  transition:all 0.3s;
+}
+.class-item:hover{
+  transform:translateX(5px);
 }
 .class-item:last-child{border-bottom:none}
 .class-item .class-name{
   font-family:'Cinzel',serif;
-  font-weight:600;font-size:.85rem;
+  font-weight:700;font-size:.9rem;
   color:var(--forest-deep);
   letter-spacing:.05em;
 }
 .class-item .class-desc{
-  font-size:.95rem;
+  font-size:.98rem;
   color:var(--ink-light);
   line-height:1.65;
 }
@@ -351,41 +510,46 @@ section p strong{color:var(--gold);font-weight:600}
 .protections{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:1rem;margin-top:2rem;
+  gap:1.1rem;margin-top:2rem;
 }
 .protection{
-  display:flex;align-items:start;gap:.75rem;
-  padding:1rem;
-  background:rgba(196,162,78,.05);
-  border:1px solid rgba(196,162,78,.1);
-  border-radius:3px;
+  display:flex;align-items:start;gap:.85rem;
+  padding:1.15rem;
+  background:rgba(212,175,55,.05);
+  border:1px solid rgba(212,175,55,.15);
+  border-radius:4px;
+  transition:all 0.3s;
+}
+.protection:hover{
+  border-color:var(--gold);
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(0,0,0,0.3);
 }
 .protection .p-icon{
-  font-size:1.2rem;flex-shrink:0;
+  font-size:1.3rem;flex-shrink:0;
   margin-top:.1rem;
-  filter:grayscale(.4);
 }
 .protection .p-text{
-  font-size:.9rem;line-height:1.5;
-  opacity:.8;
+  font-size:.92rem;line-height:1.55;
+  opacity:.82;
 }
 .protection .p-text strong{
   display:block;
   font-family:'Cinzel',serif;
-  font-size:.8rem;
-  color:var(--gold);
+  font-size:.85rem;
+  color:var(--gold-bright);
   letter-spacing:.05em;
-  margin-bottom:.15rem;
+  margin-bottom:.2rem;
 }
 
 /* ═══ Timeline ═══ */
 .timeline{margin-top:2.5rem;position:relative;padding-left:2rem}
 .timeline::before{
   content:'';position:absolute;left:6px;top:0;bottom:0;
-  width:1px;background:rgba(196,162,78,.25);
+  width:1px;background:rgba(212,175,55,.3);
 }
 .timeline-item{
-  position:relative;margin-bottom:2rem;
+  position:relative;margin-bottom:2.2rem;
   padding-left:1.5rem;
 }
 .timeline-item::before{
@@ -394,86 +558,91 @@ section p strong{color:var(--gold);font-weight:600}
   width:13px;height:13px;
   border:2px solid var(--gold);
   border-radius:50%;
-  background:var(--forest-deep);
+  background:var(--aegean-deep);
+  box-shadow:0 0 10px var(--gold-glow);
 }
 .timeline-item .era{
   font-family:'Cinzel',serif;
-  font-size:.75rem;letter-spacing:.15em;
+  font-size:.78rem;letter-spacing:.16em;
   text-transform:uppercase;
-  color:var(--gold);opacity:.7;
+  color:var(--gold);opacity:.8;
   margin-bottom:.25rem;
 }
 .timeline-item h4{
   font-family:'Cinzel',serif;
-  font-weight:600;font-size:1rem;
+  font-weight:600;font-size:1.05rem;
   color:var(--parchment);
   margin-bottom:.35rem;
 }
-.timeline-item p{font-size:.92rem;opacity:.75;margin:0}
+.timeline-item p{font-size:.95rem;opacity:.8;margin:0}
 
 /* ═══ Quote ═══ */
 blockquote{
   border-left:2px solid var(--gold);
-  padding:1rem 1.5rem;
-  margin:2rem 0;
+  padding:1.2rem 1.8rem;
+  margin:2.5rem 0;
   font-style:italic;
-  opacity:.8;
-  background:rgba(196,162,78,.04);
+  opacity:.85;
+  background:rgba(212,175,55,.05);
+  border-radius:0 4px 4px 0;
 }
 blockquote cite{
-  display:block;margin-top:.75rem;
+  display:block;margin-top:.85rem;
   font-style:normal;
   font-family:'Cinzel',serif;
-  font-size:.75rem;
-  letter-spacing:.1em;
+  font-size:.78rem;
+  letter-spacing:.12em;
   color:var(--gold);
-  opacity:.6;
+  opacity:.7;
 }
 
 /* ═══ Figures Grid ═══ */
 .figures{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
   gap:1.5rem;margin-top:2rem;
 }
-.figure{text-align:center;padding:1.5rem 1rem}
+.figure{text-align:center;padding:1.8rem 1rem;background:rgba(212,175,55,0.03);border:1px solid rgba(212,175,55,0.1);border-radius:4px;transition:all .3s}
+.figure:hover{border-color:var(--gold);transform:translateY(-3px)}
 .figure .sigil{
-  font-size:2.5rem;
+  font-size:2.6rem;
   margin-bottom:.75rem;
-  filter:drop-shadow(0 0 20px rgba(196,162,78,.2));
+  filter:drop-shadow(0 0 15px var(--gold-glow));
 }
 .figure h4{
   font-family:'Cinzel',serif;
-  font-weight:700;font-size:.9rem;
-  color:var(--gold);
+  font-weight:700;font-size:.95rem;
+  color:var(--gold-bright);
   letter-spacing:.08em;
   margin-bottom:.35rem;
 }
 .figure .title{
   font-family:'Crimson Text',serif;
-  font-style:italic;font-size:.85rem;
-  opacity:.5;margin-bottom:.5rem;
+  font-style:italic;font-size:.88rem;
+  opacity:.6;margin-bottom:.6rem;
 }
-.figure p{font-size:.85rem;line-height:1.5;opacity:.7;margin:0}
+.figure p{font-size:.88rem;line-height:1.5;opacity:.75;margin:0}
 
 /* ═══ Footer ═══ */
 footer{
   text-align:center;
-  padding:4rem 2rem;
-  background:var(--forest-deep);
-  border-top:1px solid rgba(196,162,78,.1);
+  padding:4.5rem 2rem;
+  background:var(--aegean-deep);
+  border-top:1px solid rgba(212,175,55,.15);
+  position:relative;z-index:1;
 }
 footer .colophon{
   font-family:'Cinzel',serif;
-  font-size:.7rem;
-  letter-spacing:.2em;
+  font-size:.75rem;
+  letter-spacing:.25em;
   text-transform:uppercase;
   color:var(--gold);
-  opacity:.4;
+  opacity:.6;
+  margin-bottom:0.75rem;
 }
 footer p{
-  font-size:.85rem;
-  opacity:.4;
+  font-size:.88rem;
+  opacity:.5;
   margin-top:.75rem;
 }
 
@@ -482,105 +651,175 @@ footer p{
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* ═══ Responsive ═══ */
-@media(max-width:768px){
+@media(max-width:820px){
   nav ul{
     display:none;
     position:absolute;top:100%;left:0;right:0;
     flex-direction:column;gap:0;
-    background:rgba(14,33,24,.97);
+    background:rgba(3,6,12,0.98);
     padding:1rem 2rem 2rem;
+    border-bottom:1px solid rgba(212,175,55,0.2);
   }
   nav ul.open{display:flex}
-  nav ul li a{padding:.5rem 0;display:block}
+  nav ul li a{padding:.65rem 0;display:block}
   .menu-toggle{display:block}
   .courts{grid-template-columns:1fr}
-  .court-seelie{border-right:none;border-bottom:1px solid rgba(196,162,78,.15)}
+  .court-seelie{border-right:none;border-bottom:1px solid rgba(212,175,55,.2)}
   .class-item{grid-template-columns:1fr;gap:.5rem}
-  section{padding:4rem 1.5rem}
+  section{padding:4.5rem 1.5rem}
 }
 </style>
 </head>
 <body>
 
+<!-- ═══ Background Canvas & Ambient ═══ -->
+<canvas id="constellation-canvas"></canvas>
+<div class="ambient-fog"></div>
+
 <!-- ═══ Navigation ═══ -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a href="#" class="logo">The <span>Fae</span></a>
-    <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')" aria-label="Menu">☰</button>
-    <ul>
-      <li><a href="#origins">Asal-Usul</a></li>
-      <li><a href="#courts">Istana</a></li>
-      <li><a href="#creatures">Makhluk</a></li>
-      <li><a href="#protection">Penangkal</a></li>
-      <li><a href="#legacy">Warisan</a></li>
-    </ul>
+    <div class="brand-group">
+      <a href="#" class="logo">
+        <span class="greek-sigil">🏛</span>
+        The <span>Fae</span>
+      </a>
+    </div>
+    <div class="nav-right">
+      <button id="audio-toggle" class="audio-btn" title="Nyalakan/Matikan Harpa Apollo">
+        <span class="wave">♫</span>
+        <span class="audio-text">Harpa Apollo</span>
+      </button>
+      <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')" aria-label="Menu">☰</button>
+      <ul>
+        <li><a href="#origins">Asal-Usul</a></li>
+        <li><a href="#greek-roots">Akar Yunani</a></li>
+        <li><a href="#courts">Dua Istana</a></li>
+        <li><a href="#creatures">Makhluk</a></li>
+        <li><a href="#protection">Penangkal</a></li>
+        <li><a href="#oracle">Oracle</a></li>
+        <li><a href="#legacy">Warisan</a></li>
+      </ul>
+    </div>
   </div>
 </nav>
 
 <!-- ═══ Hero ═══ -->
 <section class="hero">
-  <div class="particles" id="particles"></div>
   <div class="hero-content">
-    <div class="rune">✦ ᚠ ᚨ ᚢ ᚱ ᛁ ᛖ ✦</div>
+    <div class="laurel-wreath">🌿 ✧ 🌿</div>
+    <div class="greek-subtitle">ΦΑΙ • ΜΟΙΡΑΙ • ΝΥΜΦΑΙ • AOS SÍ</div>
     <h1>
       The Fae
-      <span class="accent">Ras Gaib dari Dunia Kuno</span>
+      <span class="accent">Ras Gaib dari Alam Takdir</span>
     </h1>
     <p class="subtitle">
-      Mereka bukan peri kecil bersayap dalam dongeng anak-anak. 
-      Mereka adalah ras kuno berkekuatan besar — dihormati sekaligus ditakuti 
-      selama ribuan tahun oleh bangsa-bangsa Eropa.
+      Dari penenun takdir <em>Moirai</em> dan roh alam <em>Nymphai</em> di lembah Yunani kuno, 
+      hingga kaum <em>Tuatha Dé Danann</em> di bawah gundukan Irlandia — mereka adalah ras primordial 
+      yang memerintah batas antara dunia fana dan keabadian.
     </p>
     <a href="#origins" class="scroll-cue">
-      Jelajahi
+      Masuki Alam Gaib
       <span class="arrow">⌄</span>
     </a>
   </div>
 </section>
 
-<div class="celtic-border"></div>
+<div class="greek-meander"></div>
 
 <!-- ═══ Section: Asal-Usul ═══ -->
 <section id="origins" class="bg-dark">
   <div class="section-inner reveal">
     <span class="section-label">Bab I</span>
-    <h2>Asal-Usul <span class="thin">& Etimologi</span></h2>
+    <h2>Asal-Usul <span class="thin">& Benang Takdir</span></h2>
     
-    <p class="dropcap">Kata <strong>Fae</strong> berasal dari bahasa Old French <em>faerie</em>, yang berakar dari Latin <strong>fata</strong> — "takdir". Awalnya merujuk pada makhluk cantik berkekuatan sihir yang mampu memengaruhi nasib manusia. Istilah ini baru menjadi bentuk tunggal sejak abad ke-14, dan sejak saat itu mencakup seluruh spektrum makhluk gaib dalam tradisi Celtic, Germanic, dan Slavic.</p>
+    <p class="dropcap">Kata <strong>Fae</strong> berakar langsung dari bahasa Latin <em>fata</em> — bentuk jamak dari <em>fatum</em> yang berarti <strong>"takdir yang telah digariskan"</strong>. Dalam peradaban Mediterania kuno, <em>fata</em> adalah personifikasi dari para dewi penentu nasib manusia. Seiring waktu, konsep ini diserap ke dalam bahasa Prancis Kuno sebagai <em>faerie</em> (alam pesona sihir) sebelum menjadi kata payung bagi seluruh ras gaib di daratan Eropa.</p>
 
-    <p>Tidak ada satu asal-usul tunggal. Fae adalah pertemuan berbagai tradisi kepercayaan yang saling menumpuk selama ribuan tahun — dari dewa-dewa pagan pra-Kristen yang terdegradasi, hingga roh alam, hingga ingatan kolektif tentang ras prasejarah yang terdesak.</p>
-
-    <h3>Tuatha Dé Danann — Akar Mitologis</h3>
-    <p>Di jantung mitologi Irlandia, ras ilahi bernama <strong>Tuatha Dé Danann</strong> ("Rakyat Dewi Danu") pernah menguasai Irlandia. Mereka datang dari empat kota di utara — <em>Falias, Finias, Gorias, dan Murias</em> — membawa keahlian dalam seni, arsitektur, puisi, dan sihir.</p>
-    <p>Setelah kalah perang dari bangsa Milesian (leluhur bangsa Irlandia modern), mereka mundur ke bawah tanah — ke dalam <strong>sídhe</strong>, gundukan pemakaman kuno yang menjadi pintu gerbang ke alam lain. Seiring berjalannya waktu, mereka dikenal sebagai <strong>Aos Sí</strong> ("Rakyat Gundukan"), dan dalam imajinasi rakyat menjadi apa yang kita sebut Fae.</p>
+    <p>Di utara Eropa, tradisi Celtic menamai mereka <strong>Aos Sí</strong> ("Rakyat Gundukan"). Mereka bukan bangsa khayalan anak-anak, melainkan sisa-sisa ras dewa pagan <strong>Tuatha Dé Danann</strong> yang mundur ke dalam rongga bukit (*sídhe*) setelah kalah dalam perang kosmik melawan manusia fana.</p>
 
     <blockquote>
       "These Siths or Fairies they call Sleagh Maith or the Good People... are said to be of middle nature between Man and Angel, of intelligent fluidous Spirits, and light changeable bodies, somewhat of the nature of a condensed cloud, and best seen in twilight."
       <cite>— Rev. Robert Kirk, The Secret Commonwealth, 1691</cite>
     </blockquote>
 
-    <h3>Lima Teori Asal-Usul</h3>
-    <p><strong>1. Dewa yang mengecil</strong> — Dewa pagan pra-Kristen yang terdegradasi statusnya setelah Kekristenan datang ke Eropa.</p>
-    <p><strong>2. Malaikat jatuh</strong> — Terlalu baik untuk neraka, terlalu cacat untuk surga — dibuang ke bumi hingga Hari Penghakiman.</p>
-    <p><strong>3. Roh alam</strong> — Penjaga sungai, hutan, dan gunung tertentu yang terikat pada lokasi spesifik.</p>
-    <p><strong>4. Roh leluhur</strong> — Arwah orang mati yang menjadi penghuni dunia paralel.</p>
-    <p><strong>5. Ras prasejarah</strong> — Ingatan kolektif tentang penduduk asli yang terdesak oleh penakluk bersenjata besi. Ketakutan Fae terhadap besi dianggap sebagai jejak budaya dari konflik ini.</p>
+    <h3>Lima Arus Tradisi</h3>
+    <p><strong>1. Personifikasi Takdir (*Fatum/Moirai*)</strong> — Agen kosmik yang mengawasi benang takdir setiap kelahiran dan kematian.</p>
+    <p><strong>2. Tuatha Dé Danann (Dewa yang Meredup)</strong> — Entitas ilahi yang menyusut ke dalam bumi pasca-Kristenisasi Eropa.</p>
+    <p><strong>3. Roh Elemen & Alam</strong> — Penguasa primordial hutan belantara, mata air, dan batu cadas yang menolak tunduk pada manusia.</p>
+    <p><strong>4. Malaikat Netral</strong> — Menurut kosmologi abad pertengahan: malaikat yang tidak memberontak tapi tidak memihak, dibuang ke bumi hingga kiamat.</p>
+    <p><strong>5. Memori Ras Kuno</strong> — Jejak arkeologis kaum pemburu zaman batu yang terdesak oleh penakluk bersenjata besi — asal-usul mengapa Fae membenci besi dingin.</p>
   </div>
 </section>
 
 <div class="celtic-border flip"></div>
 
+<!-- ═══ Section: Akar Mitologi Yunani (NEW!) ═══ -->
+<section id="greek-roots" class="bg-aegean">
+  <div class="section-inner reveal">
+    <span class="section-label">Bab II • Akar Klasik</span>
+    <h2>Pancaran Helenik <span class="thin">— Dari Olympus ke Faerie</span></h2>
+
+    <p class="dropcap">Jauh sebelum manuskrip Irlandia mencatat kisah Aos Sí, filsuf Yunani dan penyair Homer serta Hesiod telah mencatat keberadaan entitas yang identik: makhluk berdaya magis tinggi, hidup berdampingan di batas alam, dan tidak terikat hukum moral manusia fana.</p>
+
+    <div class="pantheon-grid">
+      <div class="pantheon-card">
+        <div class="greek-symbol">⚖️</div>
+        <h4>Tiga Moirai (Μοῖραι)</h4>
+        <span class="alias">Klotho, Lakhesis, & Atropos</span>
+        <p>Dewi-dewi pemintal benang nasib. Klotho memintal, Lakhesis mengukur panjang usia, dan Atropos memotong benang tanpa ampun. Kata <em>Fae</em> dan <em>Fairy</em> lahir dari terjemahan Latin atas ketiga dewi ini (<em>Fata</em>).</p>
+        <div class="celtic-parallel">Padanan Celtic: <strong>The Morrígan & Badb</strong> (penentu takdir perang)</div>
+      </div>
+
+      <div class="pantheon-card">
+        <div class="greek-symbol">💧</div>
+        <h4>Naiad & Nereid (Ναϊάδες)</h4>
+        <span class="alias">Roh Penjaga Air & Lautan</span>
+        <p>Penghuni mata air suci, telaga, dan samudra. Menuntut penghormatan dan sesaji. Mengabaikan atau mengotori mata air mereka berarti terkena kutukan kebutaan, kegilaan, atau ditarik ke dasar air.</p>
+        <div class="celtic-parallel">Padanan Celtic: <strong>Kelpie, Selkie & Lady of the Lake</strong></div>
+      </div>
+
+      <div class="pantheon-card">
+        <div class="greek-symbol">🌳</div>
+        <h4>Dryad (Δρυάδες)</h4>
+        <span class="alias">Jiwa Pohon & Hutan Ek</span>
+        <p>Roh pepohonan yang hidup dan matinya menyatu dengan pohon induknya. Hubungan sakral ini adalah akar dari pantangan menebang *fairy thorn* (pohon hawthorn sakral) di tanah Celtic.</p>
+        <div class="celtic-parallel">Padanan Celtic: <strong>Green Man & Aos Sí Penjaga Hutan</strong></div>
+      </div>
+
+      <div class="pantheon-card">
+        <div class="greek-symbol">🐐</div>
+        <h4>Pan & Kaum Satyr (Σάτυροι)</h4>
+        <span class="alias">Keliaran Alam & Musik Hipnotis</span>
+        <p>Dewa bertanduk penguasa padang liar dan pegunungan Arcadia. Senjata utamanya adalah seruling syrinx yang mampu menimbulkan ketakutan massal (*panic*) atau tarian ekstatis tanpa henti.</p>
+        <div class="celtic-parallel">Padanan Celtic: <strong>Púca, Puck & Cernunnos</strong></div>
+      </div>
+    </div>
+
+    <!-- Oracle Interactive Delphi Widget -->
+    <div id="oracle" class="oracle-box reveal">
+      <h3>Oracle Delphi & Bisikan Fae</h3>
+      <p class="oracle-sub">Minta ramalan pada tripod emas Pythia dan dengarkan garis takdir yang ditenun oleh Moirai serta Fae kuno.</p>
+      <div id="oracle-display" class="oracle-result">
+        "Ketuk tombol di bawah untuk mendengar suara tabir nasib..."
+      </div>
+      <button id="oracle-btn" class="oracle-action-btn">Konsultasi Oracle ✦</button>
+    </div>
+  </div>
+</section>
+
+<div class="greek-meander"></div>
+
 <!-- ═══ Section: Otherworld ═══ -->
 <section class="bg-parchment">
   <div class="section-inner reveal">
-    <span class="section-label">Bab II</span>
-    <h2>Otherworld <span class="thin">— Dunia Paralel</span></h2>
+    <span class="section-label">Bab III</span>
+    <h2>Otherworld <span class="thin">— Tír na nÓg & Elysium</span></h2>
 
-    <p class="dropcap">Fae tidak tinggal di dunia kita. Mereka menghuni realm paralel yang disebut <strong>Tír na nÓg</strong> ("Tanah Awet Muda") dalam tradisi Irlandia, atau <strong>Faerie</strong> dalam tradisi Inggris. Alam ini bukan di planet lain — ia <em>tumpang tindih</em> dengan dunia manusia, dapat diakses melalui tempat-tempat liminal: gundukan pemakaman kuno, lingkaran batu, gua, danau, akar pohon tua, dan <em>fairy rings</em> (lingkaran jamur).</p>
+    <p class="dropcap">Seperti halnya <strong>Elysium</strong> dan <strong>Arcadia</strong> dalam mitologi Yunani, alam kaum Fae — <strong>Tír na nÓg</strong> ("Tanah Kemudaan Abadi") — adalah dimensi yang berdampingan dengan dunia fana. Ia bukan negeri di luar angkasa, melainkan realitas gaib yang terselubung di balik bukit kuno, pulau kabut, dan dasar telaga sunyi.</p>
 
-    <p>Waktu berjalan berbeda di sana. Seorang musafir mungkin menghabiskan satu malam di pesta Fae, hanya untuk menemukan bahwa puluhan — bahkan ratusan — tahun telah berlalu saat ia kembali ke dunia manusia. Tema ini berulang dalam seluruh tradisi Celtic dan telah menginspirasi tak terhitung karya sastra fantasi.</p>
+    <p>Di alam ini, waktu melengkung secara aneh. Seorang manusia yang menari satu malam dalam perjamuan Fae sering kali mendapati ratusan tahun telah berlalu di dunia fana saat ia melangkah keluar. Siapapun yang mencicipi makanan atau buah dari Otherworld tidak akan pernah bisa kembali lagi ke dunia manusia.</p>
 
-    <p><strong>Pintu gerbang</strong> ke Otherworld paling sering muncul pada waktu liminal: senja, fajar, dan hari-hari suci seperti <strong>Samhain</strong> (31 Oktober) dan <strong>Beltane</strong> (1 Mei), ketika sekat antara dua dunia menipis.</p>
+    <p>Sekat antara dua dunia paling rapuh pada saat senja (*twilight*), titik balik matahari, dan festival pergantian musim seperti <strong>Samhain</strong> dan <strong>Beltane</strong>.</p>
   </div>
 </section>
 
@@ -589,34 +828,34 @@ footer p{
 <!-- ═══ Section: Courts ═══ -->
 <section id="courts" class="bg-mid">
   <div class="section-inner reveal">
-    <span class="section-label">Bab III</span>
+    <span class="section-label">Bab IV</span>
     <h2>Dua Istana <span class="thin">Seelie & Unseelie</span></h2>
 
-    <p>Dalam tradisi Skotlandia, Fae terbagi ke dalam dua istana besar yang memerintah berdasarkan musim dan temperamen. Pembagian ini dipopulerkan oleh <strong>Robert Kirk</strong> dalam karyanya <em>The Secret Commonwealth</em> (1691), namun akarnya jauh lebih tua.</p>
+    <p>Dalam tradisi Skotlandia, aristokrasi Fae terpecah menjadi dua istana besar yang memerintah pergantian musim dan watak kosmis — polaritas yang menyerupai harmoni Apollo dan kegelapan Tartarus:</p>
 
     <div class="courts">
       <div class="court court-seelie">
         <h4>☀ Seelie Court</h4>
-        <div class="court-meaning">"Yang Diberkati" — dari Scots seely (blessed)</div>
+        <div class="court-meaning">"Yang Diberkati" — Cahaya Musim Semi & Panas</div>
         <ul>
-          <li>Umumnya baik kepada manusia yang menunjukkan hormat</li>
-          <li>Membalas kebaikan dengan kebaikan</li>
-          <li>Berkuasa atas musim semi dan panas</li>
-          <li>Cantik, agung, aristokratis</li>
-          <li>Tetap membalas penghinaan dengan keras</li>
-          <li>Sihir terikat elemen tanah dan air</li>
+          <li>Memerintah siklus pertumbuhan, fajar, dan kemakmuran</li>
+          <li>Murah hati kepada manusia yang menjaga adab dan batas</li>
+          <li>Membalas kebaikan dengan berkah tak terduga</li>
+          <li>Cantik bersinar, berpostur bangsawan tinggi</li>
+          <li>Tetap membalas penghinaan dengan kutukan dingin</li>
+          <li>Kekuatan sihir berakar pada bumi dan air bersih</li>
         </ul>
       </div>
       <div class="court court-unseelie">
         <h4>☾ Unseelie Court</h4>
-        <div class="court-meaning">"Yang Tidak Suci" — gelap, tanpa provokasi</div>
+        <div class="court-meaning">"Yang Tak Suci" — Bayangan Musim Gugur & Dingin</div>
         <ul>
-          <li>Menyerang tanpa perlu alasan</li>
-          <li>Berkuasa atas musim gugur dan dingin</li>
-          <li>Termasuk Sluagh, Redcap, Baobhan Sith</li>
-          <li>Tidak peduli etika manusia</li>
-          <li>Erat dengan sihir hitam dan nekromansi</li>
-          <li>Sihir terikat elemen api dan udara</li>
+          <li>Memerintah badai malam, pembusukan, dan kematian</li>
+          <li>Menyerang tanpa alasan moral manusia</li>
+          <li>Menghuni reruntuhan benteng dan rawa berkabut</li>
+          <li>Termasuk Sluagh, Redcap, dan peri peminum darah</li>
+          <li>Mahir dalam ilusi menakutkan dan nekromansi</li>
+          <li>Kekuatan sihir berakar pada api liar dan angin malam</li>
         </ul>
       </div>
     </div>
@@ -628,102 +867,100 @@ footer p{
 <!-- ═══ Section: Classifications ═══ -->
 <section class="bg-parchment">
   <div class="section-inner reveal">
-    <span class="section-label">Bab IV</span>
-    <h2>Klasifikasi <span class="thin">Ras Fae</span></h2>
-
-    <p>Folklorist W.B. Yeats membagi Fae menjadi <strong>Trooping</strong> (bergerombol, punya istana) dan <strong>Solitary</strong> (sendirian). Tradisi lain mengelompokkan berdasarkan domain dan temperamen:</p>
+    <span class="section-label">Bab V</span>
+    <h2>Hierarki <span class="thin">& Wujud Fae</span></h2>
 
     <div class="class-list">
       <div class="class-item">
         <div class="class-name">High Fae / Sidhe</div>
-        <div class="class-desc">Aristokrat Fae — cantik, immortal, sangat kuat. Penguasa istana Seelie dan Unseelie. Punya masyarakat, hukum, dan hierarki sendiri. Dalam mitologi Irlandia, mereka adalah keturunan langsung Tuatha Dé Danann.</div>
+        <div class="class-desc">Aristokrasi tertinggi — berwujud manusia jangkung yang teramat rupawan, abadi, dan memiliki kekuatan magis luar biasa. Keturunan langsung para dewa kuno yang mengendalikan istana Seelie dan Unseelie.</div>
       </div>
       <div class="class-item">
-        <div class="class-name">Nature Fae</div>
-        <div class="class-desc">Penjaga lokasi alam spesifik — hutan, sungai, gunung, batu. Termasuk Dryad (pohon), Undine (air), dan roh elemen lainnya. Sangat teritorial; perubahan pada habitat mereka mengundang pembalasan.</div>
+        <div class="class-name">Nature Guardians</div>
+        <div class="class-desc">Roh penjaga teritorial — mata air, batu sakral, hutan tua. Seperti Dryad dan Naiad Yunani, mereka sangat protektif terhadap batas alam mereka dari keserakahan manusia.</div>
       </div>
       <div class="class-item">
-        <div class="class-name">Household Fae</div>
-        <div class="class-desc">Roh rumah tangga yang membantu pekerjaan domestik. Brownie (Skotlandia), Kobold (Jerman), Domovoi (Rusia). Cukup diberi semangkuk bubur atau krim. Jika tersinggung, berubah menjadi Boggart yang menghancurkan.</div>
+        <div class="class-name">Household Spirits</div>
+        <div class="class-desc">Brownie, Kobold, dan Domovoi. Makhluk kecil penjaga tungku rumah yang setia membantu pekerjaan domestik asalkan diberi sesaji krim susu, namun akan merusak seisi rumah jika dihina.</div>
       </div>
       <div class="class-item">
-        <div class="class-name">Trickster Fae</div>
-        <div class="class-desc">Iseng, menyesatkan, kacau. Púca (shapeshifter), Pixie (menyesatkan musafir), Boggart (menghancurkan rumah tangga). Senang menjahili manusia tapi jarang benar-benar berniat membunuh.</div>
+        <div class="class-name">Trickster & Shapeshifter</div>
+        <div class="class-desc">Púca, Pixie, dan Puck. Ahli mengubah rupa menjadi hewan atau bayangan. Gemar mempermainkan musafir di persimpangan jalan dengan teka-teki dan tarian membingungkan.</div>
       </div>
       <div class="class-item">
-        <div class="class-name">Elemental Fae</div>
-        <div class="class-desc">Wujud dari empat elemen dasar — tanah, api, air, udara. Makhluk paling kuno, sering tertukar dengan Nature Fae tapi bersifat lebih primordial dan tidak terikat lokasi spesifik.</div>
+        <div class="class-name">Elemental Primordial</div>
+        <div class="class-desc">Entitas tertua yang mewakili esensi murni tanah, api, air, dan angin kosmik. Tidak memiliki wajah manusia dan tidak peduli pada peradaban fana.</div>
       </div>
       <div class="class-item">
-        <div class="class-name">Wild Fae</div>
-        <div class="class-desc">Liar, kuno, tidak terikat istana manapun. Beroperasi murni berdasarkan insting. Sangat berbahaya karena tidak mengikuti aturan atau etika Fae court manapun.</div>
+        <div class="class-name">Wild Solitary Fae</div>
+        <div class="class-desc">Makhluk liar penyendiri yang tidak terikat hukum istana manapun. Menjelajah rimba tanpa tuan, bertindak murni atas insting predator mistis.</div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="celtic-border"></div>
+<div class="greek-meander"></div>
 
 <!-- ═══ Section: Creatures ═══ -->
 <section id="creatures" class="bg-dark">
   <div class="section-inner reveal">
-    <span class="section-label">Bab V</span>
-    <h2>Makhluk <span class="thin">Fae Terkenal</span></h2>
+    <span class="section-label">Bab VI</span>
+    <h2>Panteon Makhluk <span class="thin">Fae Terkemuka</span></h2>
 
     <div class="creatures-grid">
       <div class="creature-card">
         <div class="icon">👻</div>
         <h4>Banshee</h4>
-        <p>Wanita Fae yang meraung sebelum kematian terjadi dalam keluarga tertentu. Bukan penyebab kematian — hanya penanda. Muncul dalam pakaian berlumuran darah korban yang akan wafat.</p>
+        <p>Wanita Fae yang meraung dari kegelapan sebelum kematian menjemput anggota keluarga garis keturunan kuno. Ia bukan pembunuh, melainkan bentara takdir yang meratap.</p>
         <span class="origin">Bean Sídhe — Irlandia</span>
-      </div>
-
-      <div class="creature-card">
-        <div class="icon">🍀</div>
-        <h4>Leprechaun</h4>
-        <p>Tukang sepatu kecil penjaga pot emas di ujung pelangi. Licik luar biasa — setiap manusia yang mencoba mencuri hartanya selalu kalah akal. Pertama muncul dalam sastra Irlandia abad ke-8.</p>
-        <span class="origin">Leipreachán — Irlandia</span>
       </div>
 
       <div class="creature-card">
         <div class="icon">🐴</div>
         <h4>Kelpie</h4>
-        <p>Kuda air Skotlandia yang memikat penunggang naik ke punggungnya, lalu menenggelamkan korban ke dasar danau atau sungai. Tidak bisa dilepas begitu menyentuh kulitnya.</p>
+        <p>Kuda air berkulit hitam pekat yang memikat manusia untuk menungganginya di tepi danau. Sekali tersentuh, kulitnya melekat bagai lem dan ia menyelam menenggelamkan korbannya.</p>
         <span class="origin">Each-Uisge — Skotlandia</span>
-      </div>
-
-      <div class="creature-card">
-        <div class="icon">🌑</div>
-        <h4>Púca</h4>
-        <p>Shapeshifter yang sering muncul sebagai kuda hitam, kelinci, atau kambing. Membawa nasib baik atau buruk. Aktif setelah matahari terbenam, menunggang manusia dalam perjalanan liar.</p>
-        <span class="origin">Phouka — Irlandia/Wales</span>
       </div>
 
       <div class="creature-card">
         <div class="icon">💀</div>
         <h4>Dullahan</h4>
-        <p>Penunggang kuda hitam tanpa kepala — kepalanya dijinjing di tangan. Di manapun ia menghentikan kudanya, seseorang pasti mati. Ia menyebut nama korban dan menarik jiwanya pergi.</p>
+        <p>Penunggang kuda hitam tanpa kepala yang menjinjing kepalanya sendiri di tangan kanan. Cambuknya terbuat dari tulang belakang manusia. Di mana ia berhenti, jiwa seseorang dicabut.</p>
         <span class="origin">Gan Ceann — Irlandia</span>
+      </div>
+
+      <div class="creature-card">
+        <div class="icon">🌑</div>
+        <h4>Púca</h4>
+        <p>Shapeshifter malam berkepala kuda atau kelinci raksasa dengan mata membara. Ia mengajak manusia dalam perjalanan liar menembus rawa dan jurang sebelum fajar tiba.</p>
+        <span class="origin">Phouka — Irlandia/Wales</span>
+      </div>
+
+      <div class="creature-card">
+        <div class="icon">🍀</div>
+        <h4>Leprechaun</h4>
+        <p>Tukang sepatu soliter dan penjaga harta karun tersembunyi. Dikenal amat cerdik dan licik; setiap manusia yang mencoba mengikatnya selalu terperangkap tipu muslihatnya.</p>
+        <span class="origin">Luchorpán — Irlandia</span>
       </div>
 
       <div class="creature-card">
         <div class="icon">👶</div>
         <h4>Changeling</h4>
-        <p>Bayi Fae yang ditukar dengan bayi manusia yang dicuri. Keluarga mencoba menipu Fae agar mengembalikan anak asli — dengan merebus kulit telur atau meletakkan besi di atas ayunan.</p>
-        <span class="origin">Tradisi Pan-Celtic</span>
+        <p>Tiruan kayu berjiwa atau bayi Fae tua yang ditinggalkan menggantikan anak manusia yang diculik ke Otherworld. Ditangkal dengan meletakkan besi di atas ayunan.</p>
+        <span class="origin">Tradisi Pan-Eropa</span>
       </div>
 
       <div class="creature-card">
         <div class="icon">🩸</div>
         <h4>Redcap</h4>
-        <p>Fae jahat yang mencelupkan topinya ke dalam darah para pelancong yang dibunuhnya. Tinggal di reruntuhan kastil perbatasan Skotlandia. Hanya bisa dikalahkan dengan mengutip ayat suci.</p>
-        <span class="origin">Unseelie — Skotlandia</span>
+        <p>Fae buas penghuni reruntuhan kastil perbatasan yang mencelupkan topinya ke dalam darah musafir. Tak bisa dibunuh dengan senjata biasa, hanya dengan doa atau mantra kuno.</p>
+        <span class="origin">Border Lore — Skotlandia</span>
       </div>
 
       <div class="creature-card">
         <div class="icon">🏠</div>
         <h4>Brownie</h4>
-        <p>Roh rumah tangga yang membersihkan, memperbaiki, dan melindungi. Hanya butuh semangkuk bubur di malam hari. Jangan beri pakaian — ia akan pergi selamanya dan mungkin menghancurkan rumah.</p>
+        <p>Roh penunggu tungku yang bekerja saat seisi rumah tertidur lelap. Hanya meminta semangkuk krim atau bubur gandum segar. Pantang diberi pakaian atau ucapan terima kasih langsung.</p>
         <span class="origin">Highlands — Skotlandia</span>
       </div>
     </div>
@@ -732,127 +969,107 @@ footer p{
 
 <div class="celtic-border flip"></div>
 
-<!-- ═══ Section: Traits ═══ -->
-<section class="bg-parchment">
-  <div class="section-inner reveal">
-    <span class="section-label">Bab VI</span>
-    <h2>Sifat <span class="thin">& Kekuatan</span></h2>
-
-    <p class="dropcap">Fae bukan baik, bukan jahat — mereka <strong>amoral</strong>. Mereka beroperasi dengan kode etik sendiri yang asing bagi logika manusia. Kebaikan dibalas kebaikan, tapi penghinaan sekecil apapun memicu pembalasan tanpa batas. Mereka tidak mengenal konsep "maaf".</p>
-
-    <h3>Kemampuan Utama</h3>
-    <p><strong>Shapeshifting</strong> — Berubah wujud sesuka hati: manusia cantik, hewan, cahaya, bayangan, ksatria bersenjata, monster.</p>
-    <p><strong>Glamour</strong> — Ilusi sihir yang menipu penglihatan. Emas Fae terkenal berubah menjadi daun kering keesokan harinya. Hanya salep khusus (*fairy ointment*) yang bisa menerobos glamour — dan memakainya tanpa izin berarti dibutakan.</p>
-    <p><strong>Manipulasi Waktu</strong> — Waktu berjalan berbeda di realm mereka. Satu malam di Otherworld bisa berarti puluhan tahun di dunia manusia.</p>
-    <p><strong>Kontrak Sakral</strong> — Janji dan tawaran Fae mengikat secara absolut. Menerima hadiah berarti berhutang. Mengucapkan "terima kasih" menyiratkan utang. Makan makanan mereka berarti terjebak selamanya.</p>
-    <p><strong>Penguasaan Elemen</strong> — Kekuatan terhubung langsung ke alam: cuaca, tanaman, hewan, batu, air. Mereka bisa menentukan panen melimpah atau kelaparan.</p>
-    <p><strong>Penerbangan</strong> — Sayap jarang muncul dalam folklor asli. Fae terbang dengan sihir murni, kadang bertengger di batang ragwort atau punggung burung.</p>
-  </div>
-</section>
-
-<div class="celtic-border"></div>
-
 <!-- ═══ Section: Protection ═══ -->
 <section id="protection" class="bg-dark">
   <div class="section-inner reveal">
     <span class="section-label">Bab VII</span>
-    <h2>Penangkal <span class="thin">& Perlindungan</span></h2>
+    <h2>Penangkal <span class="thin">& Hukum Perlindungan</span></h2>
 
-    <p>Sebagian besar folklor Fae sebenarnya adalah <em>panduan bertahan hidup</em> — cara melindungi diri dari makhluk yang tidak bermoral tapi sangat berkuasa:</p>
+    <p>Hubungan antara manusia dan kaum Fae dipandu oleh protokol mistis yang ketat. Pelanggaran kecil dapat berakibat fatal, namun mereka tunduk pada hukum-hukum elemen kuno:</p>
 
     <div class="protections">
       <div class="protection">
         <div class="p-icon">⚔️</div>
         <div class="p-text">
-          <strong>Besi Dingin</strong>
-          Penangkal paling ampuh. Taruh di ayunan bayi, pintu, atau bawa saat bepergian. Fae tidak bisa menyentuh besi — jejak budaya dari penakluk bersenjata besi.
+          <strong>Besi Dingin (*Cold Iron*)</strong>
+          Bahan yang membakar kulit Fae. Simbol peradaban logam yang menundukkan ras zaman batu. Simpan paku atau gunting besi di bawah bantal.
         </div>
       </div>
       <div class="protection">
         <div class="p-icon">🌿</div>
         <div class="p-text">
-          <strong>Rowan, Ash & Hawthorn</strong>
-          Kayu sakral penangkal Fae. Cabang rowan diikat di pintu. Hawthorn (whitethorn) dijaga ketat — menebangnya mengundang murka Aos Sí.
+          <strong>Pohon Rowan & Hawthorn</strong>
+          Kayu sakral penjaga pintu. Ranting rowan diikat dengan benang merah di ambang pintu untuk menangkal penculikan dan sihir pengabur mata (*glamour*).
         </div>
       </div>
       <div class="protection">
         <div class="p-icon">🧂</div>
         <div class="p-text">
-          <strong>Garam & Roti</strong>
-          Simbol rumah tangga dan peradaban. Roti adalah "prototipe makanan" — jimat paling umum sebelum bepergian ke tempat yang dihuni Fae.
+          <strong>Garam & Roti Gandum</strong>
+          Simbol keramahan dan ikatan suci tanah. Membawa sejumput garam dan remah roti di saku mencegah tersesat di alam Otherworld.
         </div>
       </div>
       <div class="protection">
         <div class="p-icon">👕</div>
         <div class="p-text">
-          <strong>Baju Dibalik</strong>
-          Membalik pakaian membingungkan sihir Fae. Khusus efektif terhadap Tylwyth Teg (Welsh) yang menyesatkan dengan musik harpa.
+          <strong>Membalik Pakaian</strong>
+          Jika terperangkap dalam kabut atau mendengar musik Fae yang memikat, balikkan jaket atau bajumu ke dalam untuk mematahkan ilusi spasial.
         </div>
       </div>
       <div class="protection">
         <div class="p-icon">🍀</div>
         <div class="p-text">
           <strong>Semanggi Empat Daun</strong>
-          Memungkinkan melihat Fae yang sedang menggunakan glamour. Jimat langka yang memberi "penglihatan kedua".
+          Jimat alami yang membuka "Mata Kedua" (*Second Sight*), merobek tirai *glamour* sehingga Fae terlihat dalam wujud aslinya.
         </div>
       </div>
       <div class="protection">
         <div class="p-icon">🔔</div>
         <div class="p-text">
-          <strong>Lonceng Gereja</strong>
-          Bunyi lonceng mengusir Fae. St. John's wort dan marigold di ambang pintu juga efektif.
+          <strong>Lonceng Perunggu & Gereja</strong>
+          Gelombang suara berdentang keras memecah frekuensi tubuh Fae yang menyerupai udara terkondensasi, memaksa mereka menjauh.
         </div>
       </div>
       <div class="protection">
         <div class="p-icon">🤫</div>
         <div class="p-text">
-          <strong>Jangan Ucapkan Terima Kasih</strong>
-          "Terima kasih" menyiratkan utang dalam hukum Fae. Tinggalkan persembahan dalam diam. Jangan sebut nama mereka — gunakan eufemisme: "Good Folk", "Fair Folk".
+          <strong>Haram Mengucap Terima Kasih</strong>
+          Dalam hukum mereka, "terima kasih" adalah pengakuan berhutang jiwa. Berikan balasan berupa susu atau madu tanpa sepatah kata pun.
         </div>
       </div>
       <div class="protection">
         <div class="p-icon">🍎</div>
         <div class="p-text">
-          <strong>Jangan Makan Makanan Mereka</strong>
-          Menerima makanan atau minuman Fae berarti terjebak di Otherworld selamanya. Aturan ini juga berlaku untuk menari di fairy ring.
+          <strong>Jangan Menelan Santapan Fae</strong>
+          Seperti Persephone yang memakan biji delima di Underworld Hades, sekali menelan makanan Fae, jiwamu terikat selamanya di alam mereka.
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="celtic-border flip"></div>
+<div class="greek-meander"></div>
 
-<!-- ═══ Section: Figures ═══ -->
+<!-- ═══ Section: Tokoh Agung ═══ -->
 <section class="bg-mid">
   <div class="section-inner reveal">
     <span class="section-label">Bab VIII</span>
-    <h2>Tokoh Agung <span class="thin">Fae</span></h2>
+    <h2>Para Penguasa <span class="thin">& Dewa Kuno</span></h2>
 
     <div class="figures">
       <div class="figure">
-        <div class="sigil">⚔</div>
+        <div class="sigil">🦅</div>
         <h4>The Morrígan</h4>
-        <div class="title">Dewi Triple — Perang, Takdir, Kematian</div>
-        <p>Shapeshifter agung yang sering muncul sebagai gagak di atas medan perang. Beberapa menyebutnya Fae paling berkuasa dalam seluruh mitologi.</p>
+        <div class="title">Ratu Perang, Gagak, & Takdir</div>
+        <p>Dewi triple Celtic yang setara dengan Moirai dan dewi perang Athena. Ia menentukan siapa yang gugur dan bangkit di medan laga.</p>
       </div>
       <div class="figure">
-        <div class="sigil">☀</div>
-        <h4>Lugh</h4>
-        <div class="title">Dewa Matahari Multi-Talenta</div>
-        <p>Festival Lughnasa dinamai darinya. Ahli dalam setiap keahlian — seni, perang, sihir, kerajinan — gelarnya Samildánach, "Yang Mahir Dalam Segalanya".</p>
+        <div class="sigil">☀️</div>
+        <h4>Lugh Lámhfhada</h4>
+        <div class="title">Dewa Cahaya & Penguasa Segala Seni</div>
+        <p>Padanan sejati dewa Apollo Yunani. Menguasai lembing matahari, seni musik lyre, pandai besi, dan sihir tertinggi Tuatha Dé Danann.</p>
       </div>
       <div class="figure">
         <div class="sigil">🔥</div>
         <h4>Brigid</h4>
-        <div class="title">Dewi Api, Musim Panas, Penyembuhan</div>
-        <p>Dikaitkan dengan Imbolc (1 Februari) dan Beltane. Pelindung penyair, pandai besi, dan tabib. Kemudian diinkorporasi sebagai Santo Brigid dalam Kekristenan.</p>
+        <div class="title">Dewi Api Abadi & Mata Air Penyembuh</div>
+        <p>Padanan dewi Hestia dan Hygieia. Penguasa tungku peradaban, syair puitis, serta mata air keramat yang memulihkan luka dan jiwa fana.</p>
       </div>
       <div class="figure">
         <div class="sigil">👑</div>
         <h4>Oberon & Titania</h4>
-        <div class="title">Raja & Ratu Fae dalam Sastra</div>
-        <p>Dipopulerkan Shakespeare dalam A Midsummer Night's Dream (1595). Titania sang Ratu, Oberon sang Raja, dan Puck si trickster yang setia.</p>
+        <div class="title">Raja & Ratu Alam Faerie</div>
+        <p>Dipopulerkan oleh sastra Renaisans. Memerintah perayaan bulan purnama, angin malam, dan tarian lingkaran gaib di hutan terlarang.</p>
       </div>
     </div>
   </div>
@@ -864,92 +1081,295 @@ footer p{
 <section id="legacy" class="bg-dark">
   <div class="section-inner reveal">
     <span class="section-label">Bab IX</span>
-    <h2>Warisan <span class="thin">& Jejak Sejarah</span></h2>
+    <h2>Jejak Waktu <span class="thin">& Warisan Abadi</span></h2>
 
     <div class="timeline">
       <div class="timeline-item">
-        <div class="era">400 SM — 1000 M</div>
-        <h4>Akar Kuno</h4>
-        <p>Pliny, Homer, dan Hesiod menyebut makhluk serupa Fae. Manuskrip Irlandia abad ke-8 (Cath Maige Tuired) mendeskripsikan Tuatha Dé Danann. Norse Edda menyebut álfar (elf) sebagai ras antara dewa dan manusia.</p>
+        <div class="era">800 SM — 400 M</div>
+        <h4>Era Helenik & Mediterania</h4>
+        <p>Homer dan Hesiod mengabadikan Nymphai dan Moirai. Bangsa Romawi mempersonifikasikan *fata*. Bangsa Yunani membangun kuil *nymphaea* di setiap mata air alami.</p>
       </div>
       <div class="timeline-item">
-        <div class="era">Abad 12 — 14</div>
-        <h4>Era Ketakutan</h4>
-        <p>Fae ditakuti secara universal. Sir Gawain and the Green Knight menampilkan figur Fae sebagai ancaman. Changeling, penyakit, kematian mendadak — semua disalahkan pada Fae.</p>
+        <div class="era">Abad ke-8 — 12 M</div>
+        <h4>Manuskrip Kuno Irlandia</h4>
+        <p>Kitab *Lebor Gabála Érenn* dan *Cath Maige Tuired* mencatat kisah Tuatha Dé Danann yang mengungsi ke bawah tanah menjadi kaum Aos Sí.</p>
       </div>
       <div class="timeline-item">
-        <div class="era">1595</div>
-        <h4>Shakespeare Memisahkan Dua Dunia</h4>
-        <p>A Midsummer Night's Dream memberi Fae raja-ratu, istana, dan temperamen amoral yang jenaka. Fae sastra berpisah dari Fae folklor — menjadi lebih kecil, lebih jinak, lebih teatrikal.</p>
+        <div class="era">1595 M</div>
+        <h4>Renaisans & Shakespeare</h4>
+        <p>*A Midsummer Night's Dream* memadukan arketipe nimfa Yunani dengan peri hutan Inggris, melahirkan citra istana peri Titania dan Oberon dalam sastra dunia.</p>
       </div>
       <div class="timeline-item">
-        <div class="era">1691</div>
-        <h4>Robert Kirk & The Secret Commonwealth</h4>
-        <p>Pendeta Skotlandia ini menulis catatan etnografi paling detail tentang Fae — berdasarkan wawancara puluhan orang yang mengaku pernah melihat mereka. Karya ini hampir hilang hingga Sir Walter Scott menerbitkannya ulang pada 1815.</p>
+        <div class="era">1691 M</div>
+        <h4>Catatan Etnografi Robert Kirk</h4>
+        <p>Pendeta Skotlandia menulis *The Secret Commonwealth*, dokumentasi paling mendalam mengenai eksistensi ras Fae sebagai masyarakat paralel berdimensi halus.</p>
       </div>
       <div class="timeline-item">
-        <div class="era">Era Victoria</div>
-        <h4>Peri Sayap Kupu-Kupu</h4>
-        <p>Fae menyusut jadi peri kecil bersayap dalam seni dan dongeng anak. Sayap — yang hampir tidak pernah muncul dalam folklor asli — menjadi ciri khas. Fae yang tadinya ditakuti menjadi lucu dan jinak.</p>
-      </div>
-      <div class="timeline-item">
-        <div class="era">Abad 19 — 20</div>
+        <div class="era">Abad ke-19 — 20 M</div>
         <h4>Celtic Revival</h4>
-        <p>W.B. Yeats, Lady Gregory, Thomas Crofton Croker mengarsipkan tradisi lisan menjadi teks tertulis. Fae dikembalikan sebagai bagian kanon warisan budaya Celtic.</p>
+        <p>Penyair W.B. Yeats dan Lady Gregory menghidupkan kembali folklor lisan Aos Sí sebagai identitas budaya tandingan di era industri modern.</p>
       </div>
       <div class="timeline-item">
-        <div class="era">Modern</div>
-        <h4>Warisan yang Masih Hidup</h4>
-        <p>Fairy fort di Irlandia masih dilindungi hukum. Proyek konstruksi kadang dialihkan untuk menghindari situs Fae. Leprechaun secara resmi dilindungi undang-undang di Carlingford, County Louth. Tolkien, C.S. Lewis, dan seluruh genre fantasi modern tidak bisa dipisahkan dari tradisi Fae.</p>
+        <div class="era">Era Kontemporer</div>
+        <h4>Konservasi & Mitos yang Bertahan</h4>
+        <p>Hingga hari ini di Irlandia dan Islandia, proyek jalan raya dan pembangunan sipil resmi dialihkan demi melindungi bukit *fairy fort* dan batu hunian bangsa gaib.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="celtic-border flip"></div>
+<div class="greek-meander"></div>
 
 <!-- ═══ Footer ═══ -->
 <footer>
-  <div class="celtic-border" style="margin-bottom:2rem"></div>
-  <p class="colophon">✦ Disusun dari tradisi Celtic, Germanic & Slavic ✦</p>
-  <p>Sumber: Lebor Gabála Érenn · Poetic Edda · Mabinogion · The Secret Commonwealth (1691) · W.B. Yeats · Lady Gregory · Wikipedia · Sacred Texts Archive</p>
+  <p class="colophon">✦ Ditenun dari Benang Mitologi Yunani, Celtic, dan Sastra Abad Pertengahan ✦</p>
+  <p>Sumber Sejarah: Hesiod Theogony · Homeric Hymns · Lebor Gabála Érenn · The Secret Commonwealth (1691) · W.B. Yeats</p>
 </footer>
 
+<!-- ═══ Interactive Scripts ═══ -->
 <script>
-// Navbar scroll effect
-const nav=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('scrolled',window.scrollY>60);
+// 1. Constellation Background Canvas
+const canvas = document.getElementById('constellation-canvas');
+const ctx = canvas.getContext('2d');
+let w, h;
+let mouse = { x: null, y: null, maxDist: 150 };
+
+function resizeCanvas() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+window.addEventListener('mousemove', e => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+window.addEventListener('mouseleave', () => {
+  mouse.x = null;
+  mouse.y = null;
 });
 
-// Reveal on scroll
-const reveals=document.querySelectorAll('.reveal');
-const observer=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}
+const numStars = Math.min(Math.floor(window.innerWidth / 18), 75);
+const stars = [];
+for (let i = 0; i < numStars; i++) {
+  stars.push({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    vx: (Math.random() - 0.5) * 0.4,
+    vy: (Math.random() - 0.5) * 0.4,
+    radius: Math.random() * 1.8 + 0.8,
+    baseAlpha: Math.random() * 0.6 + 0.3,
+    phase: Math.random() * Math.PI * 2
   });
-},{threshold:.15});
-reveals.forEach(el=>observer.observe(el));
-
-// Particles
-const container=document.getElementById('particles');
-for(let i=0;i<30;i++){
-  const p=document.createElement('div');
-  p.className='particle';
-  p.style.left=Math.random()*100+'%';
-  p.style.animationDuration=(8+Math.random()*12)+'s';
-  p.style.animationDelay=Math.random()*10+'s';
-  p.style.width=p.style.height=(1+Math.random()*3)+'px';
-  container.appendChild(p);
 }
 
-// Smooth scroll for nav links
-document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
+function drawConstellations() {
+  ctx.clearRect(0, 0, w, h);
+  const now = Date.now() * 0.002;
+
+  // Draw connecting star filaments
+  for (let i = 0; i < stars.length; i++) {
+    for (let j = i + 1; j < stars.length; j++) {
+      const dx = stars[i].x - stars[j].x;
+      const dy = stars[i].y - stars[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 115) {
+        ctx.strokeStyle = `rgba(212, 175, 55, ${(1 - dist / 115) * 0.22})`;
+        ctx.lineWidth = 0.6;
+        ctx.beginPath();
+        ctx.moveTo(stars[i].x, stars[i].y);
+        ctx.lineTo(stars[j].x, stars[j].y);
+        ctx.stroke();
+      }
+    }
+
+    // Connect to mouse
+    if (mouse.x !== null) {
+      const mdx = stars[i].x - mouse.x;
+      const mdy = stars[i].y - mouse.y;
+      const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+      if (mdist < mouse.maxDist) {
+        ctx.strokeStyle = `rgba(243, 210, 107, ${(1 - mdist / mouse.maxDist) * 0.45})`;
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.moveTo(stars[i].x, stars[i].y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Draw star nodes
+  for (let s of stars) {
+    s.x += s.vx;
+    s.y += s.vy;
+    if (s.x < 0) s.x = w;
+    if (s.x > w) s.x = 0;
+    if (s.y < 0) s.y = h;
+    if (s.y > h) s.y = 0;
+
+    const flicker = Math.sin(now + s.phase) * 0.25;
+    ctx.fillStyle = `rgba(243, 210, 107, ${Math.max(0.1, s.baseAlpha + flicker)})`;
+    ctx.shadowColor = '#d4af37';
+    ctx.shadowBlur = 6;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  }
+
+  requestAnimationFrame(drawConstellations);
+}
+drawConstellations();
+
+// 2. Ancient Apollo Lyre Synthesizer (Native Web Audio API)
+let audioCtx = null;
+let isPlayingAudio = false;
+let harpTimer = null;
+const audioBtn = document.getElementById('audio-toggle');
+const audioText = audioBtn.querySelector('.audio-text');
+
+// Ancient Greek Dorian Scale Notes: D3, F3, G3, A3, C4, D4, E4, F4, A4
+const lyreFrequencies = [146.83, 174.61, 196.00, 220.00, 261.63, 293.66, 329.63, 349.23, 440.00];
+
+function playLyrePluck() {
+  if (!audioCtx || !isPlayingAudio) return;
+  const freq = lyreFrequencies[Math.floor(Math.random() * lyreFrequencies.length)];
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  const filter = audioCtx.createBiquadFilter();
+
+  osc.type = Math.random() > 0.5 ? 'triangle' : 'sine';
+  osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+  filter.type = 'lowpass';
+  filter.frequency.setValueAtTime(1200, audioCtx.currentTime);
+
+  const now = audioCtx.currentTime;
+  gain.gain.setValueAtTime(0, now);
+  gain.gain.linearRampToValueAtTime(0.09, now + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.4);
+
+  osc.connect(filter);
+  filter.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  osc.start(now);
+  osc.stop(now + 2.5);
+
+  const nextInterval = 400 + Math.random() * 850;
+  harpTimer = setTimeout(playLyrePluck, nextInterval);
+}
+
+audioBtn.addEventListener('click', () => {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+
+  isPlayingAudio = !isPlayingAudio;
+  if (isPlayingAudio) {
+    audioBtn.classList.add('playing');
+    audioText.textContent = 'Harpa Alami';
+    playLyrePluck();
+  } else {
+    audioBtn.classList.remove('playing');
+    audioText.textContent = 'Harpa Apollo';
+    if (harpTimer) clearTimeout(harpTimer);
+  }
+});
+
+// 3. Oracle of Delphi Interactive Prophecies
+const prophecies = [
+  "« Benang Clotho berputar di atas kepalamu: Jangan memakan buah delima perjamuan di balik kabut tebal malam ini. »",
+  "« Bisikan Naiad di mata air Castalia: Besi dingin melindungimu dari jerat pesona, namun keheningan yang menyelamatkan jiwamu. »",
+  "« Lakhesis telah membentangkan mistar: Waktu dunia fana berlari kencang, namun di lingkaran jamur, satu tarikan nafas adalah seratus musim. »",
+  "« Seruling Pan bergema di lereng batu: Balikkan pakaianmu saat melintasi persimpangan tiga jalan sebelum fajar merekah. »",
+  "« Titah Atropos tak bergeming: Jangan pernah berucap janji atau berterima kasih kepada mereka yang menari tanpa bayangan. »",
+  "« Kabut Tír na nÓg tersibak: Carilah semanggi berdaun empat saat embun pertama, maka wajah asli mereka akan terbongkar. »"
+];
+
+const oracleBtn = document.getElementById('oracle-btn');
+const oracleDisplay = document.getElementById('oracle-display');
+let lastIdx = -1;
+
+oracleBtn.addEventListener('click', () => {
+  oracleDisplay.style.opacity = '0';
+  oracleDisplay.style.transform = 'scale(0.96)';
+  
+  // Audio chime if audioCtx active
+  if (audioCtx && audioCtx.state === 'running') {
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+    g.gain.setValueAtTime(0.05, audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start(); o.stop(audioCtx.currentTime + 1.2);
+  }
+
+  setTimeout(() => {
+    let nextIdx;
+    do { nextIdx = Math.floor(Math.random() * prophecies.length); } while (nextIdx === lastIdx);
+    lastIdx = nextIdx;
+    oracleDisplay.textContent = prophecies[nextIdx];
+    oracleDisplay.style.opacity = '1';
+    oracleDisplay.style.transform = 'scale(1)';
+  }, 280);
+});
+
+// 4. 3D Tilt Card Interaction
+const tiltCards = document.querySelectorAll('.pantheon-card, .creature-card, .figure');
+tiltCards.forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -6;
+    const rotateY = ((x - centerX) / centerX) * 6;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+    card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+  });
+});
+
+// 5. Scroll Reveal & Navbar
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+// 6. Smooth Scroll Navigation
+document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
     e.preventDefault();
-    const t=document.querySelector(a.getAttribute('href'));
-    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
-    document.querySelector('nav ul').classList.remove('open');
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    const navMenu = document.querySelector('nav ul');
+    if (navMenu) navMenu.classList.remove('open');
   });
 });
 </script>
