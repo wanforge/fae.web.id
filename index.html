@@ -348,10 +348,7 @@ section p strong{color:var(--gold-bright);font-weight:600}
   position:relative;
   box-shadow:0 10px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(212,175,55,0.05);
 }
-.oracle-box::before{
-  content:'🏛';font-size:2.5rem;display:block;margin-bottom:0.5rem;
-  filter:drop-shadow(0 0 15px var(--gold-glow));
-}
+
 .oracle-box h3{
   margin:0.5rem 0 0.5rem;font-size:1.4rem;color:var(--gold-bright);
 }
@@ -671,6 +668,14 @@ footer p{
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="g-gold-roof" x1="0" y1="0" x2="32" y2="12" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+  </defs>
+</svg>
 
 <!-- ═══ Background Canvas & Ambient ═══ -->
 <canvas id="constellation-canvas"></canvas>
@@ -681,16 +686,16 @@ footer p{
   <div class="nav-inner">
     <div class="brand-group">
       <a href="#" class="logo">
-        <span class="greek-sigil">🏛</span>
+        <span class="greek-sigil"><svg class="nav-svg" viewBox="0 0 32 32" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 2L2 9H30L16 2Z" fill="url(#g-gold-roof)"/><rect x="3" y="9" width="26" height="2" fill="#D97706"/><rect x="5" y="11" width="22" height="16" fill="#082F49"/><rect x="5.5" y="11" width="3" height="16" rx="0.5" fill="#E2E8F0"/><rect x="11.5" y="11" width="3" height="16" rx="0.5" fill="#E2E8F0"/><rect x="17.5" y="11" width="3" height="16" rx="0.5" fill="#E2E8F0"/><rect x="23.5" y="11" width="3" height="16" rx="0.5" fill="#E2E8F0"/><rect x="2" y="27" width="28" height="3" rx="0.5" fill="url(#g-gold-roof)"/></svg></span>
         The <span>Fae</span>
       </a>
     </div>
     <div class="nav-right">
       <button id="audio-toggle" class="audio-btn" title="Nyalakan/Matikan Harpa Apollo">
-        <span class="wave">♫</span>
+        <span class="wave"><svg class="lyre-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 3C4 8 3 13 6 18C8 21 16 21 18 18C21 13 20 8 20 3H17C17 7 16 12 14 15C13 16 11 16 10 15C8 12 7 7 7 3H4Z" fill="url(#g-gold-roof)"/><rect x="5" y="3" width="14" height="2" rx="0.5" fill="#FDE68A"/><line x1="9" y1="4" x2="9" y2="17" stroke="#E0F2FE" stroke-width="1"/><line x1="12" y1="4" x2="12" y2="18" stroke="#E0F2FE" stroke-width="1"/><line x1="15" y1="4" x2="15" y2="17" stroke="#E0F2FE" stroke-width="1"/><circle cx="12" cy="19.5" r="1.5" fill="#38BDF8"/></svg></span>
         <span class="audio-text">Harpa Apollo</span>
       </button>
-      <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')" aria-label="Menu">☰</button>
+      <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')" aria-label="Menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="2" rx="1" fill="#FBBF24"/><rect x="3" y="11" width="18" height="2" rx="1" fill="#F59E0B"/><rect x="3" y="17" width="18" height="2" rx="1" fill="#D97706"/></svg></button>
       <ul>
         <li><a href="#origins">Asal-Usul</a></li>
         <li><a href="#greek-roots">Akar Yunani</a></li>
@@ -707,7 +712,7 @@ footer p{
 <!-- ═══ Hero ═══ -->
 <section class="hero">
   <div class="hero-content">
-    <div class="laurel-wreath">🌿 ✧ 🌿</div>
+    <div class="laurel-wreath"><svg class="hero-laurel-svg" viewBox="0 0 120 40" width="130" height="42" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 26C35 28 20 22 10 12M50 26C38 32 22 30 6 22" stroke="#10B981" stroke-width="2.2" stroke-linecap="round"/><path d="M70 26C85 28 100 22 110 12M70 26C82 32 98 30 114 22" stroke="#10B981" stroke-width="2.2" stroke-linecap="round"/><circle cx="20" cy="18" r="2.5" fill="#FBBF24"/><circle cx="35" cy="25" r="2" fill="#FBBF24"/><circle cx="100" cy="18" r="2.5" fill="#FBBF24"/><circle cx="85" cy="25" r="2" fill="#FBBF24"/><path d="M60 8L62.5 16.5L71 19L62.5 21.5L60 30L57.5 21.5L49 19L57.5 16.5L60 8Z" fill="url(#g-gold-roof)"/><circle cx="60" cy="19" r="2" fill="#38BDF8"/></svg></div>
     <div class="greek-subtitle">ΦΑΙ • ΜΟΙΡΑΙ • ΝΥΜΦΑΙ • AOS SÍ</div>
     <h1>
       The Fae
@@ -763,7 +768,7 @@ footer p{
 
     <div class="pantheon-grid">
       <div class="pantheon-card">
-        <div class="greek-symbol">⚖️</div>
+        <div class="greek-symbol"><svg class="card-svg" viewBox="0 0 64 64" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="8" width="4" height="46" rx="1" fill="url(#g-gold-roof)"/><rect x="20" y="52" width="24" height="6" rx="2" fill="url(#g-gold-roof)"/><path d="M32 10L10 18M32 10L54 18" stroke="#FBBF24" stroke-width="3" stroke-linecap="round"/><path d="M10 18V28L5 36H15L10 28" fill="#F59E0B"/><path d="M54 18V28L49 36H59L54 28" fill="#F59E0B"/><path d="M6 36Q10 40 14 36" stroke="#B45309" stroke-width="2"/><path d="M50 36Q54 40 58 36" stroke="#B45309" stroke-width="2"/><path d="M8 22C18 32 46 8 56 20" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/><circle cx="32" cy="8" r="3.5" fill="#FDE047"/></svg></div>
         <h4>Tiga Moirai (Μοῖραι)</h4>
         <span class="alias">Klotho, Lakhesis, & Atropos</span>
         <p>Dewi-dewi pemintal benang nasib. Klotho memintal, Lakhesis mengukur panjang usia, dan Atropos memotong benang tanpa ampun. Kata <em>Fae</em> dan <em>Fairy</em> lahir dari terjemahan Latin atas ketiga dewi ini (<em>Fata</em>).</p>
@@ -771,7 +776,7 @@ footer p{
       </div>
 
       <div class="pantheon-card">
-        <div class="greek-symbol">💧</div>
+        <div class="greek-symbol"><svg class="card-svg" viewBox="0 0 64 64" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 14C22 10 42 10 42 14C42 18 46 22 46 28C46 38 38 44 32 44C26 44 18 38 18 28C18 22 22 18 22 14Z" fill="#EA580C"/><ellipse cx="32" cy="14" rx="10" ry="3" fill="#FB923C"/><path d="M18 22C12 24 12 34 18 36" stroke="#9A3412" stroke-width="2.5"/><path d="M46 22C52 24 52 34 46 36" stroke="#9A3412" stroke-width="2.5"/><path d="M30 40C30 46 20 48 10 52C22 54 44 54 54 52C42 48 34 46 34 40Z" fill="#0284C7"/><path d="M4 56C16 52 26 58 36 54C46 50 56 58 60 56" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="48" r="2" fill="#BAE6FD"/></svg></div>
         <h4>Naiad & Nereid (Ναϊάδες)</h4>
         <span class="alias">Roh Penjaga Air & Lautan</span>
         <p>Penghuni mata air suci, telaga, dan samudra. Menuntut penghormatan dan sesaji. Mengabaikan atau mengotori mata air mereka berarti terkena kutukan kebutaan, kegilaan, atau ditarik ke dasar air.</p>
@@ -779,7 +784,7 @@ footer p{
       </div>
 
       <div class="pantheon-card">
-        <div class="greek-symbol">🌳</div>
+        <div class="greek-symbol"><svg class="card-svg" viewBox="0 0 64 64" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26 34C26 44 20 54 16 58H48C44 54 38 44 38 34C38 30 44 26 48 20L44 18C40 22 36 24 34 26C32 24 28 22 24 18L20 20C24 26 26 30 26 34Z" fill="#713F12"/><circle cx="32" cy="18" r="16" fill="#10B981"/><circle cx="20" cy="22" r="12" fill="#059669"/><circle cx="44" cy="22" r="12" fill="#059669"/><circle cx="32" cy="10" r="10" fill="#34D399"/><ellipse cx="32" cy="40" rx="2" ry="3.5" fill="#FDE047"/></svg></div>
         <h4>Dryad (Δρυάδες)</h4>
         <span class="alias">Jiwa Pohon & Hutan Ek</span>
         <p>Roh pepohonan yang hidup dan matinya menyatu dengan pohon induknya. Hubungan sakral ini adalah akar dari pantangan menebang *fairy thorn* (pohon hawthorn sakral) di tanah Celtic.</p>
@@ -787,7 +792,7 @@ footer p{
       </div>
 
       <div class="pantheon-card">
-        <div class="greek-symbol">🐐</div>
+        <div class="greek-symbol"><svg class="card-svg" viewBox="0 0 64 64" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="14" width="6" height="42" rx="1.5" fill="#F59E0B"/><rect x="20" y="18" width="6" height="38" rx="1.5" fill="#F59E0B"/><rect x="28" y="23" width="6" height="33" rx="1.5" fill="#F59E0B"/><rect x="36" y="29" width="6" height="27" rx="1.5" fill="#F59E0B"/><rect x="44" y="36" width="6" height="20" rx="1.5" fill="#F59E0B"/><rect x="10" y="26" width="42" height="4" rx="1" fill="#DC2626"/><rect x="10" y="34" width="42" height="4" rx="1" fill="#DC2626"/><circle cx="15" cy="16" r="1.5" fill="#451A03"/><circle cx="23" cy="20" r="1.5" fill="#451A03"/><circle cx="31" cy="25" r="1.5" fill="#451A03"/><circle cx="39" cy="31" r="1.5" fill="#451A03"/><circle cx="47" cy="38" r="1.5" fill="#451A03"/><path d="M8 20C14 22 18 20 22 14" stroke="#10B981" stroke-width="2"/></svg></div>
         <h4>Pan & Kaum Satyr (Σάτυροι)</h4>
         <span class="alias">Keliaran Alam & Musik Hipnotis</span>
         <p>Dewa bertanduk penguasa padang liar dan pegunungan Arcadia. Senjata utamanya adalah seruling syrinx yang mampu menimbulkan ketakutan massal (*panic*) atau tarian ekstatis tanpa henti.</p>
@@ -797,12 +802,13 @@ footer p{
 
     <!-- Oracle Interactive Delphi Widget -->
     <div id="oracle" class="oracle-box reveal">
+      <div style="margin-bottom:0.75rem"><svg class="oracle-svg" viewBox="0 0 80 80" width="60" height="60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40 8C35 18 45 22 40 32C45 24 50 20 40 8Z" fill="#F59E0B"/><ellipse cx="40" cy="32" rx="26" ry="7" fill="url(#g-gold-roof)"/><ellipse cx="40" cy="32" rx="20" ry="4" fill="#991B1B"/><path d="M18 34L10 72M62 34L70 72M40 36V72" stroke="#FBBF24" stroke-width="4.5" stroke-linecap="round"/><circle cx="40" cy="56" r="14" stroke="#F59E0B" stroke-width="2.5" fill="none"/><circle cx="40" cy="32" r="3" fill="#38BDF8"/></svg></div>
       <h3>Oracle Delphi & Bisikan Fae</h3>
       <p class="oracle-sub">Minta ramalan pada tripod emas Pythia dan dengarkan garis takdir yang ditenun oleh Moirai serta Fae kuno.</p>
       <div id="oracle-display" class="oracle-result">
         "Ketuk tombol di bawah untuk mendengar suara tabir nasib..."
       </div>
-      <button id="oracle-btn" class="oracle-action-btn">Konsultasi Oracle ✦</button>
+      <button id="oracle-btn" class="oracle-action-btn">Konsultasi Oracle</button>
     </div>
   </div>
 </section>
@@ -835,7 +841,7 @@ footer p{
 
     <div class="courts">
       <div class="court court-seelie">
-        <h4>☀ Seelie Court</h4>
+        <h4 style="display:flex;align-items:center;gap:0.5rem"><svg class="court-svg" viewBox="0 0 36 36" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" r="8" fill="#F59E0B"/><path d="M18 2V7M18 29V34M2 18H7M29 18H34M6.7 6.7L10.2 10.2M25.8 25.8L29.3 29.3M6.7 29.3L10.2 25.8M25.8 10.2L29.3 6.7" stroke="#FDE047" stroke-width="2.5" stroke-linecap="round"/><circle cx="18" cy="18" r="4" fill="#FEF9C3"/></svg> Seelie Court</h4>
         <div class="court-meaning">"Yang Diberkati" — Cahaya Musim Semi & Panas</div>
         <ul>
           <li>Memerintah siklus pertumbuhan, fajar, dan kemakmuran</li>
@@ -847,7 +853,7 @@ footer p{
         </ul>
       </div>
       <div class="court court-unseelie">
-        <h4>☾ Unseelie Court</h4>
+        <h4 style="display:flex;align-items:center;gap:0.5rem"><svg class="court-svg" viewBox="0 0 36 36" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26 6C18 7 12 14 13 22C14 27 18 31 23 32C13 33 6 25 7 16C8 9 14 4 20 4C22 4 24 4.5 26 6Z" fill="#A855F7"/><circle cx="27" cy="10" r="1.5" fill="#38BDF8"/><circle cx="24" cy="24" r="1" fill="#38BDF8"/><circle cx="29" cy="18" r="1" fill="#F472B6"/></svg> Unseelie Court</h4>
         <div class="court-meaning">"Yang Tak Suci" — Bayangan Musim Gugur & Dingin</div>
         <ul>
           <li>Memerintah badai malam, pembusukan, dan kematian</li>
@@ -909,56 +915,56 @@ footer p{
 
     <div class="creatures-grid">
       <div class="creature-card">
-        <div class="icon">👻</div>
+        <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 10C24 10 20 18 20 28C20 40 14 54 10 58C18 56 26 50 32 46C38 50 46 56 54 58C50 54 44 40 44 28C44 18 40 10 32 10Z" fill="#0284C7"/><circle cx="32" cy="20" r="8" fill="#F0F9FF"/><ellipse cx="29" cy="19" rx="1.5" ry="2" fill="#8B5CF6"/><ellipse cx="35" cy="19" rx="1.5" ry="2" fill="#8B5CF6"/><path d="M22 14C16 20 14 30 18 36M42 14C48 20 50 30 46 36" stroke="#C084FC" stroke-width="2" stroke-linecap="round"/></svg></div>
         <h4>Banshee</h4>
         <p>Wanita Fae yang meraung dari kegelapan sebelum kematian menjemput anggota keluarga garis keturunan kuno. Ia bukan pembunuh, melainkan bentara takdir yang meratap.</p>
         <span class="origin">Bean Sídhe — Irlandia</span>
       </div>
 
       <div class="creature-card">
-        <div class="icon">🐴</div>
+        <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 42C16 34 22 26 26 22L24 12L34 16L38 24C44 26 50 32 52 40C44 38 38 42 34 46C28 42 22 42 14 42Z" fill="#0F766E"/><path d="M30 16C36 10 44 14 46 22M26 22C32 20 38 22 40 28" stroke="#5EEAD4" stroke-width="2.5" stroke-linecap="round"/><circle cx="28" cy="18" r="2" fill="#FEF08A"/><path d="M6 56C16 48 30 62 42 52C48 48 56 54 60 56C50 62 38 60 28 62C18 64 10 60 6 56Z" fill="#0284C7"/></svg></div>
         <h4>Kelpie</h4>
         <p>Kuda air berkulit hitam pekat yang memikat manusia untuk menungganginya di tepi danau. Sekali tersentuh, kulitnya melekat bagai lem dan ia menyelam menenggelamkan korbannya.</p>
         <span class="origin">Each-Uisge — Skotlandia</span>
       </div>
 
       <div class="creature-card">
-        <div class="icon">💀</div>
+        <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 28C20 28 26 24 32 24C38 24 44 28 44 28L48 58H16L20 28Z" fill="#1E293B"/><rect x="22" y="32" width="20" height="4" fill="#CBD5E1"/><circle cx="46" cy="18" r="10" fill="#E2E8F0"/><ellipse cx="43" cy="17" rx="2" ry="2.5" fill="#38BDF8"/><ellipse cx="49" cy="17" rx="2" ry="2.5" fill="#38BDF8"/><path d="M16 38C10 40 8 48 10 54" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round"/></svg></div>
         <h4>Dullahan</h4>
         <p>Penunggang kuda hitam tanpa kepala yang menjinjing kepalanya sendiri di tangan kanan. Cambuknya terbuat dari tulang belakang manusia. Di mana ia berhenti, jiwa seseorang dicabut.</p>
         <span class="origin">Gan Ceann — Irlandia</span>
       </div>
 
       <div class="creature-card">
-        <div class="icon">🌑</div>
+        <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 16C22 16 16 26 16 38C16 50 24 58 32 58C40 58 48 50 48 38C48 26 42 16 32 16Z" fill="#18181B"/><path d="M22 22C16 14 10 18 10 26C10 32 16 30 18 28" stroke="#FBBF24" stroke-width="3" stroke-linecap="round"/><path d="M42 22C48 14 54 18 54 26C54 32 48 30 46 28" stroke="#FBBF24" stroke-width="3" stroke-linecap="round"/><ellipse cx="26" cy="36" rx="4" ry="5.5" fill="#F59E0B"/><ellipse cx="38" cy="36" rx="4" ry="5.5" fill="#F59E0B"/><ellipse cx="26" cy="36" rx="1.5" ry="3.5" fill="#451A03"/><ellipse cx="38" cy="36" rx="1.5" ry="3.5" fill="#451A03"/></svg></div>
         <h4>Púca</h4>
         <p>Shapeshifter malam berkepala kuda atau kelinci raksasa dengan mata membara. Ia mengajak manusia dalam perjalanan liar menembus rawa dan jurang sebelum fajar tiba.</p>
         <span class="origin">Phouka — Irlandia/Wales</span>
       </div>
 
       <div class="creature-card">
-        <div class="icon">🍀</div>
+        <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 12H46L44 32H20L18 12Z" fill="#166534"/><ellipse cx="32" cy="32" rx="24" ry="5" fill="#15803D"/><rect x="20" y="25" width="24" height="5" fill="#1C1917"/><rect x="28" y="23" width="8" height="9" rx="1" fill="#FBBF24"/><circle cx="32" cy="48" r="12" fill="#27272A"/><circle cx="28" cy="44" r="3" fill="#FDE047"/><circle cx="36" cy="44" r="3" fill="#FDE047"/></svg></div>
         <h4>Leprechaun</h4>
         <p>Tukang sepatu soliter dan penjaga harta karun tersembunyi. Dikenal amat cerdik dan licik; setiap manusia yang mencoba mengikatnya selalu terperangkap tipu muslihatnya.</p>
         <span class="origin">Luchorpán — Irlandia</span>
       </div>
 
       <div class="creature-card">
-        <div class="icon">👶</div>
+        <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 30C12 30 18 48 32 48C46 48 52 30 52 30L46 26C46 26 40 40 32 40C24 40 18 26 18 26L12 30Z" fill="#78350F"/><circle cx="32" cy="24" r="8" fill="#FCD34D"/><circle cx="29" cy="23" r="1.5" fill="#0284C7"/><circle cx="35" cy="23" r="1.5" fill="#0284C7"/><path d="M24 16C28 10 36 10 40 16" stroke="#10B981" stroke-width="2"/></svg></div>
         <h4>Changeling</h4>
         <p>Tiruan kayu berjiwa atau bayi Fae tua yang ditinggalkan menggantikan anak manusia yang diculik ke Otherworld. Ditangkal dengan meletakkan besi di atas ayunan.</p>
         <span class="origin">Tradisi Pan-Eropa</span>
       </div>
 
       <div class="creature-card">
-        <div class="icon">🩸</div>
+        <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 6C24 18 16 28 18 36H46C48 28 40 18 32 6Z" fill="#B91C1C"/><circle cx="32" cy="42" r="8" fill="#FBBF24"/><circle cx="29" cy="41" r="1.5" fill="#7F1D1D"/><circle cx="35" cy="41" r="1.5" fill="#7F1D1D"/><path d="M16 46L8 56M48 46L56 56" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/></svg></div>
         <h4>Redcap</h4>
         <p>Fae buas penghuni reruntuhan kastil perbatasan yang mencelupkan topinya ke dalam darah musafir. Tak bisa dibunuh dengan senjata biasa, hanya dengan doa atau mantra kuno.</p>
         <span class="origin">Border Lore — Skotlandia</span>
       </div>
 
       <div class="creature-card">
-        <div class="icon">🏠</div>
+        <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="20" r="9" fill="#FDE68A"/><path d="M22 16C22 10 32 8 42 16" fill="#D97706"/><circle cx="28" cy="20" r="1.5" fill="#451A03"/><circle cx="36" cy="20" r="1.5" fill="#451A03"/><path d="M20 28C20 28 26 26 32 26C38 26 44 28 44 28L42 54H22L20 28Z" fill="#78350F"/><ellipse cx="32" cy="46" rx="9" ry="5" fill="#FEF08A"/><ellipse cx="32" cy="46" rx="7" ry="3.5" fill="#FFFFFF"/></svg></div>
         <h4>Brownie</h4>
         <p>Roh penunggu tungku yang bekerja saat seisi rumah tertidur lelap. Hanya meminta semangkuk krim atau bubur gandum segar. Pantang diberi pakaian atau ucapan terima kasih langsung.</p>
         <span class="origin">Highlands — Skotlandia</span>
@@ -979,56 +985,56 @@ footer p{
 
     <div class="protections">
       <div class="protection">
-        <div class="p-icon">⚔️</div>
+        <div class="p-icon"><svg class="prot-svg" viewBox="0 0 32 32" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 26L22 10L26 14L10 30L6 26Z" fill="#94A3B8"/><path d="M22 10L26 6L28 8L24 12L22 10Z" fill="#FBBF24"/><circle cx="26" cy="6" r="2" fill="#38BDF8"/><line x1="8" y1="28" x2="22" y2="14" stroke="#F8FAFC" stroke-width="1.5"/></svg></div>
         <div class="p-text">
           <strong>Besi Dingin (*Cold Iron*)</strong>
           Bahan yang membakar kulit Fae. Simbol peradaban logam yang menundukkan ras zaman batu. Simpan paku atau gunting besi di bawah bantal.
         </div>
       </div>
       <div class="protection">
-        <div class="p-icon">🌿</div>
+        <div class="p-icon"><svg class="prot-svg" viewBox="0 0 32 32" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 26C14 20 20 14 26 6" stroke="#78350F" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="14" r="3" fill="#DC2626"/><circle cx="14" cy="18" r="3" fill="#EF4444"/><circle cx="18" cy="12" r="3" fill="#DC2626"/><path d="M12 8C16 10 20 8 22 4" stroke="#16A34A" stroke-width="2"/></svg></div>
         <div class="p-text">
           <strong>Pohon Rowan & Hawthorn</strong>
           Kayu sakral penjaga pintu. Ranting rowan diikat dengan benang merah di ambang pintu untuk menangkal penculikan dan sihir pengabur mata (*glamour*).
         </div>
       </div>
       <div class="protection">
-        <div class="p-icon">🧂</div>
+        <div class="p-icon"><svg class="prot-svg" viewBox="0 0 32 32" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="14" cy="18" rx="10" ry="7" fill="#D97706"/><path d="M8 17Q14 13 20 17" stroke="#FEF3C7" stroke-width="1.5"/><ellipse cx="24" cy="22" rx="6" ry="4" fill="#94A3B8"/><circle cx="23" cy="21" r="1" fill="#FFFFFF"/><circle cx="25" cy="22" r="1" fill="#FFFFFF"/></svg></div>
         <div class="p-text">
           <strong>Garam & Roti Gandum</strong>
           Simbol keramahan dan ikatan suci tanah. Membawa sejumput garam dan remah roti di saku mencegah tersesat di alam Otherworld.
         </div>
       </div>
       <div class="protection">
-        <div class="p-icon">👕</div>
+        <div class="p-icon"><svg class="prot-svg" viewBox="0 0 32 32" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L6 12L10 14L10 26H22L22 14L26 12L22 6L16 10L10 6Z" fill="#1E3A8A"/><path d="M12 12L16 15L20 12V24H12V12Z" fill="#F59E0B"/></svg></div>
         <div class="p-text">
           <strong>Membalik Pakaian</strong>
           Jika terperangkap dalam kabut atau mendengar musik Fae yang memikat, balikkan jaket atau bajumu ke dalam untuk mematahkan ilusi spasial.
         </div>
       </div>
       <div class="protection">
-        <div class="p-icon">🍀</div>
+        <div class="p-icon"><svg class="prot-svg" viewBox="0 0 32 32" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4.5" fill="#16A34A"/><circle cx="20" cy="12" r="4.5" fill="#22C55E"/><circle cx="12" cy="20" r="4.5" fill="#15803D"/><circle cx="20" cy="20" r="4.5" fill="#16A34A"/><path d="M16 16C16 22 14 26 10 28" stroke="#15803D" stroke-width="2"/></svg></div>
         <div class="p-text">
           <strong>Semanggi Empat Daun</strong>
           Jimat alami yang membuka "Mata Kedua" (*Second Sight*), merobek tirai *glamour* sehingga Fae terlihat dalam wujud aslinya.
         </div>
       </div>
       <div class="protection">
-        <div class="p-icon">🔔</div>
+        <div class="p-icon"><svg class="prot-svg" viewBox="0 0 32 32" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 6C12 6 10 12 9 18H23C22 12 20 6 16 6Z" fill="#D97706"/><ellipse cx="16" cy="19" rx="8" ry="2.5" fill="#F59E0B"/><circle cx="16" cy="22" r="2.5" fill="#78350F"/></svg></div>
         <div class="p-text">
           <strong>Lonceng Perunggu & Gereja</strong>
           Gelombang suara berdentang keras memecah frekuensi tubuh Fae yang menyerupai udara terkondensasi, memaksa mereka menjauh.
         </div>
       </div>
       <div class="protection">
-        <div class="p-icon">🤫</div>
+        <div class="p-icon"><svg class="prot-svg" viewBox="0 0 32 32" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="12" fill="#7C2D12"/><circle cx="16" cy="16" r="10" stroke="#FBBF24" stroke-width="1.5"/><circle cx="16" cy="16" r="4" fill="#F59E0B"/><path d="M12 20L20 12" stroke="#DC2626" stroke-width="2"/></svg></div>
         <div class="p-text">
           <strong>Haram Mengucap Terima Kasih</strong>
           Dalam hukum mereka, "terima kasih" adalah pengakuan berhutang jiwa. Berikan balasan berupa susu atau madu tanpa sepatah kata pun.
         </div>
       </div>
       <div class="protection">
-        <div class="p-icon">🍎</div>
+        <div class="p-icon"><svg class="prot-svg" viewBox="0 0 32 32" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="17" r="10" fill="#DC2626"/><path d="M16 7L14 4H18L16 7Z" fill="#B91C1C"/><circle cx="14" cy="16" r="1.5" fill="#7F1D1D"/><circle cx="18" cy="16" r="1.5" fill="#7F1D1D"/><circle cx="16" cy="20" r="1.5" fill="#7F1D1D"/></svg></div>
         <div class="p-text">
           <strong>Jangan Menelan Santapan Fae</strong>
           Seperti Persephone yang memakan biji delima di Underworld Hades, sekali menelan makanan Fae, jiwamu terikat selamanya di alam mereka.
@@ -1048,25 +1054,25 @@ footer p{
 
     <div class="figures">
       <div class="figure">
-        <div class="sigil">🦅</div>
+        <div class="sigil"><svg class="fig-svg" viewBox="0 0 64 64" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 32C20 20 36 16 54 18C44 26 38 34 36 44C26 40 18 36 12 32Z" fill="#1E1B4B"/><path d="M22 28L44 8M32 32L54 26" stroke="#6366F1" stroke-width="2.5" stroke-linecap="round"/><circle cx="48" cy="20" r="2.5" fill="#EF4444"/></svg></div>
         <h4>The Morrígan</h4>
         <div class="title">Ratu Perang, Gagak, & Takdir</div>
         <p>Dewi triple Celtic yang setara dengan Moirai dan dewi perang Athena. Ia menentukan siapa yang gugur dan bangkit di medan laga.</p>
       </div>
       <div class="figure">
-        <div class="sigil">☀️</div>
+        <div class="sigil"><svg class="fig-svg" viewBox="0 0 64 64" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="12" fill="#F59E0B"/><circle cx="32" cy="32" r="7" fill="#FEF08A"/><path d="M32 8V16M32 48V56M8 32H16M48 32H56M15 15L21 21M43 43L49 49M15 49L21 43M43 21L49 15" stroke="#FDE047" stroke-width="3" stroke-linecap="round"/></svg></div>
         <h4>Lugh Lámhfhada</h4>
         <div class="title">Dewa Cahaya & Penguasa Segala Seni</div>
         <p>Padanan sejati dewa Apollo Yunani. Menguasai lembing matahari, seni musik lyre, pandai besi, dan sihir tertinggi Tuatha Dé Danann.</p>
       </div>
       <div class="figure">
-        <div class="sigil">🔥</div>
+        <div class="sigil"><svg class="fig-svg" viewBox="0 0 64 64" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 8C26 22 18 30 20 44C22 52 28 56 32 56C36 56 42 52 44 44C46 30 38 22 32 8Z" fill="#DC2626"/><path d="M32 20C28 28 24 34 26 42C28 48 30 50 32 50C34 50 36 48 38 42C40 34 36 28 32 20Z" fill="#F59E0B"/><circle cx="32" cy="42" r="4" fill="#FEF08A"/></svg></div>
         <h4>Brigid</h4>
         <div class="title">Dewi Api Abadi & Mata Air Penyembuh</div>
         <p>Padanan dewi Hestia dan Hygieia. Penguasa tungku peradaban, syair puitis, serta mata air keramat yang memulihkan luka dan jiwa fana.</p>
       </div>
       <div class="figure">
-        <div class="sigil">👑</div>
+        <div class="sigil"><svg class="fig-svg" viewBox="0 0 64 64" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 42L16 20L26 30L32 14L38 30L48 20L52 42H12Z" fill="#FBBF24"/><rect x="12" y="42" width="40" height="6" fill="#78350F"/><circle cx="32" cy="14" r="3" fill="#38BDF8"/><circle cx="16" cy="20" r="2.5" fill="#EF4444"/><circle cx="48" cy="20" r="2.5" fill="#10B981"/></svg></div>
         <h4>Oberon & Titania</h4>
         <div class="title">Raja & Ratu Alam Faerie</div>
         <p>Dipopulerkan oleh sastra Renaisans. Memerintah perayaan bulan purnama, angin malam, dan tarian lingkaran gaib di hutan terlarang.</p>
@@ -1122,7 +1128,7 @@ footer p{
 
 <!-- ═══ Footer ═══ -->
 <footer>
-  <p class="colophon">✦ Ditenun dari Benang Mitologi Yunani, Celtic, dan Sastra Abad Pertengahan ✦</p>
+  <p class="colophon">Ditenun dari Benang Mitologi Yunani, Celtic, dan Sastra Abad Pertengahan</p>
   <p>Sumber Sejarah: Hesiod Theogony · Homeric Hymns · Lebor Gabála Érenn · The Secret Commonwealth (1691) · W.B. Yeats</p>
 </footer>
 
