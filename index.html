@@ -1151,9 +1151,181 @@ footer p{
   box-shadow:0 0 6px var(--gold-bright);
 }
 
+
+/* ═══ Scroll Progress Bar ═══ */
+#scroll-progress{
+  position:fixed;top:0;left:0;height:3.5px;width:0%;
+  background:linear-gradient(90deg, #F59E0B, #FDE047, #38BDF8, #A855F7);
+  z-index:99999;
+  box-shadow:0 0 12px rgba(245,158,11,0.8);
+  pointer-events:none;
+  transition:width 0.08s linear;
+}
+
+/* ═══ Atmosphere Themes ═══ */
+body{
+  transition:background 0.8s ease, color 0.5s ease;
+}
+[data-theme="elysium"]{
+  --aegean:#0f0b1a;
+  --aegean-deep:#080512;
+  --aegean-blue:#191430;
+  --gold:#f59e0b;
+  --gold-bright:#fef08a;
+  --gold-glow:rgba(245,158,11,0.4);
+}
+[data-theme="forest"]{
+  --aegean:#06150d;
+  --aegean-deep:#020b06;
+  --aegean-blue:#0c2417;
+  --gold:#10b981;
+  --gold-bright:#6ee7b7;
+  --gold-glow:rgba(16,185,129,0.38);
+}
+
+/* Theme Toggle Button */
+.theme-btn{
+  background:rgba(212,175,55,0.08);
+  border:1px solid rgba(212,175,55,0.3);
+  border-radius:20px;
+  color:var(--parchment);
+  font-family:'Cinzel',serif;
+  font-size:0.75rem;
+  letter-spacing:0.08em;
+  padding:0.4rem 0.85rem;
+  display:inline-flex;align-items:center;gap:0.45rem;
+  cursor:pointer;
+  transition:all 0.3s;
+}
+.theme-btn:hover{
+  background:rgba(212,175,55,0.2);
+  border-color:var(--gold-bright);
+  color:var(--gold-bright);
+  transform:translateY(-1px);
+}
+.theme-icon{display:inline-flex;align-items:center}
+
+/* ═══ 3D Card Interactive Glare ═══ */
+.creature-card, .pantheon-card, .figure{
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change:transform;
+}
+.creature-card::after, .pantheon-card::after, .figure::after{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255,255,255,0.08) 0%, transparent 65%);
+  pointer-events:none;
+  opacity:0;
+  transition:opacity 0.3s;
+  border-radius:inherit;
+}
+.creature-card:hover::after, .pantheon-card:hover::after, .figure:hover::after{
+  opacity:1;
+}
+
+/* ═══ Creature Dossier Accordion ═══ */
+.card-footer-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:1.2rem;
+  padding-top:0.85rem;
+  border-top:1px solid rgba(212,175,55,0.18);
+  flex-wrap:wrap;
+  gap:0.5rem;
+}
+.dossier-toggle-btn{
+  background:rgba(212,175,55,0.08);
+  border:1px solid rgba(212,175,55,0.3);
+  border-radius:15px;
+  color:var(--gold-bright);
+  font-family:'Cinzel',serif;
+  font-size:0.72rem;
+  letter-spacing:0.06em;
+  padding:0.35rem 0.85rem;
+  cursor:pointer;
+  transition:all 0.25s;
+}
+.dossier-toggle-btn:hover{
+  background:rgba(212,175,55,0.24);
+  border-color:var(--gold-bright);
+  transform:translateY(-1px);
+}
+.creature-dossier-panel{
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition:all 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background:rgba(3,6,12,0.85);
+  border-radius:6px;
+  padding:0 0.9rem;
+  margin-top:0;
+  text-align:left;
+}
+.creature-card.expanded .creature-dossier-panel{
+  max-height:360px;
+  opacity:1;
+  padding:1rem;
+  margin-top:0.9rem;
+  border:1px solid rgba(212,175,55,0.3);
+  box-shadow:inset 0 0 20px rgba(0,0,0,0.6);
+}
+.dossier-badge{
+  display:inline-block;
+  font-family:'Cinzel',serif;
+  font-size:0.68rem;
+  font-weight:700;
+  letter-spacing:0.12em;
+  padding:0.25rem 0.65rem;
+  border-radius:12px;
+  border:1px solid;
+  margin-bottom:0.6rem;
+  text-transform:uppercase;
+}
+.dossier-item{
+  font-family:'Crimson Text',Georgia,serif;
+  font-size:0.95rem;
+  color:var(--parchment);
+  line-height:1.45;
+  margin-bottom:0.5rem;
+}
+.dossier-item strong{
+  color:var(--gold-bright);
+  font-family:'Cinzel',serif;
+  font-size:0.78rem;
+  letter-spacing:0.04em;
+  display:inline-block;
+  margin-right:0.3rem;
+}
+.creature-whisper-btn{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  width:100%;justify-content:center;
+  background:linear-gradient(135deg, rgba(212,175,55,0.18) 0%, rgba(212,175,55,0.06) 100%);
+  border:1px solid rgba(212,175,55,0.38);
+  border-radius:20px;
+  padding:0.5rem 1rem;
+  color:var(--gold-bright);
+  font-family:'Cinzel',serif;
+  font-size:0.74rem;
+  letter-spacing:0.12em;
+  cursor:pointer;
+  margin-top:0.65rem;
+  transition:all 0.25s;
+}
+.creature-whisper-btn:hover{
+  background:linear-gradient(135deg, var(--gold) 0%, #b45309 100%);
+  color:#03060c;
+  font-weight:700;
+  border-color:var(--gold-bright);
+  box-shadow:0 0 16px rgba(212,175,55,0.4);
+}
+
 </style>
 </head>
 <body>
+<div id="scroll-progress"></div>
 <svg width="0" height="0" style="position:absolute">
   <defs>
     <linearGradient id="g-gold-roof" x1="0" y1="0" x2="32" y2="12" gradientUnits="userSpaceOnUse">
@@ -1177,6 +1349,12 @@ footer p{
       </a>
     </div>
     <div class="nav-right">
+            <button id="theme-toggle" class="theme-btn" title="Ganti Suasana Alam Gaib" type="button">
+        <span class="theme-icon">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="5" fill="#FBBF24"/><path d="M12 2V4M12 20V22M2 12H4M20 12H22M4.9 4.9L6.3 6.3M17.7 17.7L19.1 19.1M4.9 19.1L6.3 17.7M17.7 6.3L19.1 4.9" stroke="#FBBF24" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span id="theme-label" class="theme-text">Tír na nÓg</span>
+      </button>
       <button id="audio-toggle" class="audio-btn" title="Nyalakan/Matikan Harpa Apollo">
         <span class="wave"><svg class="lyre-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 3C4 8 3 13 6 18C8 21 16 21 18 18C21 13 20 8 20 3H17C17 7 16 12 14 15C13 16 11 16 10 15C8 12 7 7 7 3H4Z" fill="url(#g-gold-roof)"/><rect x="5" y="3" width="14" height="2" rx="0.5" fill="#FDE68A"/><line x1="9" y1="4" x2="9" y2="17" stroke="#E0F2FE" stroke-width="1"/><line x1="12" y1="4" x2="12" y2="18" stroke="#E0F2FE" stroke-width="1"/><line x1="15" y1="4" x2="15" y2="17" stroke="#E0F2FE" stroke-width="1"/><circle cx="12" cy="19.5" r="1.5" fill="#38BDF8"/></svg></span>
         <span class="audio-text">Harpa Apollo</span>
@@ -1502,56 +1680,152 @@ footer p{
         <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 10C24 10 20 18 20 28C20 40 14 54 10 58C18 56 26 50 32 46C38 50 46 56 54 58C50 54 44 40 44 28C44 18 40 10 32 10Z" fill="#0284C7"/><circle cx="32" cy="20" r="8" fill="#F0F9FF"/><ellipse cx="29" cy="19" rx="1.5" ry="2" fill="#8B5CF6"/><ellipse cx="35" cy="19" rx="1.5" ry="2" fill="#8B5CF6"/><path d="M22 14C16 20 14 30 18 36M42 14C48 20 50 30 46 36" stroke="#C084FC" stroke-width="2" stroke-linecap="round"/></svg></div>
         <h4>Banshee</h4>
         <p>Wanita Fae yang meraung dari kegelapan sebelum kematian menjemput anggota keluarga garis keturunan kuno. Ia bukan pembunuh, melainkan bentara takdir yang meratap.</p>
-        <span class="origin">Bean Sídhe — Irlandia</span>
+        <div class="card-footer-row">
+          <span class="origin">Bean Sídhe — Irlandia</span>
+          <button type="button" class="dossier-toggle-btn">Rahasia &amp; Pantangan ▾</button>
+        </div>
+        <div class="creature-dossier-panel">
+          <div class="dossier-badge" style="border-color:#38BDF8;color:#38BDF8">Tinggi • Bentara Kematian</div>
+          <div class="dossier-item"><strong>Pantangan:</strong> Jangan pernah mengambil sisir perak yang tertinggal di atas batu kali saat senja.</div>
+          <div class="dossier-item"><strong>Titik Lemah:</strong> Besi dingin. Ia tidak mencelakai fisik secara langsung; tangisannya adalah peringatan takdir tak terelakkan.</div>
+          <button type="button" class="creature-whisper-btn" data-sound="banshee">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            Dengarkan Suara Gaib
+          </button>
+        </div>
       </div>
 
       <div class="creature-card">
         <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 42C16 34 22 26 26 22L24 12L34 16L38 24C44 26 50 32 52 40C44 38 38 42 34 46C28 42 22 42 14 42Z" fill="#0F766E"/><path d="M30 16C36 10 44 14 46 22M26 22C32 20 38 22 40 28" stroke="#5EEAD4" stroke-width="2.5" stroke-linecap="round"/><circle cx="28" cy="18" r="2" fill="#FEF08A"/><path d="M6 56C16 48 30 62 42 52C48 48 56 54 60 56C50 62 38 60 28 62C18 64 10 60 6 56Z" fill="#0284C7"/></svg></div>
         <h4>Kelpie</h4>
         <p>Kuda air berkulit hitam pekat yang memikat manusia untuk menungganginya di tepi danau. Sekali tersentuh, kulitnya melekat bagai lem dan ia menyelam menenggelamkan korbannya.</p>
-        <span class="origin">Each-Uisge — Skotlandia</span>
+        <div class="card-footer-row">
+          <span class="origin">Each-Uisge — Skotlandia</span>
+          <button type="button" class="dossier-toggle-btn">Rahasia &amp; Pantangan ▾</button>
+        </div>
+        <div class="creature-dossier-panel">
+          <div class="dossier-badge" style="border-color:#2DD4BF;color:#2DD4BF">Ekstrem • Predator Telaga</div>
+          <div class="dossier-item"><strong>Pantangan:</strong> Jangan menyentuh bulu surai atau menunggangi kuda tak bertuan di tepi danau berkabut.</div>
+          <div class="dossier-item"><strong>Titik Lemah:</strong> Kekang kendali kepala. Jika manusia berhasil memasang tali kekang perak, Kelpie akan tunduk selamanya.</div>
+          <button type="button" class="creature-whisper-btn" data-sound="kelpie">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            Dengarkan Suara Gaib
+          </button>
+        </div>
       </div>
 
       <div class="creature-card">
         <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 28C20 28 26 24 32 24C38 24 44 28 44 28L48 58H16L20 28Z" fill="#1E293B"/><rect x="22" y="32" width="20" height="4" fill="#CBD5E1"/><circle cx="46" cy="18" r="10" fill="#E2E8F0"/><ellipse cx="43" cy="17" rx="2" ry="2.5" fill="#38BDF8"/><ellipse cx="49" cy="17" rx="2" ry="2.5" fill="#38BDF8"/><path d="M16 38C10 40 8 48 10 54" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round"/></svg></div>
         <h4>Dullahan</h4>
         <p>Penunggang kuda hitam tanpa kepala yang menjinjing kepalanya sendiri di tangan kanan. Cambuknya terbuat dari tulang belakang manusia. Di mana ia berhenti, jiwa seseorang dicabut.</p>
-        <span class="origin">Gan Ceann — Irlandia</span>
+        <div class="card-footer-row">
+          <span class="origin">Gan Ceann — Irlandia</span>
+          <button type="button" class="dossier-toggle-btn">Rahasia &amp; Pantangan ▾</button>
+        </div>
+        <div class="creature-dossier-panel">
+          <div class="dossier-badge" style="border-color:#94A3B8;color:#94A3B8">Mutlak • Pencabut Nyawa</div>
+          <div class="dossier-item"><strong>Pantangan:</strong> Jangan mengintip dari celah jendela saat mendengar derap keretanya melintas tengah malam.</div>
+          <div class="dossier-item"><strong>Titik Lemah:</strong> Emas murni. Menjatuhkan koin atau peniti emas ke jalurnya akan membuatnya silau dan berbalik arah.</div>
+          <button type="button" class="creature-whisper-btn" data-sound="dullahan">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            Dengarkan Suara Gaib
+          </button>
+        </div>
       </div>
 
       <div class="creature-card">
         <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 16C22 16 16 26 16 38C16 50 24 58 32 58C40 58 48 50 48 38C48 26 42 16 32 16Z" fill="#18181B"/><path d="M22 22C16 14 10 18 10 26C10 32 16 30 18 28" stroke="#FBBF24" stroke-width="3" stroke-linecap="round"/><path d="M42 22C48 14 54 18 54 26C54 32 48 30 46 28" stroke="#FBBF24" stroke-width="3" stroke-linecap="round"/><ellipse cx="26" cy="36" rx="4" ry="5.5" fill="#F59E0B"/><ellipse cx="38" cy="36" rx="4" ry="5.5" fill="#F59E0B"/><ellipse cx="26" cy="36" rx="1.5" ry="3.5" fill="#451A03"/><ellipse cx="38" cy="36" rx="1.5" ry="3.5" fill="#451A03"/></svg></div>
         <h4>Púca</h4>
         <p>Shapeshifter malam berkepala kuda atau kelinci raksasa dengan mata membara. Ia mengajak manusia dalam perjalanan liar menembus rawa dan jurang sebelum fajar tiba.</p>
-        <span class="origin">Phouka — Irlandia/Wales</span>
+        <div class="card-footer-row">
+          <span class="origin">Phouka — Irlandia/Wales</span>
+          <button type="button" class="dossier-toggle-btn">Rahasia &amp; Pantangan ▾</button>
+        </div>
+        <div class="creature-dossier-panel">
+          <div class="dossier-badge" style="border-color:#F59E0B;color:#F59E0B">Sedang • Shapeshifter Jahil</div>
+          <div class="dossier-item"><strong>Pantangan:</strong> Jangan memetik buah beri liar setelah Samhain (1 November) karena telah diembuni ludah Púca.</div>
+          <div class="dossier-item"><strong>Titik Lemah:</strong> Membalik pakaian luar ke dalam dan mengenakan taji besi dingin pada tumit sepatu bot.</div>
+          <button type="button" class="creature-whisper-btn" data-sound="puca">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            Dengarkan Suara Gaib
+          </button>
+        </div>
       </div>
 
       <div class="creature-card">
         <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 12H46L44 32H20L18 12Z" fill="#166534"/><ellipse cx="32" cy="32" rx="24" ry="5" fill="#15803D"/><rect x="20" y="25" width="24" height="5" fill="#1C1917"/><rect x="28" y="23" width="8" height="9" rx="1" fill="#FBBF24"/><circle cx="32" cy="48" r="12" fill="#27272A"/><circle cx="28" cy="44" r="3" fill="#FDE047"/><circle cx="36" cy="44" r="3" fill="#FDE047"/></svg></div>
         <h4>Leprechaun</h4>
         <p>Tukang sepatu soliter dan penjaga harta karun tersembunyi. Dikenal amat cerdik dan licik; setiap manusia yang mencoba mengikatnya selalu terperangkap tipu muslihatnya.</p>
-        <span class="origin">Luchorpán — Irlandia</span>
+        <div class="card-footer-row">
+          <span class="origin">Luchorpán — Irlandia</span>
+          <button type="button" class="dossier-toggle-btn">Rahasia &amp; Pantangan ▾</button>
+        </div>
+        <div class="creature-dossier-panel">
+          <div class="dossier-badge" style="border-color:#22C55E;color:#22C55E">Rendah • Penipu Ulung</div>
+          <div class="dossier-item"><strong>Pantangan:</strong> Jangan pernah mengalihkan pandangan matamu darinya; berkedip sedetik berarti ia lenyap seketika.</div>
+          <div class="dossier-item"><strong>Titik Lemah:</strong> Kecintaan pada minuman anggur keras dan rasa tamak yang mengaburkan akal liciknya.</div>
+          <button type="button" class="creature-whisper-btn" data-sound="leprechaun">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            Dengarkan Suara Gaib
+          </button>
+        </div>
       </div>
 
       <div class="creature-card">
         <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 30C12 30 18 48 32 48C46 48 52 30 52 30L46 26C46 26 40 40 32 40C24 40 18 26 18 26L12 30Z" fill="#78350F"/><circle cx="32" cy="24" r="8" fill="#FCD34D"/><circle cx="29" cy="23" r="1.5" fill="#0284C7"/><circle cx="35" cy="23" r="1.5" fill="#0284C7"/><path d="M24 16C28 10 36 10 40 16" stroke="#10B981" stroke-width="2"/></svg></div>
         <h4>Changeling</h4>
         <p>Tiruan kayu berjiwa atau bayi Fae tua yang ditinggalkan menggantikan anak manusia yang diculik ke Otherworld. Ditangkal dengan meletakkan besi di atas ayunan.</p>
-        <span class="origin">Tradisi Pan-Eropa</span>
+        <div class="card-footer-row">
+          <span class="origin">Tradisi Pan-Eropa</span>
+          <button type="button" class="dossier-toggle-btn">Rahasia &amp; Pantangan ▾</button>
+        </div>
+        <div class="creature-dossier-panel">
+          <div class="dossier-badge" style="border-color:#FBBF24;color:#FBBF24">Tinggi • Pencuri Keturunan</div>
+          <div class="dossier-item"><strong>Pantangan:</strong> Jangan meninggalkan buaian bayi sendirian di ruangan gelap tanpa gunting besi atau api perapian menyala.</div>
+          <div class="dossier-item"><strong>Titik Lemah:</strong> Rebus air di dalam kulit telur di depannya; rasa heran akan memaksanya membuka identitas aslinya.</div>
+          <button type="button" class="creature-whisper-btn" data-sound="changeling">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            Dengarkan Suara Gaib
+          </button>
+        </div>
       </div>
 
       <div class="creature-card">
         <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 6C24 18 16 28 18 36H46C48 28 40 18 32 6Z" fill="#B91C1C"/><circle cx="32" cy="42" r="8" fill="#FBBF24"/><circle cx="29" cy="41" r="1.5" fill="#7F1D1D"/><circle cx="35" cy="41" r="1.5" fill="#7F1D1D"/><path d="M16 46L8 56M48 46L56 56" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/></svg></div>
         <h4>Redcap</h4>
         <p>Fae buas penghuni reruntuhan kastil perbatasan yang mencelupkan topinya ke dalam darah musafir. Tak bisa dibunuh dengan senjata biasa, hanya dengan doa atau mantra kuno.</p>
-        <span class="origin">Border Lore — Skotlandia</span>
+        <div class="card-footer-row">
+          <span class="origin">Border Lore — Skotlandia</span>
+          <button type="button" class="dossier-toggle-btn">Rahasia &amp; Pantangan ▾</button>
+        </div>
+        <div class="creature-dossier-panel">
+          <div class="dossier-badge" style="border-color:#EF4444;color:#EF4444">Ekstrem • Pembantai Sadis</div>
+          <div class="dossier-item"><strong>Pantangan:</strong> Jangan pernah bermalam di reruntuhan benteng kastil wilayah perbatasan tanpa api suci.</div>
+          <div class="dossier-item"><strong>Titik Lemah:</strong> Lantunan doa atau sabda suci; mendengarnya akan membuat taringnya rontok dan ia musnah terbakar abu.</div>
+          <button type="button" class="creature-whisper-btn" data-sound="redcap">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            Dengarkan Suara Gaib
+          </button>
+        </div>
       </div>
 
       <div class="creature-card">
         <div class="icon"><svg class="creature-svg" viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="20" r="9" fill="#FDE68A"/><path d="M22 16C22 10 32 8 42 16" fill="#D97706"/><circle cx="28" cy="20" r="1.5" fill="#451A03"/><circle cx="36" cy="20" r="1.5" fill="#451A03"/><path d="M20 28C20 28 26 26 32 26C38 26 44 28 44 28L42 54H22L20 28Z" fill="#78350F"/><ellipse cx="32" cy="46" rx="9" ry="5" fill="#FEF08A"/><ellipse cx="32" cy="46" rx="7" ry="3.5" fill="#FFFFFF"/></svg></div>
         <h4>Brownie</h4>
         <p>Roh penunggu tungku yang bekerja saat seisi rumah tertidur lelap. Hanya meminta semangkuk krim atau bubur gandum segar. Pantang diberi pakaian atau ucapan terima kasih langsung.</p>
-        <span class="origin">Highlands — Skotlandia</span>
+        <div class="card-footer-row">
+          <span class="origin">Highlands — Skotlandia</span>
+          <button type="button" class="dossier-toggle-btn">Rahasia &amp; Pantangan ▾</button>
+        </div>
+        <div class="creature-dossier-panel">
+          <div class="dossier-badge" style="border-color:#F59E0B;color:#F59E0B">Ramah • Roh Penunggu Tungku</div>
+          <div class="dossier-item"><strong>Pantangan:</strong> Jangan pernah memberi pakaian baru atau berterima kasih secara lisan (itu dianggap penghinaan berat).</div>
+          <div class="dossier-item"><strong>Titik Lemah:</strong> Keras kepala dan mudah tersinggung; ia akan pergi selamanya jika privasi layanannya diungkit.</div>
+          <button type="button" class="creature-whisper-btn" data-sound="brownie">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            Dengarkan Suara Gaib
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1718,11 +1992,44 @@ footer p{
 
 <!-- ═══ Interactive Scripts ═══ -->
 <script>
-// 1. Constellation Background Canvas
+// 1. SCROLL PROGRESS BAR
+window.addEventListener('scroll', () => {
+  const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+  const pBar = document.getElementById('scroll-progress');
+  if (pBar) pBar.style.width = scrolled + '%';
+}, { passive: true });
+
+// 2. ATMOSPHERE THEMES ENGINE
+const atmosphereThemes = [
+  { id: 'tir-na-nog', name: 'Tír na nÓg', colors: ['#38BDF8', '#D4AF37', '#A855F7'], glow: 'rgba(56, 189, 248, 0.4)' },
+  { id: 'elysium', name: 'Elysium', colors: ['#F59E0B', '#FEF08A', '#FB7185'], glow: 'rgba(245, 158, 11, 0.4)' },
+  { id: 'forest', name: 'Hutan Purba', colors: ['#10B981', '#6EE7B7', '#FBBF24'], glow: 'rgba(16, 185, 129, 0.4)' }
+];
+let themeIndex = 0;
+const themeToggleBtn = document.getElementById('theme-toggle');
+const themeLabel = document.getElementById('theme-label');
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', () => {
+    themeIndex = (themeIndex + 1) % atmosphereThemes.length;
+    const currentT = atmosphereThemes[themeIndex];
+    document.body.setAttribute('data-theme', currentT.id);
+    if (themeLabel) themeLabel.textContent = currentT.name;
+    
+    // Quick burst of themed sparkles on mode change
+    if (mouse.x !== null) {
+      spawnAetherBurst(mouse.x, mouse.y, 20);
+    }
+  });
+}
+
+// 3. LIVING CELESTIAL CANVAS & BIOLUMINESCENT FIREFLIES
 const canvas = document.getElementById('constellation-canvas');
 const ctx = canvas.getContext('2d');
 let w, h;
-let mouse = { x: null, y: null, maxDist: 150 };
+let mouse = { x: null, y: null, maxDist: 140 };
 
 function resizeCanvas() {
   w = canvas.width = window.innerWidth;
@@ -1734,39 +2041,96 @@ resizeCanvas();
 window.addEventListener('mousemove', e => {
   mouse.x = e.clientX;
   mouse.y = e.clientY;
+  
+  // Emit fairy dust trail
+  if (Math.random() > 0.45) {
+    sparkles.push({
+      x: e.clientX + (Math.random() - 0.5) * 14,
+      y: e.clientY + (Math.random() - 0.5) * 14,
+      vx: (Math.random() - 0.5) * 0.9,
+      vy: (Math.random() - 0.5) * 0.9 - 0.35,
+      size: Math.random() * 2.2 + 0.9,
+      life: 1.0,
+      decay: Math.random() * 0.035 + 0.02
+    });
+  }
 });
+
 window.addEventListener('mouseleave', () => {
   mouse.x = null;
   mouse.y = null;
 });
 
-const numStars = Math.min(Math.floor(window.innerWidth / 18), 75);
+// Click Aether Burst
+function spawnAetherBurst(x, y, count = 14) {
+  for (let i = 0; i < count; i++) {
+    const angle = (Math.PI * 2 / count) * i + (Math.random() - 0.5) * 0.3;
+    const speed = Math.random() * 3 + 1.2;
+    sparkles.push({
+      x: x, y: y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      size: Math.random() * 2.6 + 1.2,
+      life: 1.0,
+      decay: Math.random() * 0.025 + 0.015
+    });
+  }
+}
+window.addEventListener('click', e => {
+  spawnAetherBurst(e.clientX, e.clientY);
+});
+
+// Star nodes (Constellation)
+const numStars = Math.min(Math.floor(window.innerWidth / 20), 65);
 const stars = [];
 for (let i = 0; i < numStars; i++) {
   stars.push({
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
-    vx: (Math.random() - 0.5) * 0.4,
-    vy: (Math.random() - 0.5) * 0.4,
-    radius: Math.random() * 1.8 + 0.8,
-    baseAlpha: Math.random() * 0.6 + 0.3,
+    vx: (Math.random() - 0.5) * 0.35,
+    vy: (Math.random() - 0.5) * 0.35,
+    radius: Math.random() * 1.6 + 0.7,
+    baseAlpha: Math.random() * 0.55 + 0.25,
     phase: Math.random() * Math.PI * 2
   });
 }
 
+// Bioluminescent Fireflies
+const numFireflies = 30;
+const fireflies = [];
+for (let i = 0; i < numFireflies; i++) {
+  fireflies.push({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    baseX: Math.random() * window.innerWidth,
+    baseY: Math.random() * window.innerHeight,
+    angle: Math.random() * Math.PI * 2,
+    speed: Math.random() * 0.012 + 0.006,
+    radius: Math.random() * 2.8 + 1.6,
+    alpha: Math.random() * 0.6 + 0.3,
+    pulseSpeed: Math.random() * 0.03 + 0.015,
+    pulsePhase: Math.random() * Math.PI * 2,
+    colorIdx: Math.floor(Math.random() * 3)
+  });
+}
+
+// Fairy dust sparkle trail array
+const sparkles = [];
+
 function drawConstellations() {
   ctx.clearRect(0, 0, w, h);
   const now = Date.now() * 0.002;
+  const currentPalette = atmosphereThemes[themeIndex].colors;
 
-  // Draw connecting star filaments
+  // 1. Draw connecting star filaments
   for (let i = 0; i < stars.length; i++) {
     for (let j = i + 1; j < stars.length; j++) {
       const dx = stars[i].x - stars[j].x;
       const dy = stars[i].y - stars[j].y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 115) {
-        ctx.strokeStyle = `rgba(212, 175, 55, ${(1 - dist / 115) * 0.22})`;
-        ctx.lineWidth = 0.6;
+      if (dist < 110) {
+        ctx.strokeStyle = `rgba(212, 175, 55, ${(1 - dist / 110) * 0.2})`;
+        ctx.lineWidth = 0.5;
         ctx.beginPath();
         ctx.moveTo(stars[i].x, stars[i].y);
         ctx.lineTo(stars[j].x, stars[j].y);
@@ -1790,7 +2154,7 @@ function drawConstellations() {
     }
   }
 
-  // Draw star nodes
+  // 2. Draw star nodes
   for (let s of stars) {
     s.x += s.vx;
     s.y += s.vy;
@@ -1801,11 +2165,70 @@ function drawConstellations() {
 
     const flicker = Math.sin(now + s.phase) * 0.25;
     ctx.fillStyle = `rgba(243, 210, 107, ${Math.max(0.1, s.baseAlpha + flicker)})`;
-    ctx.shadowColor = '#d4af37';
-    ctx.shadowBlur = 6;
     ctx.beginPath();
     ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
     ctx.fill();
+  }
+
+  // 3. Draw Bioluminescent Fae Fireflies
+  for (let f of fireflies) {
+    f.angle += f.speed;
+    f.x += Math.cos(f.angle) * 0.85;
+    f.y += Math.sin(f.angle * 1.5) * 0.65 - 0.15; // Slow drift upwards
+
+    // Wrap around screen
+    if (f.x < -20) f.x = w + 20;
+    if (f.x > w + 20) f.x = -20;
+    if (f.y < -20) f.y = h + 20;
+    if (f.y > h + 20) f.y = -20;
+
+    // Dodge mouse
+    if (mouse.x !== null) {
+      const dx = f.x - mouse.x;
+      const dy = f.y - mouse.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 85) {
+        f.x += (dx / dist) * 2.2;
+        f.y += (dy / dist) * 2.2;
+      }
+    }
+
+    f.pulsePhase += f.pulseSpeed;
+    const pulse = (Math.sin(f.pulsePhase) + 1) / 2;
+    const currentAlpha = 0.2 + pulse * 0.65;
+    const color = currentPalette[f.colorIdx % currentPalette.length];
+
+    // Glow aura
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 10 * pulse + 4;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(f.x, f.y, f.radius * (0.8 + pulse * 0.3), 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  }
+
+  // 4. Draw & update fairy dust sparkles
+  for (let i = sparkles.length - 1; i >= 0; i--) {
+    const sp = sparkles[i];
+    sp.x += sp.vx;
+    sp.y += sp.vy;
+    sp.life -= sp.decay;
+
+    if (sp.life <= 0) {
+      sparkles.splice(i, 1);
+      continue;
+    }
+
+    const sparkColor = currentPalette[i % currentPalette.length];
+    ctx.shadowColor = sparkColor;
+    ctx.shadowBlur = 8;
+    ctx.fillStyle = sparkColor;
+    ctx.globalAlpha = sp.life;
+    ctx.beginPath();
+    ctx.arc(sp.x, sp.y, sp.size * sp.life, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 1.0;
     ctx.shadowBlur = 0;
   }
 
@@ -1813,15 +2236,252 @@ function drawConstellations() {
 }
 drawConstellations();
 
-// 2. Ancient Apollo Lyre Synthesizer (Native Web Audio API)
+// 4. INTERACTIVE 3D PERSPECTIVE TILT ON CARDS
+const tiltCards = document.querySelectorAll('.creature-card, .pantheon-card, .figure');
+tiltCards.forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -6;
+    const rotateY = ((x - centerX) / centerX) * 6;
+
+    card.style.transform = `perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+    card.style.setProperty('--glare-x', `${x}px`);
+    card.style.setProperty('--glare-y', `${y}px`);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+// 5. CREATURE ACCORDION & WEB AUDIO GAIB SYNTHESIZER
+const creatureSounds = {
+  banshee: (ctx) => {
+    const t = ctx.currentTime;
+    const o1 = ctx.createOscillator();
+    const o2 = ctx.createOscillator();
+    const g = ctx.createGain();
+    o1.type = 'sine'; o2.type = 'triangle';
+    o1.frequency.setValueAtTime(560, t);
+    o1.frequency.exponentialRampToValueAtTime(210, t + 1.5);
+    o2.frequency.setValueAtTime(564, t);
+    o2.frequency.exponentialRampToValueAtTime(213, t + 1.5);
+    g.gain.setValueAtTime(0.001, t);
+    g.gain.linearRampToValueAtTime(0.12, t + 0.15);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 1.5);
+    o1.connect(g); o2.connect(g); g.connect(ctx.destination);
+    o1.start(t); o1.stop(t + 1.5);
+    o2.start(t); o2.stop(t + 1.5);
+  },
+  kelpie: (ctx) => {
+    const t = ctx.currentTime;
+    [0, 0.12, 0.28].forEach((delay, i) => {
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      const f = ctx.createBiquadFilter();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(140 - (i * 25), t + delay);
+      osc.frequency.exponentialRampToValueAtTime(45, t + delay + 0.4);
+      f.type = 'lowpass';
+      f.frequency.setValueAtTime(280, t + delay);
+      g.gain.setValueAtTime(0.18, t + delay);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + delay + 0.4);
+      osc.connect(f); f.connect(g); g.connect(ctx.destination);
+      osc.start(t + delay); osc.stop(t + delay + 0.4);
+    });
+  },
+  dullahan: (ctx) => {
+    const t = ctx.currentTime;
+    [0, 0.15, 0.32, 0.48].forEach((delay, i) => {
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(90 - (i * 8), t + delay);
+      osc.frequency.exponentialRampToValueAtTime(35, t + delay + 0.12);
+      g.gain.setValueAtTime(0.25, t + delay);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + delay + 0.12);
+      osc.connect(g); g.connect(ctx.destination);
+      osc.start(t + delay); osc.stop(t + delay + 0.12);
+    });
+  },
+  puca: (ctx) => {
+    const t = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const lfo = ctx.createOscillator();
+    const lfoGain = ctx.createGain();
+    const g = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(320, t);
+    lfo.frequency.setValueAtTime(8, t);
+    lfoGain.gain.setValueAtTime(35, t);
+    lfo.connect(osc.frequency);
+    g.gain.setValueAtTime(0.001, t);
+    g.gain.linearRampToValueAtTime(0.12, t + 0.2);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 1.2);
+    osc.connect(g); g.connect(ctx.destination);
+    lfo.start(t); lfo.stop(t + 1.2);
+    osc.start(t); osc.stop(t + 1.2);
+  },
+  leprechaun: (ctx) => {
+    const t = ctx.currentTime;
+    [1760, 2349, 2960].forEach((freq, idx) => {
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      const st = t + (idx * 0.09);
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, st);
+      g.gain.setValueAtTime(0.12, st);
+      g.gain.exponentialRampToValueAtTime(0.0001, st + 0.6);
+      osc.connect(g); g.connect(ctx.destination);
+      osc.start(st); osc.stop(st + 0.6);
+    });
+  },
+  changeling: (ctx) => {
+    const t = ctx.currentTime;
+    [523.25, 659.25, 587.33, 440].forEach((freq, idx) => {
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      const st = t + (idx * 0.16);
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, st);
+      g.gain.setValueAtTime(0.09, st);
+      g.gain.exponentialRampToValueAtTime(0.0001, st + 0.9);
+      osc.connect(g); g.connect(ctx.destination);
+      osc.start(st); osc.stop(st + 0.9);
+    });
+  },
+  redcap: (ctx) => {
+    const t = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    const f = ctx.createBiquadFilter();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(160, t);
+    osc.frequency.exponentialRampToValueAtTime(70, t + 0.6);
+    f.type = 'bandpass';
+    f.frequency.setValueAtTime(1200, t);
+    f.Q.setValueAtTime(4, t);
+    g.gain.setValueAtTime(0.2, t);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.6);
+    osc.connect(f); f.connect(g); g.connect(ctx.destination);
+    osc.start(t); osc.stop(t + 0.6);
+  },
+  brownie: (ctx) => {
+    const t = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(320, t);
+    osc.frequency.exponentialRampToValueAtTime(180, t + 0.3);
+    g.gain.setValueAtTime(0.15, t);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.35);
+    osc.connect(g); g.connect(ctx.destination);
+    osc.start(t); osc.stop(t + 0.35);
+  }
+};
+
+// Dossier accordion toggles
+document.querySelectorAll('.dossier-toggle-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const card = btn.closest('.creature-card');
+    if (!card) return;
+    const isExpanded = card.classList.contains('expanded');
+    card.classList.toggle('expanded');
+    btn.textContent = isExpanded ? 'Rahasia & Pantangan ▾' : 'Tutup Rahasia ▴';
+  });
+});
+
+// Creature whisper sound triggers
+document.querySelectorAll('.creature-whisper-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const soundKey = btn.getAttribute('data-sound');
+    try {
+      const AudioCtor = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtor) return;
+      const sCtx = new AudioCtor();
+      if (creatureSounds[soundKey]) {
+        creatureSounds[soundKey](sCtx);
+        btn.style.filter = 'brightness(1.3)';
+        setTimeout(() => { btn.style.filter = ''; }, 600);
+      }
+    } catch(err) {}
+  });
+});
+
+// 6. ANCIENT APOLLO LYRE SYNTHESIZER WITH AMBIENT DRONE
 let audioCtx = null;
 let isPlayingAudio = false;
 let harpTimer = null;
+let ambientDrone = null;
 const audioBtn = document.getElementById('audio-toggle');
 const audioText = audioBtn.querySelector('.audio-text');
 
 // Ancient Greek Dorian Scale Notes: D3, F3, G3, A3, C4, D4, E4, F4, A4
 const lyreFrequencies = [146.83, 174.61, 196.00, 220.00, 261.63, 293.66, 329.63, 349.23, 440.00];
+
+function startDroneLayer() {
+  if (!audioCtx || ambientDrone) return;
+  try {
+    const t = audioCtx.currentTime;
+    const o1 = audioCtx.createOscillator();
+    const o2 = audioCtx.createOscillator();
+    const filter = audioCtx.createBiquadFilter();
+    const gain = audioCtx.createGain();
+
+    o1.type = 'sine';
+    o1.frequency.setValueAtTime(73.41, t); // D2
+    o2.type = 'sine';
+    o2.frequency.setValueAtTime(110.00, t); // A2
+
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(320, t);
+
+    // Subtle breath LFO
+    const lfo = audioCtx.createOscillator();
+    const lfoGain = audioCtx.createGain();
+    lfo.frequency.setValueAtTime(0.18, t);
+    lfoGain.gain.setValueAtTime(80, t);
+    lfo.connect(filter.frequency);
+
+    gain.gain.setValueAtTime(0.001, t);
+    gain.gain.linearRampToValueAtTime(0.045, t + 2.0);
+
+    o1.connect(filter);
+    o2.connect(filter);
+    filter.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    o1.start(t);
+    o2.start(t);
+    lfo.start(t);
+
+    ambientDrone = { o1, o2, lfo, gain };
+  } catch(e) {}
+}
+
+function stopDroneLayer() {
+  if (!ambientDrone || !audioCtx) return;
+  try {
+    const t = audioCtx.currentTime;
+    ambientDrone.gain.linearRampToValueAtTime(0.0001, t + 0.8);
+    setTimeout(() => {
+      if (ambientDrone) {
+        try {
+          ambientDrone.o1.stop();
+          ambientDrone.o2.stop();
+          ambientDrone.lfo.stop();
+        } catch(e) {}
+        ambientDrone = null;
+      }
+    }, 850);
+  } catch(e) { ambientDrone = null; }
+}
 
 function playLyrePluck() {
   if (!audioCtx || !isPlayingAudio) return;
@@ -1838,7 +2498,7 @@ function playLyrePluck() {
 
   const now = audioCtx.currentTime;
   gain.gain.setValueAtTime(0, now);
-  gain.gain.linearRampToValueAtTime(0.09, now + 0.02);
+  gain.gain.linearRampToValueAtTime(0.08, now + 0.02);
   gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.4);
 
   osc.connect(filter);
@@ -1848,7 +2508,7 @@ function playLyrePluck() {
   osc.start(now);
   osc.stop(now + 2.5);
 
-  const nextInterval = 400 + Math.random() * 850;
+  const nextInterval = 450 + Math.random() * 850;
   harpTimer = setTimeout(playLyrePluck, nextInterval);
 }
 
@@ -1864,13 +2524,16 @@ audioBtn.addEventListener('click', () => {
   if (isPlayingAudio) {
     audioBtn.classList.add('playing');
     audioText.textContent = 'Harpa Alami';
+    startDroneLayer();
     playLyrePluck();
   } else {
     audioBtn.classList.remove('playing');
     audioText.textContent = 'Harpa Apollo';
+    stopDroneLayer();
     if (harpTimer) clearTimeout(harpTimer);
   }
 });
+
 
 // 3. PRIMARY FEATURE: Oracle Delphi & Bisikan Fae Engine (60 Prophecies)
 const oracleData = [
@@ -2485,28 +3148,6 @@ if (waBtn) {
     window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(msg), '_blank');
   });
 }
-
-// 4. 3D Tilt Card Interaction
-const tiltCards = document.querySelectorAll('.pantheon-card, .creature-card, .figure');
-tiltCards.forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -6;
-    const rotateY = ((x - centerX) / centerX) * 6;
-
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-    card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
-    card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
-  });
-
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-  });
-});
 
 // 5. Scroll Reveal & Navbar
 const nav = document.getElementById('navbar');
