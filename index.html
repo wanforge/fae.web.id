@@ -1408,8 +1408,7 @@ body{
     <span class="oracle-badge-tag"> Fitur Utama Interaktif </span>
     <h2 class="oracle-main-title">Oracle Delphi <span class="thin">&amp; Bisikan Fae</span></h2>
     <p class="oracle-main-desc">
-      Ketik nama kamu atau temanmu, pilih ranah kehidupan, lalu sentuh tripod emas suci Pythia.
-      Dengarkan ramalan nasib harian, asmara, karir, hingga rahasia pertemanan yang ditenun oleh Tiga Moirai dan roh gaib Tír na nÓg!
+      Sentuh tripod emas suci Pythia atau tekan tombol di bawah untuk mendengar bisikan nasib harian, asmara, karir, hingga rahasia hidup yang ditenun oleh Tiga Moirai dan roh gaib Tír na nÓg!
     </p>
 
     <div class="oracle-stage-wrapper">
@@ -1429,29 +1428,9 @@ body{
       </div>
 
       <!-- Controls Panel -->
-      <div class="oracle-form-panel">
-        <div class="oracle-input-row">
-          <label for="oracle-person-name">Siapa yang Meminta Ramalan?</label>
-          <div class="oracle-input-field-wrap">
-            <input type="text" id="oracle-person-name" class="oracle-input-field" placeholder="Ketik nama kamu atau temanmu (misal: Budi, Sarah, Bos...)" maxlength="28">
-          </div>
-        </div>
-
-        <span class="oracle-filter-label">Pilih Ranah Takdir:</span>
-        <div class="oracle-chips-grid" id="oracle-chips">
-          <button type="button" class="oracle-chip-btn active" data-cat="all">Semua Takdir</button>
-          <button type="button" class="oracle-chip-btn" data-cat="career">Karir &amp; Deadline</button>
-          <button type="button" class="oracle-chip-btn" data-cat="love">Asmara &amp; Percintaan</button>
-          <button type="button" class="oracle-chip-btn" data-cat="wealth">Dompet &amp; Rezeki</button>
-          <button type="button" class="oracle-chip-btn" data-cat="health">Kesehatan Raga</button>
-          <button type="button" class="oracle-chip-btn" data-cat="social">Pertemanan &amp; Tongkrongan</button>
-          <button type="button" class="oracle-chip-btn" data-cat="mystery">Petuah Rahasia</button>
-        </div>
-
+      <div style="margin-bottom: 2.2rem;">
         <button id="oracle-summon-btn" class="oracle-cta-btn" type="button">
-          <span></span>
           Buka Tabir Ramalan
-          <span></span>
         </button>
       </div>
 
@@ -3001,16 +2980,6 @@ function playOracleChime() {
   } catch(e) {}
 }
 
-// Category Chips click handlers
-const chipBtns = document.querySelectorAll('.oracle-chip-btn');
-chipBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    chipBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentCategory = btn.getAttribute('data-cat');
-  });
-});
-
 // Category Label mapping
 const catLabels = {
   'career': 'Karir & Deadline',
@@ -3022,22 +2991,14 @@ const catLabels = {
   'all': 'Ranah Takdir'
 };
 
-// Draw Prophecy function
+// Draw Prophecy function (Instant random roll across all 60 prophecies)
 function drawProphecy() {
   const tripod = document.getElementById('oracle-tripod');
   const card = document.getElementById('oracle-display-card');
-  const nameInput = document.getElementById('oracle-person-name');
-  const rawName = nameInput ? nameInput.value.trim() : '';
-  const userName = rawName.length > 0 ? rawName : null;
 
-  // Filter dataset by current category
-  const filtered = currentCategory === 'all' 
-    ? oracleData 
-    : oracleData.filter(item => item.cat === currentCategory);
-
-  // Pick non-repeated random
-  const pick = filtered[Math.floor(Math.random() * filtered.length)];
-  currentResult = { ...pick, user: userName };
+  // Pick random from all 60 prophecies
+  const pick = oracleData[Math.floor(Math.random() * oracleData.length)];
+  currentResult = { ...pick };
 
   // Trigger animation & sound
   playOracleChime();
@@ -3061,11 +3022,7 @@ function drawProphecy() {
       
       const saluteEl = document.getElementById('card-salute-text');
       if (saluteEl) {
-        if (userName) {
-          saluteEl.textContent = 'Wahai ' + userName + ', dengarkan titah:';
-        } else {
-          saluteEl.textContent = 'Wahai Pengelana Fana, dengarkan titah:';
-        }
+        saluteEl.textContent = 'Wahai Pengelana Fana, dengarkan titah:';
       }
 
       const quoteEl = document.getElementById('card-quote-content');
@@ -3096,25 +3053,16 @@ if (summonBtn) summonBtn.addEventListener('click', drawProphecy);
 const tripodVisual = document.getElementById('oracle-tripod');
 if (tripodVisual) tripodVisual.addEventListener('click', drawProphecy);
 
-// Enter key in name input triggers prophecy
-const nameInp = document.getElementById('oracle-person-name');
-if (nameInp) {
-  nameInp.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') drawProphecy();
-  });
-}
-
 // Copy text handler
 const copyBtn = document.getElementById('oracle-copy-btn');
 if (copyBtn) {
   copyBtn.addEventListener('click', () => {
     if (!currentResult) drawProphecy();
-    const name = currentResult && currentResult.user ? currentResult.user : 'Pengelana Fana';
     const speaker = currentResult ? currentResult.speaker : 'Oracle Delphi';
     const text = currentResult ? currentResult.text : (document.getElementById('card-quote-content') ? document.getElementById('card-quote-content').textContent : '');
     const affinity = currentResult ? currentResult.affinity : 'Berkah Seelie';
 
-    const shareText = 'Ramalan Oracle Delphi & Bisikan Fae untuk ' + name + ':\n\n"' + text + '"\n\n— Dituturkan oleh ' + speaker + ' (' + affinity + ')\n\nUji ramalanmu di https://fae.web.id/#oracle';
+    const shareText = 'Ramalan Oracle Delphi & Bisikan Fae:\n\n"' + text + '"\n\n— Dituturkan oleh ' + speaker + ' (' + affinity + ')\n\nUji ramalanmu di https://fae.web.id/#oracle';
 
     if (navigator.clipboard) {
       navigator.clipboard.writeText(shareText).then(() => {
@@ -3133,13 +3081,11 @@ const waBtn = document.getElementById('oracle-wa-btn');
 if (waBtn) {
   waBtn.addEventListener('click', () => {
     if (!currentResult) drawProphecy();
-    const name = currentResult && currentResult.user ? currentResult.user : 'Pengelana Fana';
     const speaker = currentResult ? currentResult.speaker : 'Oracle Delphi';
     const text = currentResult ? currentResult.text : (document.getElementById('card-quote-content') ? document.getElementById('card-quote-content').textContent : '');
     const affinity = currentResult ? currentResult.affinity : 'Berkah Seelie';
 
     const msg = '*Ramalan Oracle Delphi & Bisikan Fae*\n' +
-      'Untuk: *' + name + '*\n' +
       'Penutur: ' + speaker + '\n\n' +
       '« ' + text + ' »\n\n' +
       'Afinitas: ' + affinity + '\n\n' +
