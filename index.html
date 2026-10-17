@@ -182,7 +182,7 @@ nav .logo{
 }
 nav .logo span{color:var(--parchment);font-weight:400}
 nav .greek-sigil{font-size:1.1rem;color:var(--gold);filter:drop-shadow(0 0 8px var(--gold-glow))}
-nav .nav-right{display:flex;align-items:center;gap:1.5rem}
+nav .nav-right{display:flex;align-items:center;gap:1rem}
 nav ul{list-style:none;display:flex;gap:1.8rem;align-items:center}
 nav ul li a{
   font-family:'Cinzel',serif;font-size:.73rem;
@@ -204,14 +204,13 @@ nav ul li a:hover::after{width:100%}
   background:rgba(212,175,55,0.08);
   border:1px solid rgba(212,175,55,0.3);
   color:var(--gold);
-  padding:0.4rem 0.85rem;
-  border-radius:20px;
-  font-family:'Cinzel',serif;
-  font-size:0.7rem;
-  letter-spacing:0.08em;
+  width:36px;height:36px;
+  padding:0;
+  border-radius:50%;
   cursor:pointer;
-  display:inline-flex;align-items:center;gap:0.45rem;
+  display:inline-flex;align-items:center;justify-content:center;
   transition:all 0.3s;
+  flex-shrink:0;
 }
 .audio-btn:hover{
   background:rgba(212,175,55,0.18);
@@ -1187,15 +1186,13 @@ body{
 .theme-btn{
   background:rgba(212,175,55,0.08);
   border:1px solid rgba(212,175,55,0.3);
-  border-radius:20px;
-  color:var(--parchment);
-  font-family:'Cinzel',serif;
-  font-size:0.75rem;
-  letter-spacing:0.08em;
-  padding:0.4rem 0.85rem;
-  display:inline-flex;align-items:center;gap:0.45rem;
+  border-radius:50%;
+  width:36px;height:36px;
+  padding:0;
+  display:inline-flex;align-items:center;justify-content:center;
   cursor:pointer;
   transition:all 0.3s;
+  flex-shrink:0;
 }
 .theme-btn:hover{
   background:rgba(212,175,55,0.2);
@@ -1349,13 +1346,11 @@ body{
       </a>
     </div>
     <div class="nav-right">
-            <button id="theme-toggle" class="theme-btn" title="Ganti Suasana Alam Gaib" type="button">
-        <span class="theme-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="5" fill="#FBBF24"/><path d="M12 2V4M12 20V22M2 12H4M20 12H22M4.9 4.9L6.3 6.3M17.7 17.7L19.1 19.1M4.9 19.1L6.3 17.7M17.7 6.3L19.1 4.9" stroke="#FBBF24" stroke-width="2" stroke-linecap="round"/></svg></span>
-        <span id="theme-label" class="theme-text">Suasana</span>
+            <button id="theme-toggle" class="theme-btn" title="Ganti Suasana (Tír na nÓg / Elysium / Hutan Purba)" aria-label="Ganti Suasana" type="button">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="5" fill="#FBBF24"/><path d="M12 2V4M12 20V22M2 12H4M20 12H22M4.9 4.9L6.3 6.3M17.7 17.7L19.1 19.1M4.9 19.1L6.3 17.7M17.7 6.3L19.1 4.9" stroke="#FBBF24" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
-      <button id="audio-toggle" class="audio-btn" title="Nyalakan/Matikan Harpa Apollo">
+      <button id="audio-toggle" class="audio-btn" title="Nyalakan/Matikan Harpa Apollo" aria-label="Harpa Apollo" type="button">
         <span class="wave"><svg class="lyre-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 3C4 8 3 13 6 18C8 21 16 21 18 18C21 13 20 8 20 3H17C17 7 16 12 14 15C13 16 11 16 10 15C8 12 7 7 7 3H4Z" fill="url(#g-gold-roof)"/><rect x="5" y="3" width="14" height="2" rx="0.5" fill="#FDE68A"/><line x1="9" y1="4" x2="9" y2="17" stroke="#E0F2FE" stroke-width="1"/><line x1="12" y1="4" x2="12" y2="18" stroke="#E0F2FE" stroke-width="1"/><line x1="15" y1="4" x2="15" y2="17" stroke="#E0F2FE" stroke-width="1"/><circle cx="12" cy="19.5" r="1.5" fill="#38BDF8"/></svg></span>
-        <span class="audio-text">Harpa Apollo</span>
       </button>
       <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')" aria-label="Menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="2" rx="1" fill="#FBBF24"/><rect x="3" y="11" width="18" height="2" rx="1" fill="#F59E0B"/><rect x="3" y="17" width="18" height="2" rx="1" fill="#D97706"/></svg></button>
       <ul>
@@ -1994,14 +1989,13 @@ const atmosphereThemes = [
 ];
 let themeIndex = 0;
 const themeToggleBtn = document.getElementById('theme-toggle');
-const themeLabel = document.getElementById('theme-label');
 
 if (themeToggleBtn) {
   themeToggleBtn.addEventListener('click', () => {
     themeIndex = (themeIndex + 1) % atmosphereThemes.length;
     const currentT = atmosphereThemes[themeIndex];
     document.body.setAttribute('data-theme', currentT.id);
-    if (themeLabel) themeLabel.textContent = currentT.name;
+    themeToggleBtn.setAttribute('title', 'Suasana: ' + currentT.name);
     
     // Quick burst of themed sparkles on mode change
     if (mouse.x !== null) {
@@ -2405,7 +2399,6 @@ let isPlayingAudio = false;
 let harpTimer = null;
 let ambientDrone = null;
 const audioBtn = document.getElementById('audio-toggle');
-const audioText = audioBtn.querySelector('.audio-text');
 
 // Ancient Greek Dorian Scale Notes: D3, F3, G3, A3, C4, D4, E4, F4, A4
 const lyreFrequencies = [146.83, 174.61, 196.00, 220.00, 261.63, 293.66, 329.63, 349.23, 440.00];
@@ -2508,12 +2501,12 @@ audioBtn.addEventListener('click', () => {
   isPlayingAudio = !isPlayingAudio;
   if (isPlayingAudio) {
     audioBtn.classList.add('playing');
-    audioText.textContent = 'Harpa Alami';
+    audioBtn.setAttribute('title', 'Matikan Harpa Apollo');
     startDroneLayer();
     playLyrePluck();
   } else {
     audioBtn.classList.remove('playing');
-    audioText.textContent = 'Harpa Apollo';
+    audioBtn.setAttribute('title', 'Nyalakan Harpa Apollo');
     stopDroneLayer();
     if (harpTimer) clearTimeout(harpTimer);
   }
